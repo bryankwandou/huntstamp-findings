@@ -1,0 +1,685 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Seventeen findings from a guest-session test of the Polymarket integration on Manic Trade.">
+<title>Manic Polymarket Findings</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap">
+<style>
+  :root {
+    --bg:        #E6ECEB;
+    --surface:   #F8FBFA;
+    --surface-2: #DDE6E4;
+    --line:      #C2D0CD;
+    --line-soft: #D5E0DE;
+    --text:      #0E1A19;
+    --muted:     #4C5F5C;
+    --faint:     #6E817E;
+    --accent:    #0A6E66;
+    --accent-lo: #D6E8E5;
+    --p1:        #A62A42;
+    --p1-lo:     #F3DDE1;
+    --p2:        #9A6510;
+    --p2-lo:     #F2E6CE;
+    --p3:        #526764;
+    --p3-lo:     #DFE7E5;
+    --measure:   66ch;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg:        #0A100F;
+      --surface:   #121D1B;
+      --surface-2: #182523;
+      --line:      #263936;
+      --line-soft: #1D2C2A;
+      --text:      #DEEAE7;
+      --muted:     #93A8A4;
+      --faint:     #748985;
+      --accent:    #4FB8AC;
+      --accent-lo: #10302C;
+      --p1:        #E4738A;
+      --p1-lo:     #34141B;
+      --p2:        #D7A244;
+      --p2-lo:     #2E2210;
+      --p3:        #8FA6A2;
+      --p3-lo:     #1B2827;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg:        #0A100F;
+    --surface:   #121D1B;
+    --surface-2: #182523;
+    --line:      #263936;
+    --line-soft: #1D2C2A;
+    --text:      #DEEAE7;
+    --muted:     #93A8A4;
+    --faint:     #748985;
+    --accent:    #4FB8AC;
+    --accent-lo: #10302C;
+    --p1:        #E4738A;
+    --p1-lo:     #34141B;
+    --p2:        #D7A244;
+    --p2-lo:     #2E2210;
+    --p3:        #8FA6A2;
+    --p3-lo:     #1B2827;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: "Source Serif 4", Georgia, "Times New Roman", serif;
+    font-size: 16.5px;
+    line-height: 1.62;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .shell {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0 28px 96px;
+  }
+
+  /* ---------- masthead ---------- */
+
+  .masthead {
+    border-bottom: 2px solid var(--text);
+    padding: 56px 0 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+  .eyebrow {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 11.5px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+  h1 {
+    font-family: Archivo, "Helvetica Neue", Arial, sans-serif;
+    font-weight: 700;
+    font-size: clamp(2.1rem, 5.2vw, 3.4rem);
+    line-height: 1.02;
+    letter-spacing: -0.028em;
+    text-wrap: balance;
+    margin: 0;
+  }
+  .standfirst {
+    max-width: var(--measure);
+    font-size: 1.08rem;
+    color: var(--muted);
+    margin: 0;
+  }
+
+  /* ---------- key/value strip ---------- */
+
+  .facts {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    gap: 1px;
+    background: var(--line);
+    border-bottom: 1px solid var(--line);
+    margin: 0;
+  }
+  .facts > div {
+    background: var(--bg);
+    padding: 14px 16px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+  .facts dt {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 10.5px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--faint);
+  }
+  .facts dd {
+    margin: 0;
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text);
+    word-break: break-word;
+  }
+
+  /* ---------- tally ---------- */
+
+  .tally {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 14px;
+    margin: 44px 0 8px;
+  }
+  .tally-item {
+    border: 1px solid var(--line);
+    border-top: 3px solid var(--sev);
+    background: var(--surface);
+    padding: 16px 18px 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .tally-n {
+    font-family: Archivo, sans-serif;
+    font-weight: 700;
+    font-size: 2.6rem;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    font-variant-numeric: tabular-nums;
+    color: var(--sev);
+  }
+  .tally-k {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 11px;
+    letter-spacing: 0.11em;
+    text-transform: uppercase;
+    color: var(--faint);
+  }
+  .tally-d { font-size: 0.9rem; color: var(--muted); line-height: 1.4; }
+
+  /* ---------- section headings ---------- */
+
+  h2 {
+    font-family: Archivo, sans-serif;
+    font-weight: 600;
+    font-size: 1.5rem;
+    letter-spacing: -0.018em;
+    margin: 64px 0 6px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--line);
+  }
+  .sec-note {
+    max-width: var(--measure);
+    color: var(--muted);
+    font-size: 0.97rem;
+    margin: 0 0 26px;
+  }
+
+  /* ---------- coverage table ---------- */
+
+  .scroller { overflow-x: auto; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+    min-width: 520px;
+  }
+  th {
+    text-align: left;
+    font-family: "IBM Plex Mono", monospace;
+    font-weight: 500;
+    font-size: 10.5px;
+    letter-spacing: 0.11em;
+    text-transform: uppercase;
+    color: var(--faint);
+    padding: 0 14px 9px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  td {
+    padding: 11px 14px 11px 0;
+    border-bottom: 1px solid var(--line-soft);
+    vertical-align: top;
+    color: var(--muted);
+  }
+  td:first-child { color: var(--text); }
+  td .ids {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 12.5px;
+    color: var(--accent);
+  }
+  .state {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  .state.yes  { color: var(--accent); }
+  .state.part { color: var(--p2); }
+  .state.no   { color: var(--p1); }
+
+  /* ---------- findings ledger ---------- */
+
+  .ledger { display: flex; flex-direction: column; }
+
+  .entry {
+    border-top: 1px solid var(--line);
+    padding: 26px 0 30px;
+    display: grid;
+    grid-template-columns: 112px minmax(0, 1fr);
+    gap: 0 28px;
+  }
+  .entry:last-child { border-bottom: 1px solid var(--line); }
+
+  .stamp { display: flex; flex-direction: column; gap: 8px; align-items: flex-start; }
+  .fid {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    color: var(--text);
+  }
+  .sev {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 0.09em;
+    padding: 3px 8px;
+    border: 1px solid var(--sev);
+    background: var(--sev-lo);
+    color: var(--sev);
+  }
+  .freq {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 10.5px;
+    letter-spacing: 0.05em;
+    color: var(--faint);
+    line-height: 1.4;
+  }
+
+  .body h3 {
+    font-family: Archivo, sans-serif;
+    font-weight: 600;
+    font-size: 1.24rem;
+    line-height: 1.25;
+    letter-spacing: -0.014em;
+    text-wrap: balance;
+    margin: 0 0 10px;
+  }
+  .body p { margin: 0 0 12px; max-width: var(--measure); }
+  .body p:last-child { margin-bottom: 0; }
+  .body strong { font-weight: 600; }
+
+  .lbl {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 0.11em;
+    text-transform: uppercase;
+    color: var(--faint);
+    display: block;
+    margin: 18px 0 6px;
+  }
+  ol.steps { margin: 0 0 12px; padding-left: 20px; max-width: var(--measure); }
+  ol.steps li { margin-bottom: 4px; }
+
+  pre {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 12.5px;
+    line-height: 1.55;
+    background: var(--surface-2);
+    border-left: 2px solid var(--accent);
+    padding: 12px 14px;
+    margin: 0 0 12px;
+    overflow-x: auto;
+    color: var(--text);
+  }
+  code {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.88em;
+    background: var(--accent-lo);
+    padding: 1px 4px;
+    color: var(--text);
+  }
+  pre code { background: none; padding: 0; font-size: inherit; }
+
+  .metrics {
+    width: auto;
+    min-width: 0;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 12.5px;
+    margin-bottom: 12px;
+  }
+  .metrics th, .metrics td {
+    padding: 6px 22px 6px 0;
+    font-variant-numeric: tabular-nums;
+  }
+  .metrics td { color: var(--text); }
+  .metrics tr.control td, .metrics tr.control th { color: var(--accent); }
+
+  /* ---------- callout ---------- */
+
+  .callout {
+    border: 1px solid var(--line);
+    background: var(--surface);
+    padding: 22px 24px;
+    margin: 26px 0 0;
+  }
+  .callout h3 {
+    font-family: Archivo, sans-serif;
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin: 0 0 8px;
+  }
+  .callout p { max-width: var(--measure); margin: 0 0 10px; color: var(--muted); }
+  .callout p:last-child { margin-bottom: 0; }
+
+  footer {
+    margin-top: 70px;
+    padding-top: 20px;
+    border-top: 2px solid var(--text);
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 11.5px;
+    letter-spacing: 0.04em;
+    color: var(--faint);
+    line-height: 1.7;
+  }
+
+  @media (max-width: 640px) {
+    body { font-size: 16px; }
+    .shell { padding: 0 18px 64px; }
+    .entry { grid-template-columns: 1fr; gap: 14px; }
+    .stamp { flex-direction: row; align-items: center; gap: 10px; flex-wrap: wrap; }
+  }
+</style>
+<style>html{color-scheme:light dark}body{margin:0}img{max-width:100%}</style>
+</head>
+<body>
+
+
+<div class="shell">
+
+  <header class="masthead">
+    <span class="eyebrow">Bug bounty · Polymarket integration</span>
+    <h1>Seventeen findings on Manic Trade</h1>
+    <p class="standfirst">A single guest session against <code>app.manic.trade/pm</code> on 3 September 2026. No account, no deposit, no orders placed — everything below was reached from the logged-out surface, which is also why the categories carrying this bounty's P0 weight are still untouched.</p>
+  </header>
+
+  <dl class="facts">
+    <div><dt>Build</dt><dd>dpl_74W5o38E8FQ…</dd></div>
+    <div><dt>Browser</dt><dd>Chromium 148</dd></div>
+    <div><dt>OS</dt><dd>Windows 11 · 26200</dd></div>
+    <div><dt>Viewports</dt><dd>1280×720 · 375×812</dd></div>
+    <div><dt>Session</dt><dd>Guest, no wallet</dd></div>
+  </dl>
+
+  <section class="tally">
+    <div class="tally-item" style="--sev: var(--p1)">
+      <span class="tally-n">1</span>
+      <span class="tally-k">P1 · Severe</span>
+      <span class="tally-d">Contradictory prices on a settled market</span>
+    </div>
+    <div class="tally-item" style="--sev: var(--p2)">
+      <span class="tally-n">5</span>
+      <span class="tally-k">P2 · Medium</span>
+      <span class="tally-d">Broken entry URL, wrong settlement date, unpriced buy buttons</span>
+    </div>
+    <div class="tally-item" style="--sev: var(--p3)">
+      <span class="tally-n">11</span>
+      <span class="tally-k">P3 · Minor</span>
+      <span class="tally-d">Filters, formatting, accessibility, stale copy</span>
+    </div>
+    <div class="tally-item" style="--sev: var(--faint)">
+      <span class="tally-n">1</span>
+      <span class="tally-k">Withdrawn</span>
+      <span class="tally-d">Evidence pointed at the test harness, not the app</span>
+    </div>
+  </section>
+
+  <h2>Coverage against the published scope</h2>
+  <p class="sec-note">Three of the six scope areas need a funded account. Those are the ones where P0 lives, and this session did not reach them.</p>
+  <div class="scroller">
+    <table>
+      <thead>
+        <tr><th>Scope area</th><th>Reached</th><th>Findings</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Market discovery and navigation</td><td><span class="state yes">Covered</span></td><td><span class="ids">F-01 · F-05 · F-12 · F-13</span></td></tr>
+        <tr><td>Event details, prices, charts, market info</td><td><span class="state yes">Covered</span></td><td><span class="ids">F-02 · F-03 · F-06 · F-07 · F-08 · F-11</span></td></tr>
+        <tr><td>Market status and settlement</td><td><span class="state part">Display only</span></td><td><span class="ids">F-02 · F-03 · F-05</span></td></tr>
+        <tr><td>Mobile, browser and wallet compatibility</td><td><span class="state part">Partial</span></td><td><span class="ids">F-14 · F-15 · F-16</span></td></tr>
+        <tr><td>Deposits and real-money trading</td><td><span class="state no">Not reached</span></td><td>Needs a funded account</td></tr>
+        <tr><td>Orders, positions, balances, P&amp;L</td><td><span class="state no">Not reached</span></td><td>Needs a funded account</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>The three that matter</h2>
+  <p class="sec-note">Full reproduction steps, captured DOM text and measured numbers. The remaining fourteen follow in summary.</p>
+
+  <div class="ledger">
+
+    <article class="entry" style="--sev: var(--p1); --sev-lo: var(--p1-lo)">
+      <div class="stamp">
+        <span class="fid">F-02</span>
+        <span class="sev">P1</span>
+        <span class="freq">Every load</span>
+      </div>
+      <div class="body">
+        <h3>A settled market shows two contradictory price sets, and one pair sums to 101%</h3>
+        <p>The Moneyline market for <em>US Open ATP: Jaime Faria vs Carlos Alcaraz</em> has resolved. The right panel says so — <code>OUTCOME: CARLOS ALCARAZ</code>, status <code>Resolved</code>, order book <code>Market Ended</code>. The outcome block carries the settlement values. The price chart legend directly beneath it carries something else entirely.</p>
+
+        <span class="lbl">Reproduce</span>
+        <ol class="steps">
+          <li>Open <code>/pm/event/atp-faria-alcaraz-2026-09-02</code></li>
+          <li>Read the outcome block at the top of the centre panel</li>
+          <li>Read the chart legend immediately below it</li>
+        </ol>
+
+        <span class="lbl">Rendered DOM text, verbatim</span>
+        <pre><code>Carlos Alcaraz
+100%
+Jaime Faria
+0%
+Jaime Faria
+9%
+Carlos Alcaraz
+92%</code></pre>
+
+        <p><strong>9% and 92% sum to 101%</strong>, which complementary outcomes cannot do, and both contradict a settlement the same screen declared two lines earlier. The chart tooltip on the final data point reads <code>Sep 2, 2026, 09:00:16</code>.</p>
+        <p>A trader reading the legend sees a live-looking market quoting an outcome at 92c that is already worth a dollar. On a market that had not yet settled, the same defect would present a false arbitrage.</p>
+      </div>
+    </article>
+
+    <article class="entry" style="--sev: var(--p2); --sev-lo: var(--p2-lo)">
+      <div class="stamp">
+        <span class="fid">F-01</span>
+        <span class="sev">P2</span>
+        <span class="freq">Every time, once any event has been opened</span>
+      </div>
+      <div class="body">
+        <h3>The URL in the bounty brief stops working after the first click</h3>
+        <p><code>app.manic.trade/pm</code> renders the market directory exactly once. Open any event and the address is claimed permanently: the app persists its open-tab list to <code>localStorage</code> and, on every later load of <code>/pm</code>, reopens the stored event and rewrites the address bar to <code>/pm/event/&lt;id&gt;</code>.</p>
+
+        <span class="lbl">Reproduce</span>
+        <ol class="steps">
+          <li>Open <code>/pm</code> in a clean profile — the directory renders</li>
+          <li>Click any event card — the address becomes <code>/pm/event/&lt;slug&gt;</code></li>
+          <li>Type <code>/pm</code> in the address bar and press Enter</li>
+        </ol>
+
+        <span class="lbl">Stored state that causes it</span>
+        <pre><code>localStorage['pm-events-store']
+{"state":{"category":"all","surface":"catalog",
+ "sidebarCollapsed":false,
+ "openEventIds":["atp-faria-alcaraz-2026-09-02"],
+ "tabMeta":{…}}}</code></pre>
+
+        <p>Removing that key and reloading restores the directory, which confirms the cause rather than just the symptom. Anyone following a link to <code>/pm</code> — the docs, the blog, this bounty's own brief — lands somewhere else. In this session the restored market happened to be a resolved one, so the first screen on return was a dead market.</p>
+      </div>
+    </article>
+
+    <article class="entry" style="--sev: var(--p2); --sev-lo: var(--p2-lo)">
+      <div class="stamp">
+        <span class="fid">F-10</span>
+        <span class="sev">P2</span>
+        <span class="freq">Both cold loads</span>
+      </div>
+      <div class="body">
+        <h3>The trading screen takes 94 to 136 seconds to finish loading</h3>
+        <p>Two consecutive cold loads of <code>/pm</code>, with the Manic logo and a spinner on screen for nearly all of it. Time to first byte was 55 ms both times, so the server is not the problem.</p>
+
+        <span class="lbl">Measured</span>
+        <div class="scroller">
+        <table class="metrics">
+          <thead><tr><th>Load</th><th>TTFB</th><th>DOMContentLoaded</th><th>loadEventEnd</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td>56 ms</td><td>1,653 ms</td><td>94,029 ms</td></tr>
+            <tr><td>2</td><td>55 ms</td><td>4,817 ms</td><td>135,689 ms</td></tr>
+            <tr class="control"><th>polymarket.com</th><td>181 ms</td><td>1,349 ms</td><td>—</td></tr>
+          </tbody>
+        </table>
+        </div>
+
+        <p>The control ran in the same session, on the same machine and connection, minutes apart. <code>performance.getEntriesByType('resource')</code> counts <strong>113</strong> separate <code>_next/static/chunks/*.js</code> requests and 250 resources for this one route. Around a hundred of those chunks each report roughly 84 seconds of wall time and resolve together — connection-pool saturation, not one slow response.</p>
+        <p>Measured from Indonesia on a residential line, so the absolute numbers travel poorly. The ratio against the same-session control is the part that reproduces.</p>
+      </div>
+    </article>
+
+  </div>
+
+  <h2>The remaining fourteen</h2>
+  <p class="sec-note">Each was filed separately through the official Typeform, with its own reproduction steps and environment block.</p>
+
+  <div class="ledger">
+
+    <article class="entry" style="--sev: var(--p2); --sev-lo: var(--p2-lo)">
+      <div class="stamp"><span class="fid">F-03</span><span class="sev">P2</span></div>
+      <div class="body">
+        <h3>Resolved market advertises a settlement date a week out</h3>
+        <p>The same US Open event shows <code>Settlement Time: Sep 9, 3:00 PM UTC</code> while displaying <code>Resolved</code>, <code>Market Ended</code> and a final score of 2–6. The match was played on 2 September — the event slug records the date itself. A user checking when funds are released gets a date unrelated to a settlement that already happened.</p>
+      </div>
+    </article>
+
+    <article class="entry" style="--sev: var(--p2); --sev-lo: var(--p2-lo)">
+      <div class="stamp"><span class="fid">F-04</span><span class="sev">P2</span><span class="freq">Intermittent</span></div>
+      <div class="body">
+        <h3>An outcome with no price keeps both buy buttons enabled</h3>
+        <p>On the <em>New York Yankees vs. Los Angeles Angels</em> card, <code>Extra Innings</code> rendered its price as <code>--</code> while Yes and No stayed clickable. A later reload priced the same card normally, so the gap is transient — which makes it easier to walk into, not harder. On a real-money venue this is the setup for an order placed at a price the user never saw.</p>
+      </div>
+    </article>
+
+    <article class="entry" style="--sev: var(--p2); --sev-lo: var(--p2-lo)">
+      <div class="stamp"><span class="fid">F-05</span><span class="sev">P2</span></div>
+      <div class="body">
+        <h3>A resolved market sits in Trending with live buy buttons</h3>
+        <p>The <code>Total Sets: O/U 3.5</code> card for the US Open event appears in the default Trending feed at 100.0% with both order buttons rendered as live controls. Opening it reveals <code>Market Ended</code>. The integration's first discovery surface is promoting something nobody can trade. Reproduced across two page loads.</p>
+      </div>
+    </article>
+
+    <article class="entry" style="--sev: var(--p3); --sev-lo: var(--p3-lo)">
+      <div class="stamp"><span class="fid">F-12</span><span class="sev">P3</span></div>
+      <div class="body">
+        <h3>Picking a category silently discards the search query</h3>
+        <p>Type <code>bitcoin</code>, get nine markets, click <em>Politics</em> — the query is gone with no notice. Both <code>input[placeholder="Search markets"]</code> elements return an empty value afterwards. Either search should compose with the category, or the app should say it cleared the box.</p>
+      </div>
+    </article>
+
+    <article class="entry" style="--sev: var(--p3); --sev-lo: var(--p3-lo)">
+      <div class="stamp"><span class="fid">F-14</span><span class="sev">P3</span></div>
+      <div class="body">
+        <h3>The empty state gives no way out of the filter that caused it</h3>
+        <p>Select a zero-count subcategory and the grid reads <em>No markets in this category</em> with no reset control anywhere — scanning the rendered text for <code>clear</code>, <code>reset</code> or <code>show all</code> returns nothing. At 375×812 it worsens: the subcategory rail scrolls horizontally and the selected chip sits off-screen, so a mobile user sees an empty screen, no cause, and no undo.</p>
+      </div>
+    </article>
+
+    <article class="entry" style="--sev: var(--p3); --sev-lo: var(--p3-lo)">
+      <div class="stamp"><span class="fid">F-15</span><span class="sev">P3</span></div>
+      <div class="body">
+        <h3>Fifty-eight invisible controls sit in the keyboard tab order</h3>
+        <p>Both halves of the responsive layout stay in the DOM, the inactive one hidden by zero sizing rather than <code>display:none</code>. The result is 58 enabled, focusable elements measuring 0×0:</p>
+        <pre><code>[...document.querySelectorAll('button,a,input')]
+  .filter(e =&gt; { const r = e.getBoundingClientRect();
+    return r.width === 0 &amp;&amp; r.height === 0
+        &amp;&amp; e.tabIndex &gt;= 0 &amp;&amp; !e.disabled }).length
+// 58</code></pre>
+        <p>A keyboard user passes 58 stops with no visible focus before reaching the grid. Separately, 23 of the 25 images on the page carry no <code>alt</code> text, including every market thumbnail.</p>
+      </div>
+    </article>
+
+    <article class="entry" style="--sev: var(--p3); --sev-lo: var(--p3-lo)">
+      <div class="stamp"><span class="fid">F-07</span><span class="sev">P3</span></div>
+      <div class="body">
+        <h3>Every prop label repeats the event title, so all 26 truncate the same way</h3>
+        <p>The Props rail names each market with the whole event title prepended — <code>US Open ATP: Jaime Faria vs Carlos Alcaraz Set 1 Winner</code>, and twenty-five more like it. Rendered in the rail they all cut off at <code>US Open ATP: Jaime Faria vs Carl…</code>, so the only distinguishing part is the part that disappears. The rail cannot be scanned; each row has to be opened to identify it.</p>
+      </div>
+    </article>
+
+    <article class="entry" style="--sev: var(--p3); --sev-lo: var(--p3-lo)">
+      <div class="stamp"><span class="fid">F-16</span><span class="sev">P3</span></div>
+      <div class="body">
+        <h3>The nav still reads “August Rewards” on 3 September</h3>
+        <p>The most prominent header call to action names last month, with the browser clock at <code>2026-09-03T04:26:35Z</code>. The panel behind it advertises a Monthly Tournament. Either the label is a month stale, or a closed campaign is the app's loudest header item.</p>
+      </div>
+    </article>
+
+    <article class="entry" style="--sev: var(--p3); --sev-lo: var(--p3-lo)">
+      <div class="stamp"><span class="fid">F-06</span><span class="sev">P3</span></div>
+      <div class="body">
+        <h3>One percentage in thirty-five carries a decimal place</h3>
+        <p>A single render of <code>/pm</code> shows 35 distinct percentages. Thirty-four are integers; exactly one is <code>100.0%</code>. That points at a special case in the rounding path right at the 100% boundary.</p>
+      </div>
+    </article>
+
+    <article class="entry" style="--sev: var(--p3); --sev-lo: var(--p3-lo)">
+      <div class="stamp"><span class="fid">F-08</span><span class="sev">P3</span></div>
+      <div class="body">
+        <h3>Zero volume renders as a dash, not as zero</h3>
+        <p>Twelve props show <code>-- Vol</code> beside neighbours reading <code>$4K Vol</code> and <code>$116 Vol</code>. A reader cannot tell “no trades yet” from “we failed to load this”.</p>
+      </div>
+    </article>
+
+    <article class="entry" style="--sev: var(--p3); --sev-lo: var(--p3-lo)">
+      <div class="stamp"><span class="fid">F-09</span><span class="sev">P3</span></div>
+      <div class="body">
+        <h3>Landing-page hero images are preloaded on the trading route</h3>
+        <p>Chrome reports it without prompting: <code>hero-video-fallback.png</code> and <code>hero-kv-first-frame.jpg</code> are both preloaded on <code>/pm</code> and never used. They compete at high priority with the 113 chunks the route actually needs.</p>
+      </div>
+    </article>
+
+    <article class="entry" style="--sev: var(--p3); --sev-lo: var(--p3-lo)">
+      <div class="stamp"><span class="fid">F-11</span><span class="sev">P3</span></div>
+      <div class="body">
+        <h3>The same candidate is spelled two ways in one viewport</h3>
+        <p><em>Republican Presidential Nominee 2028</em> lists <code>J.D. Vance</code>; <em>Presidential Election Winner 2028</em>, visible at the same time, lists <code>JD Vance</code>. Search and favourites will not match across the two.</p>
+      </div>
+    </article>
+
+    <article class="entry" style="--sev: var(--p3); --sev-lo: var(--p3-lo)">
+      <div class="stamp"><span class="fid">F-13</span><span class="sev">P3</span></div>
+      <div class="body">
+        <h3>Subcategories with a count of zero are offered as filters</h3>
+        <p>The Politics rail lists <code>Colombia Election 0</code>. It is selectable, and selecting it produces the guaranteed empty result described in F-14.</p>
+      </div>
+    </article>
+
+    <article class="entry" style="--sev: var(--p3); --sev-lo: var(--p3-lo)">
+      <div class="stamp"><span class="fid">F-17</span><span class="sev">P3</span><span class="freq">Observation, not confirmed</span></div>
+      <div class="body">
+        <h3>A click on empty grid space wrote to the OS clipboard</h3>
+        <p>At the mobile viewport, a click on blank space in the market grid fired a copy handler and overwrote the system clipboard — no copy control under the cursor, no confirmation. Not reproduced a second time and the triggering element was never identified, so it is filed as an observation. Worth a look regardless: a user part-way through pasting a wallet address would lose it.</p>
+      </div>
+    </article>
+
+  </div>
+
+  <h2>What was withdrawn, and why</h2>
+  <div class="callout">
+    <h3>Mobile subcategory chips appearing dead — not submitted</h3>
+    <p>Two taps on the <code>All</code> subcategory chip at 375×812 selected the label text instead of applying the filter, and the grid stayed empty. That reads like a broken tap target, and it would have been a decent P2.</p>
+    <p>On re-testing, a programmatic <code>element.click()</code> on the same button applied the filter correctly — the active chip moved and the grid repopulated. The automation harness had been timing out on synthetic clicks throughout that stretch. The evidence points at the test rig, not the app.</p>
+    <p>It is recorded here rather than deleted, because a reviewer should be able to see what was ruled out as well as what was found. One manual pass on a real handset would settle it.</p>
+  </div>
+
+  <h2>What this session could not reach</h2>
+  <div class="callout">
+    <h3>Deposits, orders, positions, balances, P&amp;L, settlement crediting</h3>
+    <p>All of it requires a funded account and real USDC at risk. None of it was exercised. That is where this bounty's P0 weight sits, so the coverage above should be read as the display and discovery layer only.</p>
+    <p>Everything reported was reached from a logged-out guest session. No wallet was connected, no funds were deposited, and no orders were placed.</p>
+  </div>
+
+  <footer>
+    Tested 3 September 2026 · deployment dpl_74W5o38E8FQjJUZ2DYo5PFDHEsLs<br>
+    Each finding filed separately through the official Typeform · Manic Bug Bounty
+  </footer>
+
+</div>
+
+</body>
+</html>
