@@ -1,0 +1,18 @@
+{
+  "hostOrigin": "https://frame-test.invalid",
+  "framedUrl": "https://app.manic.trade/pm",
+  "frameExists": true,
+  "contentDocumentReadable": false,
+  "innerTextIfReadable": null,
+  "framesAttached": [
+    "https://frame-test.invalid/",
+    "https://app.manic.trade/pm"
+  ],
+  "manicFrameLoaded": true,
+  "textRenderedInsideFrame": "Skip to content Trade Referral Leaderboard August Rewards Log In Manic Trade Polymarket Trade All Crypto Sports Politics Economy Tech Culture Weather Trending Liquidity Volume Newest Ending Soon Competitive Hantavirus pandemic in 2026? Yes 3% No 97% $18.0M Vol New pandemic in 2026? Yes 6% No 94% $1.",
+  "browserBlockMessages": [
+    "[contracts] programId: GkRa3woLov2vw9BopLmHkAqdwpcwzoLcspMNgpcaEJPG"
+  ],
+  "charsRenderedInFrame": 300,
+  "verdict": "FRAMED: the application rendered inside a cross-origin iframe"
+}

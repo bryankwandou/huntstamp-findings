@@ -1,0 +1,100 @@
+{
+  "sorts": {
+    "Ending Soon": {
+      "cards": 24,
+      "settledPrices": 0,
+      "settledSample": [],
+      "resolvedBadge": false,
+      "firstCards": [
+        "Culture",
+        "Weather",
+        "Trending",
+        "Liquidity",
+        "Volume",
+        "Newest",
+        "Ending Soon",
+        "Competitive",
+        "Will Tropical Storm Dolly strengthen to a hurricane?",
+        "Yes",
+        "<1%",
+        "No"
+      ]
+    },
+    "Newest": {
+      "cards": 24,
+      "settledPrices": 0,
+      "settledSample": [],
+      "resolvedBadge": false,
+      "firstCards": [
+        "Culture",
+        "Weather",
+        "Trending",
+        "Liquidity",
+        "Volume",
+        "Newest",
+        "Ending Soon",
+        "Competitive",
+        "Trump Space Academy begins training by June 30, 2027?",
+        "Yes",
+        "34%",
+        "No"
+      ]
+    },
+    "Competitive": {
+      "cards": 24,
+      "settledPrices": 0,
+      "settledSample": [],
+      "resolvedBadge": false,
+      "firstCards": [
+        "Culture",
+        "Weather",
+        "Trending",
+        "Liquidity",
+        "Volume",
+        "Newest",
+        "Ending Soon",
+        "Competitive",
+        "Trump Media x TAE Technologies merger closed by July 31?",
+        "Yes",
+        "47%",
+        "No"
+      ]
+    },
+    "Volume": {
+      "cards": 24,
+      "settledPrices": 0,
+      "settledSample": [],
+      "resolvedBadge": false,
+      "firstCards": [
+        "Culture",
+        "Weather",
+        "Trending",
+        "Liquidity",
+        "Volume",
+        "Newest",
+        "Ending Soon",
+        "Competitive",
+        "Hantavirus pandemic in 2026?",
+        "Yes",
+        "3%",
+        "No"
+      ]
+    },
+    "Liquidity": {
+      "cards": 3,
+      "settledPrices": 0,
+      "settledSample": [],
+      "resolvedBadge": false,
+      "firstCards": [
+        "Culture",
+        "Weather",
+        "Trending",
+        "Liquidity",
+        "Volume",
+        "Newest",
+        "Ending Soon",
+        "Competitive"
+      ]
+    }
+  }
+}

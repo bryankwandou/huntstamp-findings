@@ -1,0 +1,140 @@
+<title>Typeform Submissions</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap">
+<style>
+  :root{
+    --bg:#E6ECEB;--surface:#F8FBFA;--surface-2:#DDE6E4;--line:#C2D0CD;--line-soft:#D5E0DE;
+    --text:#0E1A19;--muted:#4C5F5C;--faint:#6E817E;--accent:#0A6E66;--accent-lo:#D6E8E5;
+    --ok:#1F6B4B;--ok-lo:#D8EBE2;--no:#A62A42;--no-lo:#F3DDE1;--warn:#9A6510;--warn-lo:#F2E6CE;
+  }
+  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+    --bg:#0A100F;--surface:#121D1B;--surface-2:#182523;--line:#263936;--line-soft:#1D2C2A;
+    --text:#DEEAE7;--muted:#93A8A4;--faint:#748985;--accent:#4FB8AC;--accent-lo:#10302C;
+    --ok:#6BBF95;--ok-lo:#12281F;--no:#E4738A;--no-lo:#34141B;--warn:#D7A244;--warn-lo:#2E2210;
+  }}
+  :root[data-theme="dark"]{
+    --bg:#0A100F;--surface:#121D1B;--surface-2:#182523;--line:#263936;--line-soft:#1D2C2A;
+    --text:#DEEAE7;--muted:#93A8A4;--faint:#748985;--accent:#4FB8AC;--accent-lo:#10302C;
+    --ok:#6BBF95;--ok-lo:#12281F;--no:#E4738A;--no-lo:#34141B;--warn:#D7A244;--warn-lo:#2E2210;
+  }
+  *{box-sizing:border-box}
+  body{background:var(--bg);color:var(--text);font-family:"Source Serif 4",Georgia,serif;
+    font-size:16.5px;line-height:1.6;-webkit-font-smoothing:antialiased}
+  .shell{max-width:1000px;margin:0 auto;padding:0 28px 96px}
+  header{border-bottom:2px solid var(--text);padding:52px 0 22px;display:flex;flex-direction:column;gap:14px}
+  .eyebrow{font-family:"IBM Plex Mono",monospace;font-size:11.5px;font-weight:500;
+    letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+  h1{font-family:Archivo,Arial,sans-serif;font-weight:700;font-size:clamp(2rem,5vw,3rem);
+    line-height:1.04;letter-spacing:-.028em;margin:0}
+  .standfirst{max-width:66ch;font-size:1.05rem;color:var(--muted);margin:0}
+  .standfirst a{color:var(--accent)}
+
+  .shared{border:1px solid var(--line);background:var(--surface);margin:30px 0 0}
+  .shared h2{font-family:Archivo,sans-serif;font-weight:600;font-size:1.1rem;margin:0;
+    padding:14px 18px;border-bottom:1px solid var(--line-soft);color:var(--text)}
+  .shared .fld{border-bottom:1px solid var(--line-soft)}
+  .shared .fld:last-child{border-bottom:none}
+
+  .idx{display:flex;flex-wrap:wrap;gap:6px;margin:34px 0 10px;
+    position:sticky;top:0;background:var(--bg);padding:12px 0;z-index:5;
+    border-bottom:1px solid var(--line)}
+  .idx a{font-family:"IBM Plex Mono",monospace;font-size:11px;text-decoration:none;
+    color:var(--muted);border:1px solid var(--line);padding:4px 8px;white-space:nowrap}
+  .idx a:hover,.idx a:focus-visible{border-color:var(--accent);color:var(--accent)}
+  .idx a b{color:var(--text)}
+
+  .sub{border:1px solid var(--line);background:var(--surface);margin:26px 0 0;scroll-margin-top:72px}
+  .sub.withdrawn{border-left:3px solid var(--no)}
+  .hd{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;
+    padding:15px 18px;border-bottom:1px solid var(--line-soft);background:var(--surface-2)}
+  .hd .n{font-family:Archivo,sans-serif;font-weight:700;font-size:1.15rem;color:var(--accent)}
+  .hd .fid{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.09em;
+    color:var(--faint);border:1px solid var(--line);padding:2px 7px}
+  .hd .sum{flex:1 1 320px;font-size:.96rem;color:var(--text);min-width:0}
+
+  .warn{margin:0;padding:13px 18px;background:var(--no-lo);color:var(--no);
+    font-size:.93rem;border-bottom:1px solid var(--line-soft)}
+  .note{margin:0;padding:12px 18px;background:var(--warn-lo);color:var(--warn);
+    font-size:.93rem;border-bottom:1px solid var(--line-soft)}
+
+  .fld{padding:14px 18px;border-bottom:1px solid var(--line-soft)}
+  .fld:last-child{border-bottom:none}
+  .q{display:flex;align-items:center;gap:12px;font-family:"IBM Plex Mono",monospace;
+    font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);
+    margin-bottom:8px}
+  .copy{margin-left:auto;font-family:"IBM Plex Mono",monospace;font-size:10.5px;
+    letter-spacing:.06em;text-transform:uppercase;cursor:pointer;
+    background:var(--accent-lo);color:var(--accent);border:1px solid var(--accent);
+    padding:3px 10px}
+  .copy:hover{background:var(--accent);color:var(--surface)}
+  .copy.done{background:var(--ok-lo);border-color:var(--ok);color:var(--ok)}
+  .a{margin:0;font-family:"IBM Plex Mono",monospace;font-size:12.5px;line-height:1.6;
+    color:var(--text);white-space:pre-wrap;word-break:break-word}
+  pre.a{background:var(--surface-2);padding:13px 15px;overflow-x:auto}
+  .choice .a{background:none;padding:0}
+  .pick{display:inline-block;font-weight:600;color:var(--ok);
+    background:var(--ok-lo);border:1px solid var(--ok);padding:2px 9px;font-size:12px}
+  .sub.withdrawn .pick{color:var(--no);background:var(--no-lo);border-color:var(--no)}
+
+  footer{margin-top:64px;padding-top:20px;border-top:2px solid var(--text);
+    font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--faint);line-height:1.8}
+  footer a{color:var(--accent)}
+  @media(max-width:640px){.shell{padding:0 15px 60px}.idx{position:static}}
+</style>
+
+<div class="shell">
+  <header>
+    <span class="eyebrow">Manic Trade bounty &middot; 24 submissions, ready to paste</span>
+    <h1>Every Typeform field, filled</h1>
+    <p class="standfirst">One block per finding, with the exact text for each field and a copy button beside it. Nothing here is a placeholder. Submission 03 is marked withdrawn and should not be filed &mdash; the reason sits on the block itself. The written report is at <a href="/">huntstamp-findings.vercel.app</a>, the screenshots are in the <a href="/evidence.html">evidence locker</a>, and the sponsor form values are on the <a href="/submission.html">ledger</a>.</p>
+  </header>
+
+  <div class="shared">
+    <h2>Repeated on every submission</h2>
+    <div class="fld"><div class="q">Device and browser &mdash; findings 01&ndash;17<button class="copy" type="button">Copy</button></div><pre class="a">Desktop PC / Windows 11 build 26200 / Chromium 148.0.7778.280 / no wallet connected (logged-out guest session)</pre></div>
+    <div class="fld"><div class="q">Device and browser &mdash; findings 18&ndash;24<button class="copy" type="button">Copy</button></div><pre class="a">Desktop PC / Windows 11 build 26200 / headless Chromium via Playwright / no wallet connected (logged-out guest session)</pre></div>
+    <div class="fld"><div class="q">When &mdash; findings 01&ndash;17<button class="copy" type="button">Copy</button></div><pre class="a">September 3, 2026, 04:00-09:48, UTC</pre></div>
+    <div class="fld"><div class="q">When &mdash; findings 18&ndash;24<button class="copy" type="button">Copy</button></div><pre class="a">September 4, 2026, 03:40-04:00, UTC</pre></div>
+    <div class="fld choice"><div class="q">No secrets, no public disclosure</div><div class="a"><span class="pick">A. I accept</span></div></div>
+    <div class="fld choice"><div class="q">Created with AI, no manual testing</div><div class="a"><span class="pick">A. I accept</span></div></div>
+  </div>
+
+<!--BODY-->
+
+  <footer>
+    Findings 01&ndash;17 observed on dpl_74W5o38E8FQjJUZ2DYo5PFDHEsLs, 3 September 2026<br>
+    Findings 18&ndash;24 on dpl_C3bXHquKbKr1sjn9WpRtDt8MWfce, 4 September 2026<br>
+    <a href="/">Report</a> &middot; <a href="/evidence.html">Evidence locker</a> &middot; <a href="/submission.html">Submission ledger</a> &middot; <a href="/huntstamp.html">Huntstamp</a>
+  </footer>
+</div>
+
+<script>
+document.addEventListener("click", function (e) {
+  var btn = e.target.closest(".copy");
+  if (!btn) return;
+  var pre = btn.closest(".fld").querySelector("pre.a");
+  if (!pre) return;
+  var text = pre.textContent;
+  function done() {
+    var old = btn.getAttribute("data-label") || btn.textContent;
+    btn.setAttribute("data-label", old);
+    btn.textContent = "Copied";
+    btn.classList.add("done");
+    setTimeout(function () { btn.textContent = old; btn.classList.remove("done"); }, 1600);
+  }
+  function fallback() {
+    var ta = document.createElement("textarea");
+    ta.value = text; ta.style.position = "fixed"; ta.style.opacity = "0";
+    document.body.appendChild(ta); ta.select();
+    var ok = false;
+    try { ok = document.execCommand("copy"); } catch (err) { ok = false; }
+    document.body.removeChild(ta);
+    if (ok) { done(); return; }
+    btn.textContent = "Select it";
+    var r = document.createRange(); r.selectNodeContents(pre);
+    var s = getSelection(); s.removeAllRanges(); s.addRange(r);
+  }
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(text).then(done, fallback);
+  } else { fallback(); }
+});
+</script>

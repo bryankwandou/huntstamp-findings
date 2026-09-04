@@ -1,0 +1,214 @@
+{
+  "samples": {
+    "Liquidity#1": [
+      {
+        "afterMs": 3000,
+        "waited": 3000,
+        "cards": 3,
+        "textLen": 206,
+        "empty": false
+      },
+      {
+        "afterMs": 8000,
+        "waited": 5000,
+        "cards": 24,
+        "textLen": 1269,
+        "empty": false
+      },
+      {
+        "afterMs": 15000,
+        "waited": 7000,
+        "cards": 24,
+        "textLen": 1608,
+        "empty": false
+      },
+      {
+        "afterMs": 25000,
+        "waited": 10000,
+        "cards": 24,
+        "textLen": 2049,
+        "empty": false
+      },
+      {
+        "afterMs": 40000,
+        "waited": 15000,
+        "cards": 24,
+        "textLen": 2049,
+        "empty": false
+      }
+    ],
+    "Volume#1": [
+      {
+        "afterMs": 3000,
+        "waited": 3000,
+        "cards": 3,
+        "textLen": 206,
+        "empty": false
+      },
+      {
+        "afterMs": 8000,
+        "waited": 5000,
+        "cards": 24,
+        "textLen": 1532,
+        "empty": false
+      },
+      {
+        "afterMs": 15000,
+        "waited": 7000,
+        "cards": 24,
+        "textLen": 1749,
+        "empty": false
+      },
+      {
+        "afterMs": 25000,
+        "waited": 10000,
+        "cards": 24,
+        "textLen": 1856,
+        "empty": false
+      },
+      {
+        "afterMs": 40000,
+        "waited": 15000,
+        "cards": 24,
+        "textLen": 1938,
+        "empty": false
+      }
+    ],
+    "Liquidity#2": [
+      {
+        "afterMs": 3000,
+        "waited": 3000,
+        "cards": 24,
+        "textLen": 2049,
+        "empty": false
+      },
+      {
+        "afterMs": 8000,
+        "waited": 5000,
+        "cards": 24,
+        "textLen": 2049,
+        "empty": false
+      },
+      {
+        "afterMs": 15000,
+        "waited": 7000,
+        "cards": 24,
+        "textLen": 2049,
+        "empty": false
+      },
+      {
+        "afterMs": 25000,
+        "waited": 10000,
+        "cards": 24,
+        "textLen": 2049,
+        "empty": false
+      },
+      {
+        "afterMs": 40000,
+        "waited": 15000,
+        "cards": 24,
+        "textLen": 2049,
+        "empty": false
+      }
+    ],
+    "Trending#1": [
+      {
+        "afterMs": 3000,
+        "waited": 3000,
+        "cards": 24,
+        "textLen": 1786,
+        "empty": false
+      },
+      {
+        "afterMs": 8000,
+        "waited": 5000,
+        "cards": 24,
+        "textLen": 1786,
+        "empty": false
+      },
+      {
+        "afterMs": 15000,
+        "waited": 7000,
+        "cards": 24,
+        "textLen": 1785,
+        "empty": false
+      },
+      {
+        "afterMs": 25000,
+        "waited": 10000,
+        "cards": 24,
+        "textLen": 1785,
+        "empty": false
+      },
+      {
+        "afterMs": 40000,
+        "waited": 15000,
+        "cards": 24,
+        "textLen": 1785,
+        "empty": false
+      }
+    ],
+    "Liquidity#3": [
+      {
+        "afterMs": 3000,
+        "waited": 3000,
+        "cards": 24,
+        "textLen": 2049,
+        "empty": false
+      },
+      {
+        "afterMs": 8000,
+        "waited": 5000,
+        "cards": 24,
+        "textLen": 2049,
+        "empty": false
+      },
+      {
+        "afterMs": 15000,
+        "waited": 7000,
+        "cards": 24,
+        "textLen": 2049,
+        "empty": false
+      },
+      {
+        "afterMs": 25000,
+        "waited": 10000,
+        "cards": 24,
+        "textLen": 2049,
+        "empty": false
+      },
+      {
+        "afterMs": 40000,
+        "waited": 15000,
+        "cards": 24,
+        "textLen": 2049,
+        "empty": false
+      }
+    ]
+  },
+  "finalLiquidity": {
+    "cards": 24,
+    "textLen": 2049,
+    "empty": false
+  },
+  "finalLiquidityText": [
+    "Economy",
+    "Tech",
+    "Culture",
+    "Weather",
+    "Trending",
+    "Liquidity",
+    "Volume",
+    "Newest",
+    "Ending Soon",
+    "Competitive",
+    "Democratic Presidential Nominee 2028",
+    "Alexandria Ocasio-Cortez",
+    "20%",
+    "Y",
+    "N",
+    "Jon Ossoff",
+    "16%",
+    "Y"
+  ]
+}

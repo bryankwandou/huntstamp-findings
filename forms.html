@@ -1,0 +1,775 @@
+<title>Typeform Submissions</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap">
+<style>
+  :root{
+    --bg:#E6ECEB;--surface:#F8FBFA;--surface-2:#DDE6E4;--line:#C2D0CD;--line-soft:#D5E0DE;
+    --text:#0E1A19;--muted:#4C5F5C;--faint:#6E817E;--accent:#0A6E66;--accent-lo:#D6E8E5;
+    --ok:#1F6B4B;--ok-lo:#D8EBE2;--no:#A62A42;--no-lo:#F3DDE1;--warn:#9A6510;--warn-lo:#F2E6CE;
+  }
+  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+    --bg:#0A100F;--surface:#121D1B;--surface-2:#182523;--line:#263936;--line-soft:#1D2C2A;
+    --text:#DEEAE7;--muted:#93A8A4;--faint:#748985;--accent:#4FB8AC;--accent-lo:#10302C;
+    --ok:#6BBF95;--ok-lo:#12281F;--no:#E4738A;--no-lo:#34141B;--warn:#D7A244;--warn-lo:#2E2210;
+  }}
+  :root[data-theme="dark"]{
+    --bg:#0A100F;--surface:#121D1B;--surface-2:#182523;--line:#263936;--line-soft:#1D2C2A;
+    --text:#DEEAE7;--muted:#93A8A4;--faint:#748985;--accent:#4FB8AC;--accent-lo:#10302C;
+    --ok:#6BBF95;--ok-lo:#12281F;--no:#E4738A;--no-lo:#34141B;--warn:#D7A244;--warn-lo:#2E2210;
+  }
+  *{box-sizing:border-box}
+  body{background:var(--bg);color:var(--text);font-family:"Source Serif 4",Georgia,serif;
+    font-size:16.5px;line-height:1.6;-webkit-font-smoothing:antialiased}
+  .shell{max-width:1000px;margin:0 auto;padding:0 28px 96px}
+  header{border-bottom:2px solid var(--text);padding:52px 0 22px;display:flex;flex-direction:column;gap:14px}
+  .eyebrow{font-family:"IBM Plex Mono",monospace;font-size:11.5px;font-weight:500;
+    letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+  h1{font-family:Archivo,Arial,sans-serif;font-weight:700;font-size:clamp(2rem,5vw,3rem);
+    line-height:1.04;letter-spacing:-.028em;margin:0}
+  .standfirst{max-width:66ch;font-size:1.05rem;color:var(--muted);margin:0}
+  .standfirst a{color:var(--accent)}
+
+  .shared{border:1px solid var(--line);background:var(--surface);margin:30px 0 0}
+  .shared h2{font-family:Archivo,sans-serif;font-weight:600;font-size:1.1rem;margin:0;
+    padding:14px 18px;border-bottom:1px solid var(--line-soft);color:var(--text)}
+  .shared .fld{border-bottom:1px solid var(--line-soft)}
+  .shared .fld:last-child{border-bottom:none}
+
+  .idx{display:flex;flex-wrap:wrap;gap:6px;margin:34px 0 10px;
+    position:sticky;top:0;background:var(--bg);padding:12px 0;z-index:5;
+    border-bottom:1px solid var(--line)}
+  .idx a{font-family:"IBM Plex Mono",monospace;font-size:11px;text-decoration:none;
+    color:var(--muted);border:1px solid var(--line);padding:4px 8px;white-space:nowrap}
+  .idx a:hover,.idx a:focus-visible{border-color:var(--accent);color:var(--accent)}
+  .idx a b{color:var(--text)}
+
+  .sub{border:1px solid var(--line);background:var(--surface);margin:26px 0 0;scroll-margin-top:72px}
+  .sub.withdrawn{border-left:3px solid var(--no)}
+  .hd{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;
+    padding:15px 18px;border-bottom:1px solid var(--line-soft);background:var(--surface-2)}
+  .hd .n{font-family:Archivo,sans-serif;font-weight:700;font-size:1.15rem;color:var(--accent)}
+  .hd .fid{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.09em;
+    color:var(--faint);border:1px solid var(--line);padding:2px 7px}
+  .hd .sum{flex:1 1 320px;font-size:.96rem;color:var(--text);min-width:0}
+
+  .warn{margin:0;padding:13px 18px;background:var(--no-lo);color:var(--no);
+    font-size:.93rem;border-bottom:1px solid var(--line-soft)}
+  .note{margin:0;padding:12px 18px;background:var(--warn-lo);color:var(--warn);
+    font-size:.93rem;border-bottom:1px solid var(--line-soft)}
+
+  .fld{padding:14px 18px;border-bottom:1px solid var(--line-soft)}
+  .fld:last-child{border-bottom:none}
+  .q{display:flex;align-items:center;gap:12px;font-family:"IBM Plex Mono",monospace;
+    font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);
+    margin-bottom:8px}
+  .copy{margin-left:auto;font-family:"IBM Plex Mono",monospace;font-size:10.5px;
+    letter-spacing:.06em;text-transform:uppercase;cursor:pointer;
+    background:var(--accent-lo);color:var(--accent);border:1px solid var(--accent);
+    padding:3px 10px}
+  .copy:hover{background:var(--accent);color:var(--surface)}
+  .copy.done{background:var(--ok-lo);border-color:var(--ok);color:var(--ok)}
+  .a{margin:0;font-family:"IBM Plex Mono",monospace;font-size:12.5px;line-height:1.6;
+    color:var(--text);white-space:pre-wrap;word-break:break-word}
+  pre.a{background:var(--surface-2);padding:13px 15px;overflow-x:auto}
+  .choice .a{background:none;padding:0}
+  .pick{display:inline-block;font-weight:600;color:var(--ok);
+    background:var(--ok-lo);border:1px solid var(--ok);padding:2px 9px;font-size:12px}
+  .sub.withdrawn .pick{color:var(--no);background:var(--no-lo);border-color:var(--no)}
+
+  footer{margin-top:64px;padding-top:20px;border-top:2px solid var(--text);
+    font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--faint);line-height:1.8}
+  footer a{color:var(--accent)}
+  @media(max-width:640px){.shell{padding:0 15px 60px}.idx{position:static}}
+</style>
+
+<div class="shell">
+  <header>
+    <span class="eyebrow">Manic Trade bounty &middot; 24 submissions, ready to paste</span>
+    <h1>Every Typeform field, filled</h1>
+    <p class="standfirst">One block per finding, with the exact text for each field and a copy button beside it. Nothing here is a placeholder. Submission 03 is marked withdrawn and should not be filed &mdash; the reason sits on the block itself. The written report is at <a href="/">huntstamp-findings.vercel.app</a>, the screenshots are in the <a href="/evidence.html">evidence locker</a>, and the sponsor form values are on the <a href="/submission.html">ledger</a>.</p>
+  </header>
+
+  <div class="shared">
+    <h2>Repeated on every submission</h2>
+    <div class="fld"><div class="q">Device and browser &mdash; findings 01&ndash;17<button class="copy" type="button">Copy</button></div><pre class="a">Desktop PC / Windows 11 build 26200 / Chromium 148.0.7778.280 / no wallet connected (logged-out guest session)</pre></div>
+    <div class="fld"><div class="q">Device and browser &mdash; findings 18&ndash;24<button class="copy" type="button">Copy</button></div><pre class="a">Desktop PC / Windows 11 build 26200 / headless Chromium via Playwright / no wallet connected (logged-out guest session)</pre></div>
+    <div class="fld"><div class="q">When &mdash; findings 01&ndash;17<button class="copy" type="button">Copy</button></div><pre class="a">September 3, 2026, 04:00-09:48, UTC</pre></div>
+    <div class="fld"><div class="q">When &mdash; findings 18&ndash;24<button class="copy" type="button">Copy</button></div><pre class="a">September 4, 2026, 03:40-04:00, UTC</pre></div>
+    <div class="fld choice"><div class="q">No secrets, no public disclosure</div><div class="a"><span class="pick">A. I accept</span></div></div>
+    <div class="fld choice"><div class="q">Created with AI, no manual testing</div><div class="a"><span class="pick">A. I accept</span></div></div>
+  </div>
+
+<div class="idx"><a href="#s01"><b>01</b> F-02</a><a href="#s02"><b>02</b> F-01</a><a href="#s03"><b>03</b> F-10</a><a href="#s04"><b>04</b> F-03</a><a href="#s05"><b>05</b> F-04</a><a href="#s06"><b>06</b> F-05</a><a href="#s07"><b>07</b> F-12</a><a href="#s08"><b>08</b> F-14</a><a href="#s09"><b>09</b> F-15</a><a href="#s10"><b>10</b> F-07</a><a href="#s11"><b>11</b> F-16</a><a href="#s12"><b>12</b> F-06</a><a href="#s13"><b>13</b> F-08</a><a href="#s14"><b>14</b> F-09</a><a href="#s15"><b>15</b> F-11</a><a href="#s16"><b>16</b> F-13</a><a href="#s17"><b>17</b> F-17</a><a href="#s18"><b>18</b> F-18</a><a href="#s19"><b>19</b> F-19</a><a href="#s20"><b>20</b> F-20</a><a href="#s21"><b>21</b> F-21</a><a href="#s22"><b>22</b> F-22</a><a href="#s23"><b>23</b> F-23</a><a href="#s24"><b>24</b> F-24</a></div>
+<section class="sub" id="s01"><div class="hd"><span class="n">01</span><span class="fid">F-02</span><span class="sum">A settled market displays two contradictory price sets at once, and one of the pairs sums to 101%.</span></div><p class="note">Answer &quot;It only happened once&quot;, not &quot;Every time&quot;. I re-tested this event on the newer</p><p class="note">build at 09:34 UTC and both readouts now agree at 0% / 100%; the 9% / 92% legend is gone.</p><p class="note">Claiming &quot;Every time&quot; would fail triage on the first attempt and would cast doubt on the</p><p class="note">other sixteen submissions. The evidence below is verbatim and the build id is stated, so</p><p class="note">the report still stands on its own terms.</p><div class="fld choice"><div class="q">What are you submitting?</div><div class="a"><span class="pick">A. A bug</span></div></div><div class="fld choice"><div class="q">How often does this happen?</div><div class="a"><span class="pick">C. It only happened once</span></div></div><div class="fld"><div class="q">What are you submitting?** → **A. A bug**
+
+**Briefly describe the problem in one sentence.<button class="copy" type="button">Copy</button></div><pre class="a">A settled market displays two contradictory price sets at once, and one of the pairs sums to 101%.</pre></div><div class="fld"><div class="q">How often does this happen?** → **C. It only happened once**
+
+&gt; Answer &quot;It only happened once&quot;, not &quot;Every time&quot;. I re-tested this event on the newer
+&gt; build at 09:34 UTC and both readouts now agree at 0% / 100%; the 9% / 92% legend is gone.
+&gt; Claiming &quot;Every time&quot; would fail triage on the first attempt and would cast doubt on the
+&gt; other sixteen submissions. The evidence below is verbatim and the build id is stated, so
+&gt; the report still stands on its own terms.
+
+**How do you think this could be improved?<button class="copy" type="button">Copy</button></div><pre class="a">Drive the outcome block and the chart legend from one price source, and switch that source
+to settlement values the moment a market resolves. Add an invariant that refuses to render
+complementary outcomes summing above 100%, so a mismatch fails loudly in staging instead of
+quietly in production.</pre></div><div class="fld"><div class="q">Anything else you would like to add?<button class="copy" type="button">Copy</button></div><pre class="a">Reproduction:
+1. Open https://app.manic.trade/pm/event/atp-faria-alcaraz-2026-09-02
+2. Read the outcome block at the top of the centre panel.
+3. Read the chart legend immediately below it.
+
+Actual result. The right panel reads OUTCOME: CARLOS ALCARAZ, status Resolved, order book
+Market Ended. The outcome block reads Carlos Alcaraz 100% and Jaime Faria 0%. The chart
+legend directly beneath reads Jaime Faria 9% and Carlos Alcaraz 92%.
+
+Rendered DOM text, verbatim:
+Carlos Alcaraz / 100% / Jaime Faria / 0% / Jaime Faria / 9% / Carlos Alcaraz / 92%
+
+9 and 92 sum to 101, which complementary outcomes cannot do, and both contradict a
+settlement the same screen declared two lines earlier. The chart tooltip on the final data
+point reads Sep 2, 2026, 09:00:16.
+
+Expected result. One price set per market, showing settlement values once resolved.
+
+Why it matters. A trader reading the legend sees a live-looking market quoting an outcome
+at 92c that is already worth a dollar. The same defect on a market that had not yet settled
+would present a false arbitrage.
+
+Re-test. I checked the same event again at 09:34 UTC on the newer build,
+dpl_C3bXHquKbKr1sjn9WpRtDt8MWfce, after waiting for the chart to finish rendering. Both
+readouts now agree at Jaime Faria 0% and Carlos Alcaraz 100%, and the 9% / 92% legend is
+gone. So either this was fixed between the two builds, or the mismatch only exists in the
+window between a market resolving and the settlement price propagating to the chart series.
+I could not distinguish those two from the outside. Reporting it anyway, with the build id
+and the timestamp, because the capture is verbatim and because the second explanation would
+mean the defect is still present and simply hard to catch.
+
+Build observed on: dpl_74W5o38E8FQjJUZ2DYo5PFDHEsLs, 3 September 2026, ~04:15 UTC
+Re-tested on: dpl_C3bXHquKbKr1sjn9WpRtDt8MWfce, 3 September 2026, 09:34 UTC
+Full report: https://huntstamp-findings.vercel.app</pre></div></section>
+<section class="sub" id="s02"><div class="hd"><span class="n">02</span><span class="fid">F-01</span><span class="sum">The /pm URL stops opening the market directory once any event has been opened, because a stored tab overwrites the navigation.</span></div><div class="fld choice"><div class="q">What are you submitting?</div><div class="a"><span class="pick">C. A bug with a suggested improvement</span></div></div><div class="fld choice"><div class="q">How often does this happen?</div><div class="a"><span class="pick">A. Every time</span></div></div><div class="fld"><div class="q">What are you submitting?** → **C. A bug with a suggested improvement**
+
+**Briefly describe the problem in one sentence.<button class="copy" type="button">Copy</button></div><pre class="a">The /pm URL stops opening the market directory once any event has been opened, because a stored tab overwrites the navigation.</pre></div><div class="fld"><div class="q">How often does this happen?** → **A. Every time**
+
+**How do you think this could be improved?<button class="copy" type="button">Copy</button></div><pre class="a">Treat an explicit navigation to /pm as an instruction to show the directory. Restore saved
+tabs alongside the directory rather than instead of it, and stop rewriting the address bar
+to a route the user did not request.</pre></div><div class="fld"><div class="q">Anything else you would like to add?<button class="copy" type="button">Copy</button></div><pre class="a">Reproduction:
+1. Open https://app.manic.trade/pm in a clean profile. The directory renders.
+2. Click any event card. The address becomes /pm/event/&lt;slug&gt;.
+3. Type https://app.manic.trade/pm in the address bar and press Enter.
+
+Actual result. The event from step 2 is restored and the address bar is rewritten back to
+/pm/event/&lt;slug&gt;. The directory never appears.
+
+Root cause. localStorage[&#x27;pm-events-store&#x27;] holds:
+{&quot;state&quot;:{&quot;category&quot;:&quot;all&quot;,&quot;surface&quot;:&quot;catalog&quot;,&quot;sidebarCollapsed&quot;:false,
+&quot;openEventIds&quot;:[&quot;atp-faria-alcaraz-2026-09-02&quot;],&quot;tabMeta&quot;:{...}}}
+Running localStorage.removeItem(&#x27;pm-events-store&#x27;) and reloading restores the directory,
+which confirms the cause rather than the symptom.
+
+Expected result. /pm renders the market directory.
+
+Why it matters. This is the entry point named in Manic&#x27;s own bounty brief. Anyone following
+a link to /pm from the docs, the blog or the announcement lands somewhere else. In my
+session the restored market was already resolved, so a returning user&#x27;s first screen was a
+dead market.
+
+Build: dpl_74W5o38E8FQjJUZ2DYo5PFDHEsLs</pre></div></section>
+<section class="sub withdrawn" id="s03"><div class="hd"><span class="n">03</span><span class="fid">F-10</span><span class="sum">The /pm trading screen takes 94 to 136 seconds to finish loading while showing only a spinner.</span></div><p class="warn">Withdrawn &mdash; do not submit. The 94s and 136s load times came from my instrumented browser, not from the application: a headless run on the same machine and connection reached loadEventEnd at 1,581&nbsp;ms with TTFB 57&nbsp;ms. Kept here so the record is complete.</p><div class="fld choice"><div class="q">What are you submitting?</div><div class="a"><span class="pick">A. A bug</span></div></div><div class="fld choice"><div class="q">How often does this happen?</div><div class="a"><span class="pick">A. Every time</span></div></div><div class="fld"><div class="q">What are you submitting?** → **A. A bug**
+
+**Briefly describe the problem in one sentence.<button class="copy" type="button">Copy</button></div><pre class="a">The /pm trading screen takes 94 to 136 seconds to finish loading while showing only a spinner.</pre></div><div class="fld"><div class="q">How often does this happen?** → **A. Every time**
+
+**How do you think this could be improved?<button class="copy" type="button">Copy</button></div><pre class="a">Bundle the route into far fewer chunks. 113 separate chunk requests saturate the browser&#x27;s
+connection pool, which is what stretches the load rather than any single slow response.
+Drop the two landing-page hero preloads from this route at the same time, since they
+compete for the same connections and are never rendered here.</pre></div><div class="fld"><div class="q">Anything else you would like to add?<button class="copy" type="button">Copy</button></div><pre class="a">Measured on two consecutive cold loads of https://app.manic.trade/pm:
+Load 1 - TTFB 56 ms, DOMContentLoaded 1,653 ms, loadEventEnd 94,029 ms
+Load 2 - TTFB 55 ms, DOMContentLoaded 4,817 ms, loadEventEnd 135,689 ms
+
+Control on the same machine, same connection, same session, minutes apart:
+polymarket.com - TTFB 181 ms, DOMContentLoaded 1,349 ms
+
+Read back with performance.getEntriesByType(&#x27;navigation&#x27;)[0].
+
+performance.getEntriesByType(&#x27;resource&#x27;) counts 113 _next/static/chunks/*.js requests and
+250 resources for this one route. Roughly a hundred of those chunks each report about 84
+seconds of wall time and resolve together, which is the signature of connection-pool
+saturation. A TTFB of 55 ms rules out the server.
+
+During both loads the screen showed only the Manic logo and a three-dot spinner.
+
+Measured from Indonesia on a residential connection, so the absolute numbers will differ
+elsewhere. The ratio against the same-session Polymarket control is the reproducible part.
+
+Build: dpl_74W5o38E8FQjJUZ2DYo5PFDHEsLs</pre></div></section>
+<section class="sub" id="s04"><div class="hd"><span class="n">04</span><span class="fid">F-03</span><span class="sum">A market marked Resolved shows a settlement time dated seven days after the event it settles.</span></div><div class="fld choice"><div class="q">What are you submitting?</div><div class="a"><span class="pick">A. A bug</span></div></div><div class="fld choice"><div class="q">How often does this happen?</div><div class="a"><span class="pick">A. Every time</span></div></div><div class="fld"><div class="q">What are you submitting?** → **A. A bug**
+
+**Briefly describe the problem in one sentence.<button class="copy" type="button">Copy</button></div><pre class="a">A market marked Resolved shows a settlement time dated seven days after the event it settles.</pre></div><div class="fld"><div class="q">How often does this happen?** → **A. Every time**
+
+**How do you think this could be improved?<button class="copy" type="button">Copy</button></div><pre class="a">Show the actual settlement timestamp on a resolved market, or hide the settlement countdown
+entirely once the market has resolved. A future date on a settled market is worse than no
+date at all.</pre></div><div class="fld"><div class="q">Anything else you would like to add?<button class="copy" type="button">Copy</button></div><pre class="a">Reproduction:
+1. Open https://app.manic.trade/pm/event/atp-faria-alcaraz-2026-09-02
+2. Read the Settlement Time field.
+
+Actual result. Settlement Time: Sep 9, 3:00 PM UTC, while the same page shows status
+Resolved, order book Market Ended, and a final score of FT 2 - 6.
+
+The match was played 2026-09-02, which the event slug itself records. The displayed
+settlement date is seven days after the match and six days after the date of test.
+
+Expected result. The real settlement timestamp, or no countdown on a resolved market.
+
+Why it matters. A user checking when their funds are released is given a date with no
+relation to a settlement that already happened.
+
+Build: dpl_74W5o38E8FQjJUZ2DYo5PFDHEsLs</pre></div></section>
+<section class="sub" id="s05"><div class="hd"><span class="n">05</span><span class="fid">F-04</span><span class="sum">An outcome whose price fails to load renders as &quot;--&quot; while both of its buy buttons stay enabled.</span></div><div class="fld choice"><div class="q">What are you submitting?</div><div class="a"><span class="pick">A. A bug</span></div></div><div class="fld choice"><div class="q">How often does this happen?</div><div class="a"><span class="pick">B. Sometimes</span></div></div><div class="fld"><div class="q">What are you submitting?** → **A. A bug**
+
+**Briefly describe the problem in one sentence.<button class="copy" type="button">Copy</button></div><pre class="a">An outcome whose price fails to load renders as &quot;--&quot; while both of its buy buttons stay enabled.</pre></div><div class="fld"><div class="q">How often does this happen?** → **B. Sometimes**
+
+**How do you think this could be improved?<button class="copy" type="button">Copy</button></div><pre class="a">Disable the Yes and No buttons whenever an outcome has no price, with a visible
+&quot;price unavailable&quot; state, or hide that outcome row until a price arrives. An order flow
+should never be reachable from a row the interface could not price.</pre></div><div class="fld"><div class="q">Anything else you would like to add?<button class="copy" type="button">Copy</button></div><pre class="a">Reproduction:
+1. Open https://app.manic.trade/pm with the default Trending sort.
+2. Find the New York Yankees vs. Los Angeles Angels card.
+3. Read the second outcome row.
+
+Actual result. The card rendered:
+  O/U 2.5        50%   Y  N
+  Extra Innings  --    Y  N
+Both Extra Innings buttons were active and clickable with no price shown.
+
+A later reload priced the same card normally, showing O/U 2.5 at 78% and O/U 4.5 at 84%.
+The missing price is therefore transient rather than permanent, which makes it easier for a
+user to walk into rather than harder.
+
+Expected result. No live order controls on an outcome with no price.
+
+Why it matters. On a real-money venue, an order flow reachable from an unpriced outcome is
+the setup for an order placed at a price the user never saw.
+
+Build: dpl_74W5o38E8FQjJUZ2DYo5PFDHEsLs</pre></div></section>
+<section class="sub" id="s06"><div class="hd"><span class="n">06</span><span class="fid">F-05</span><span class="sum">A resolved market stays in the default Trending feed with both buy buttons rendered as live controls.</span></div><div class="fld choice"><div class="q">What are you submitting?</div><div class="a"><span class="pick">C. A bug with a suggested improvement</span></div></div><div class="fld choice"><div class="q">How often does this happen?</div><div class="a"><span class="pick">A. Every time</span></div></div><div class="fld"><div class="q">What are you submitting?** → **C. A bug with a suggested improvement**
+
+**Briefly describe the problem in one sentence.<button class="copy" type="button">Copy</button></div><pre class="a">A resolved market stays in the default Trending feed with both buy buttons rendered as live controls.</pre></div><div class="fld"><div class="q">How often does this happen?** → **A. Every time**
+
+**How do you think this could be improved?<button class="copy" type="button">Copy</button></div><pre class="a">Filter resolved markets out of Trending, or render them with a Resolved badge and disabled
+order controls so the state is visible before the click rather than after it.</pre></div><div class="fld"><div class="q">Anything else you would like to add?<button class="copy" type="button">Copy</button></div><pre class="a">Reproduction:
+1. Open https://app.manic.trade/pm. Trending is the default sort.
+2. Find the card &quot;US Open ATP: Jaime Faria vs Carlos Alcaraz Total Sets: O/U 3.5&quot;.
+3. Note the 100.0% price and the enabled Y and N buttons.
+4. Click the card.
+
+Actual result. The event page shows OUTCOME: CARLOS ALCARAZ, status Resolved, and an order
+book reading Market Ended. Reproduced across two separate page loads.
+
+Expected result. Resolved markets excluded from Trending, or clearly badged with their
+order controls disabled.
+
+Why it matters. The integration&#x27;s first discovery surface is promoting markets nobody can
+trade, which wastes the click and undercuts trust in the rest of the feed.
+
+Build: dpl_74W5o38E8FQjJUZ2DYo5PFDHEsLs</pre></div></section>
+<section class="sub" id="s07"><div class="hd"><span class="n">07</span><span class="fid">F-12</span><span class="sum">Selecting a category silently empties the search box and discards the active query.</span></div><div class="fld choice"><div class="q">What are you submitting?</div><div class="a"><span class="pick">C. A bug with a suggested improvement</span></div></div><div class="fld choice"><div class="q">How often does this happen?</div><div class="a"><span class="pick">A. Every time</span></div></div><div class="fld"><div class="q">What are you submitting?** → **C. A bug with a suggested improvement**
+
+**Briefly describe the problem in one sentence.<button class="copy" type="button">Copy</button></div><pre class="a">Selecting a category silently empties the search box and discards the active query.</pre></div><div class="fld"><div class="q">How often does this happen?** → **A. Every time**
+
+**How do you think this could be improved?<button class="copy" type="button">Copy</button></div><pre class="a">Compose the two filters: run the existing query inside the newly chosen category. If the
+product intends the query to be dropped, say so in the interface rather than clearing the
+field without a word.</pre></div><div class="fld"><div class="q">Anything else you would like to add?<button class="copy" type="button">Copy</button></div><pre class="a">Reproduction:
+1. Open https://app.manic.trade/pm
+2. Type bitcoin into Search markets. Nine matching Bitcoin markets render.
+3. Click the Politics category chip.
+
+Actual result. The search input is emptied and the query is discarded with no notice. The
+grid shows Politics markets as though nothing had been typed. Verified in the DOM: both
+input[placeholder=&quot;Search markets&quot;] elements return value === &quot;&quot;.
+
+Expected result. Either the query runs within Politics, or the interface states that the
+search was cleared.
+
+Why it matters. A user narrowing a broad result set by category loses their query at the
+exact moment they were refining it, and has to retype from scratch.
+
+Build: dpl_74W5o38E8FQjJUZ2DYo5PFDHEsLs</pre></div></section>
+<section class="sub" id="s08"><div class="hd"><span class="n">08</span><span class="fid">F-14</span><span class="sum">The empty-results screen offers no control to clear the filter that produced it, and on mobile the responsible filter is scrolled off-screen.</span></div><div class="fld choice"><div class="q">What are you submitting?</div><div class="a"><span class="pick">C. A bug with a suggested improvement</span></div></div><div class="fld choice"><div class="q">How often does this happen?</div><div class="a"><span class="pick">A. Every time</span></div></div><div class="fld"><div class="q">What are you submitting?** → **C. A bug with a suggested improvement**
+
+**Briefly describe the problem in one sentence.<button class="copy" type="button">Copy</button></div><pre class="a">The empty-results screen offers no control to clear the filter that produced it, and on mobile the responsible filter is scrolled off-screen.</pre></div><div class="fld"><div class="q">How often does this happen?** → **A. Every time**
+
+**How do you think this could be improved?<button class="copy" type="button">Copy</button></div><pre class="a">Name the active filter in the empty state and give it a one-tap reset. On narrow viewports,
+scroll the selected chip into view so the user can see which filter is responsible.</pre></div><div class="fld"><div class="q">Anything else you would like to add?<button class="copy" type="button">Copy</button></div><pre class="a">Reproduction:
+1. Open https://app.manic.trade/pm and select the Politics category.
+2. In the subcategory rail, select Colombia Election, which shows a count of 0.
+
+Actual result. The grid renders only the sentence &quot;No markets in this category&quot;. No clear,
+reset or show-all control exists anywhere on the screen. Scanning the rendered text for
+clear, reset or show all returns nothing.
+
+At the 375x812 viewport this is worse. The subcategory rail is a horizontal scroller and
+the selected chip sits off-screen to the right; the visible portion reads
+&quot;All 2605 - Trump 298 - Midterms 1138 - Globa...&quot;. A mobile user sees an empty screen, no
+indication of which filter caused it, and no control to undo it.
+
+Expected result. An empty state that names the active filter and offers a one-tap reset.
+
+Build: dpl_74W5o38E8FQjJUZ2DYo5PFDHEsLs</pre></div></section>
+<section class="sub" id="s09"><div class="hd"><span class="n">09</span><span class="fid">F-15</span><span class="sum">Controls from the inactive responsive layout stay enabled and focusable at zero size, putting 19 to 58 invisible stops in the keyboard tab order.</span></div><div class="fld choice"><div class="q">What are you submitting?</div><div class="a"><span class="pick">A. A bug</span></div></div><div class="fld choice"><div class="q">How often does this happen?</div><div class="a"><span class="pick">A. Every time</span></div></div><div class="fld"><div class="q">What are you submitting?** → **A. A bug**
+
+**Briefly describe the problem in one sentence.<button class="copy" type="button">Copy</button></div><pre class="a">Controls from the inactive responsive layout stay enabled and focusable at zero size, putting 19 to 58 invisible stops in the keyboard tab order.</pre></div><div class="fld"><div class="q">How often does this happen?** → **A. Every time**
+
+**How do you think this could be improved?<button class="copy" type="button">Copy</button></div><pre class="a">Render one responsive layout at a time, or hide the inactive one with display:none or the
+hidden attribute rather than collapsing it to zero size. Zero-sized elements stay in the
+accessibility tree and the tab order; hidden ones do not. While in that code, add alt text
+to the market thumbnails.</pre></div><div class="fld"><div class="q">Anything else you would like to add?<button class="copy" type="button">Copy</button></div><pre class="a">Reproduction. Open https://app.manic.trade/pm, open the console and run:
+
+[...document.querySelectorAll(&#x27;button,a,input&#x27;)]
+  .filter(e =&gt; { const r = e.getBoundingClientRect();
+    return r.width === 0 &amp;&amp; r.height === 0 &amp;&amp; e.tabIndex &gt;= 0 &amp;&amp; !e.disabled }).length
+
+Actual result. Returned 58 on the first build. A later automated run on the newer build
+returned 19, with 21 of 23 images lacking alt text. The exact count moves with viewport and
+render state; what is stable is that the inactive responsive layout stays focusable. Sample innerText from those elements includes
+&quot;Monthly TournamentReal...&quot;, &quot;Free Friday$200100 Dem...&quot;, &quot;All&quot;, &quot;Crypto&quot;, &quot;Politics&quot;,
+&quot;August Rewards&quot; and &quot;Log In&quot; - the collapsed half of the responsive layout. The desktop
+header and category rail stay in the DOM at mobile widths and vice versa, hidden by zero
+sizing rather than by display:none.
+
+A keyboard user passes 58 stops with no visible focus indicator before reaching the first
+market card.
+
+Related, from the same page: 23 of the 25 img elements carry no alt attribute, including
+every market thumbnail. Check with
+[...document.querySelectorAll(&#x27;img&#x27;)].filter(i =&gt; !i.alt).length
+
+Expected result. Only the active layout in the tab order.
+
+Build: dpl_74W5o38E8FQjJUZ2DYo5PFDHEsLs</pre></div></section>
+<section class="sub" id="s10"><div class="hd"><span class="n">10</span><span class="fid">F-07</span><span class="sum">Every prop market label repeats the full event title, so all 26 props in the rail truncate to the same unreadable string.</span></div><div class="fld choice"><div class="q">What are you submitting?</div><div class="a"><span class="pick">C. A bug with a suggested improvement</span></div></div><div class="fld choice"><div class="q">How often does this happen?</div><div class="a"><span class="pick">A. Every time</span></div></div><div class="fld"><div class="q">What are you submitting?** → **C. A bug with a suggested improvement**
+
+**Briefly describe the problem in one sentence.<button class="copy" type="button">Copy</button></div><pre class="a">Every prop market label repeats the full event title, so all 26 props in the rail truncate to the same unreadable string.</pre></div><div class="fld"><div class="q">How often does this happen?** → **A. Every time**
+
+**How do you think this could be improved?<button class="copy" type="button">Copy</button></div><pre class="a">Strip the event title from the market label in any context that already displays the event
+title. The rail should read &quot;Total Sets: O/U 3.5&quot;, &quot;Set 1 Winner&quot;, &quot;Set 1 O/U 8.5&quot; rather
+than repeating the match name in front of each one.</pre></div><div class="fld"><div class="q">Anything else you would like to add?<button class="copy" type="button">Copy</button></div><pre class="a">Reproduction:
+1. Open https://app.manic.trade/pm/event/atp-faria-alcaraz-2026-09-02
+2. Read the Props rail on the left.
+
+Actual result. Each entry is named with the whole event title prepended:
+  US Open ATP: Jaime Faria vs Carlos Alcaraz Total Sets: O/U 3.5
+  US Open ATP: Jaime Faria vs Carlos Alcaraz Set 1 Winner
+  US Open ATP: Jaime Faria vs Carlos Alcaraz Set 1 O/U 8.5
+  US Open ATP: Jaime Faria vs Carlos Alcaraz Game Spread +/-6.5
+Rendered in the rail these all truncate to &quot;US Open ATP: Jaime Faria vs Carl...&quot;, so the
+part that distinguishes one prop from another is exactly the part that disappears. An automated pass counted 48 rows carrying that prefix; they render as visually identical
+rows.
+
+The same duplicated label also appears as the outcome name inside a grid card whose title is
+already that event.
+
+Expected result. Labels that identify the prop rather than repeating the event.
+
+Why it matters. The props list cannot be scanned. Each row has to be opened individually to
+find out what it is.
+
+Build: dpl_74W5o38E8FQjJUZ2DYo5PFDHEsLs</pre></div></section>
+<section class="sub" id="s11"><div class="hd"><span class="n">11</span><span class="fid">F-16</span><span class="sum">The most prominent nav call to action still reads &quot;August Rewards&quot; on 3 September.</span></div><div class="fld choice"><div class="q">What are you submitting?</div><div class="a"><span class="pick">A. A bug</span></div></div><div class="fld choice"><div class="q">How often does this happen?</div><div class="a"><span class="pick">A. Every time</span></div></div><div class="fld"><div class="q">What are you submitting?** → **A. A bug**
+
+**Briefly describe the problem in one sentence.<button class="copy" type="button">Copy</button></div><pre class="a">The most prominent nav call to action still reads &quot;August Rewards&quot; on 3 September.</pre></div><div class="fld"><div class="q">How often does this happen?** → **A. Every time**
+
+**How do you think this could be improved?<button class="copy" type="button">Copy</button></div><pre class="a">Drive the promotion label from the current period rather than a hardcoded month, and have
+it roll over automatically when the tournament does.</pre></div><div class="fld"><div class="q">Anything else you would like to add?<button class="copy" type="button">Copy</button></div><pre class="a">Reproduction:
+1. Open https://app.manic.trade/pm
+2. Read the highlighted call to action in the primary nav.
+3. In the console, run new Date().toISOString() to confirm the current date.
+
+Actual result. The nav reads &quot;August Rewards&quot; with the browser clock at
+2026-09-03T04:26:35Z. The panel behind it advertises a Monthly Tournament and a Free Friday
+promotion.
+
+Expected result. A monthly promotion label that follows the current month, or September&#x27;s
+tournament in its place.
+
+Why it matters. Either the label is a month stale, or a closed campaign is the loudest item
+in the header. Either way the first thing a user reads is wrong.
+
+Build: dpl_74W5o38E8FQjJUZ2DYo5PFDHEsLs</pre></div></section>
+<section class="sub" id="s12"><div class="hd"><span class="n">12</span><span class="fid">F-06</span><span class="sum">A price of exactly 100% renders as &quot;100.0%&quot;, carrying a trailing decimal that no other whole-number price on the screen shows.</span></div><div class="fld choice"><div class="q">What are you submitting?</div><div class="a"><span class="pick">A. A bug</span></div></div><div class="fld choice"><div class="q">How often does this happen?</div><div class="a"><span class="pick">B. Sometimes</span></div></div><div class="fld"><div class="q">What are you submitting?** → **A. A bug**
+
+**Briefly describe the problem in one sentence.<button class="copy" type="button">Copy</button></div><pre class="a">A price of exactly 100% renders as &quot;100.0%&quot;, carrying a trailing decimal that no other whole-number price on the screen shows.</pre></div><div class="fld"><div class="q">How often does this happen?** → **B. Sometimes**
+
+**How do you think this could be improved?<button class="copy" type="button">Copy</button></div><pre class="a">Strip the trailing .0 when a price lands on a whole number, so 100.0% renders as 100% and
+matches every other integer price. The fractional case is fine as it stands.</pre></div><div class="fld"><div class="q">Anything else you would like to add?<button class="copy" type="button">Copy</button></div><pre class="a">Reproduction:
+1. Open https://app.manic.trade/pm
+2. In the console, run:
+   [...new Set(document.body.innerText.match(/\d+(\.\d+)?%/g))]
+
+Actual result, first build. 35 distinct percentages, 34 of them integers, and exactly one
+rendered as 100.0%:
+[&quot;90%&quot;,&quot;10%&quot;,&quot;52%&quot;,&quot;48%&quot;,&quot;53%&quot;,&quot;25%&quot;,&quot;12%&quot;,&quot;85%&quot;,&quot;15%&quot;,&quot;42%&quot;,&quot;22%&quot;,&quot;100.0%&quot;,&quot;17%&quot;,&quot;16%&quot;,
+&quot;50%&quot;,&quot;62%&quot;,&quot;38%&quot;,&quot;59%&quot;,&quot;39%&quot;,&quot;55%&quot;,&quot;43%&quot;,&quot;98%&quot;,&quot;2%&quot;,&quot;80%&quot;,&quot;18%&quot;, ...]
+
+Correction after re-testing. On the newer build, dpl_C3bXHquKbKr1sjn9WpRtDt8MWfce, the same
+snippet returned 32 percentages with exactly one decimal value, 99.5%. That one is correct:
+99.5 is not a whole number and needs the decimal. So the formatter&#x27;s rule appears to be
+&quot;show one decimal where the value is fractional&quot;, and the actual defect is narrower than my
+first reading: a value of exactly 100 was rendered as 100.0% rather than 100%.
+
+I did not catch 100.0% again on the newer build, so the frequency is answered as Sometimes.
+
+Build observed on: dpl_74W5o38E8FQjJUZ2DYo5PFDHEsLs
+Re-tested on: dpl_C3bXHquKbKr1sjn9WpRtDt8MWfce</pre></div></section>
+<section class="sub" id="s13"><div class="hd"><span class="n">13</span><span class="fid">F-08</span><span class="sum">Zero volume renders as &quot;-- Vol&quot; instead of &quot;$0&quot;, so a user cannot tell no trades from a failed load.</span></div><div class="fld choice"><div class="q">What are you submitting?</div><div class="a"><span class="pick">A. A bug</span></div></div><div class="fld choice"><div class="q">How often does this happen?</div><div class="a"><span class="pick">A. Every time</span></div></div><div class="fld"><div class="q">What are you submitting?** → **A. A bug**
+
+**Briefly describe the problem in one sentence.<button class="copy" type="button">Copy</button></div><pre class="a">Zero volume renders as &quot;-- Vol&quot; instead of &quot;$0&quot;, so a user cannot tell no trades from a failed load.</pre></div><div class="fld"><div class="q">How often does this happen?** → **A. Every time**
+
+**How do you think this could be improved?<button class="copy" type="button">Copy</button></div><pre class="a">Render zero volume as $0 and reserve the dash for a genuine load failure, so the two states
+are distinguishable at a glance.</pre></div><div class="fld"><div class="q">Anything else you would like to add?<button class="copy" type="button">Copy</button></div><pre class="a">Reproduction:
+1. Open https://app.manic.trade/pm/event/atp-faria-alcaraz-2026-09-02
+2. Read the volume figures down the Props rail.
+
+Actual result. Twelve props show &quot;-- Vol&quot; while their neighbours show &quot;$4K Vol&quot;,
+&quot;$116 Vol&quot;, &quot;$1K Vol&quot;, &quot;$9K Vol&quot;, &quot;$13K Vol&quot;. The props showing a dash include Set 1 O/U
+8.5, Set 1 O/U 9.5, Set 3 O/U 8.5, Set 2 O/U 8.5, Set 2 O/U 9.5, Set 1 O/U 10.5, Set 4
+Winner, Set 2 O/U 10.5, Set 3 O/U 9.5, Set 3 O/U 10.5, Set 4 O/U 8.5, Set 4 O/U 9.5 and
+Set 4 O/U 10.5.
+
+Expected result. $0 where volume is zero.
+
+Build: dpl_74W5o38E8FQjJUZ2DYo5PFDHEsLs</pre></div></section>
+<section class="sub" id="s14"><div class="hd"><span class="n">14</span><span class="fid">F-09</span><span class="sum">Two landing-page hero images are preloaded at high priority on the trading route and never used.</span></div><div class="fld choice"><div class="q">What are you submitting?</div><div class="a"><span class="pick">A. A bug</span></div></div><div class="fld choice"><div class="q">How often does this happen?</div><div class="a"><span class="pick">A. Every time</span></div></div><div class="fld"><div class="q">What are you submitting?** → **A. A bug**
+
+**Briefly describe the problem in one sentence.<button class="copy" type="button">Copy</button></div><pre class="a">Two landing-page hero images are preloaded at high priority on the trading route and never used.</pre></div><div class="fld"><div class="q">How often does this happen?** → **A. Every time**
+
+**How do you think this could be improved?<button class="copy" type="button">Copy</button></div><pre class="a">Preload only assets the route actually renders. These two belong to the marketing landing
+page and compete for connections with the JavaScript the trading screen needs.</pre></div><div class="fld"><div class="q">Anything else you would like to add?<button class="copy" type="button">Copy</button></div><pre class="a">Reproduction:
+1. Open https://app.manic.trade/pm
+2. Read the browser console.
+
+Actual result. Chrome reports the waste without prompting:
+
+&quot;The resource https://app.manic.trade/landing-v2/hero-video-fallback.png was preloaded
+using link preload but not used within a few seconds from the window&#x27;s load event.&quot;
+
+&quot;The resource https://app.manic.trade/landing-v2/hero-kv-first-frame.jpg was preloaded
+using link preload but not used within a few seconds from the window&#x27;s load event.&quot;
+
+On the newer build the same warning was emitted 16 times in a single page load, for
+hero-video-fallback.png. Both assets belong to the marketing landing page and neither is
+rendered on the trading route.
+
+Expected result. No preloads for assets the route does not render.
+
+Build: dpl_74W5o38E8FQjJUZ2DYo5PFDHEsLs</pre></div></section>
+<section class="sub" id="s15"><div class="hd"><span class="n">15</span><span class="fid">F-11</span><span class="sum">The same candidate is spelled &quot;J.D. Vance&quot; on one card and &quot;JD Vance&quot; on another card visible at the same time.</span></div><div class="fld choice"><div class="q">What are you submitting?</div><div class="a"><span class="pick">A. A bug</span></div></div><div class="fld choice"><div class="q">How often does this happen?</div><div class="a"><span class="pick">A. Every time</span></div></div><div class="fld"><div class="q">What are you submitting?** → **A. A bug**
+
+**Briefly describe the problem in one sentence.<button class="copy" type="button">Copy</button></div><pre class="a">The same candidate is spelled &quot;J.D. Vance&quot; on one card and &quot;JD Vance&quot; on another card visible at the same time.</pre></div><div class="fld"><div class="q">How often does this happen?** → **A. Every time**
+
+**How do you think this could be improved?<button class="copy" type="button">Copy</button></div><pre class="a">Normalise outcome names against a single canonical form so search, favourites and any future
+cross-market grouping match across markets.</pre></div><div class="fld"><div class="q">Anything else you would like to add?<button class="copy" type="button">Copy</button></div><pre class="a">Reproduction:
+1. Open https://app.manic.trade/pm
+2. Locate the cards &quot;Republican Presidential Nominee 2028&quot; and &quot;Presidential Election
+   Winner 2028&quot;. Both are visible in the default Trending grid at the same time.
+
+Actual result. The first lists the outcome as &quot;J.D. Vance&quot;. The second lists the same person
+as &quot;JD Vance&quot;.
+
+Expected result. One canonical rendering of the name.
+
+Why it matters. A user searching or favouriting one spelling will not match the other.
+
+Build: dpl_74W5o38E8FQjJUZ2DYo5PFDHEsLs</pre></div></section>
+<section class="sub" id="s16"><div class="hd"><span class="n">16</span><span class="fid">F-13</span><span class="sum">Subcategories with a market count of zero are offered as selectable filters that are guaranteed to return nothing.</span></div><div class="fld choice"><div class="q">What are you submitting?</div><div class="a"><span class="pick">C. A bug with a suggested improvement</span></div></div><div class="fld choice"><div class="q">How often does this happen?</div><div class="a"><span class="pick">A. Every time</span></div></div><div class="fld"><div class="q">What are you submitting?** → **C. A bug with a suggested improvement**
+
+**Briefly describe the problem in one sentence.<button class="copy" type="button">Copy</button></div><pre class="a">Subcategories with a market count of zero are offered as selectable filters that are guaranteed to return nothing.</pre></div><div class="fld"><div class="q">How often does this happen?** → **A. Every time**
+
+**How do you think this could be improved?<button class="copy" type="button">Copy</button></div><pre class="a">Hide a subcategory whose own count is zero, or render it disabled. The count is already
+computed and displayed, so the condition is available at render time.</pre></div><div class="fld"><div class="q">Anything else you would like to add?<button class="copy" type="button">Copy</button></div><pre class="a">Reproduction:
+1. Open https://app.manic.trade/pm and select the Politics category.
+2. Read the subcategory rail. It lists &quot;Colombia Election 0&quot;.
+3. Select it.
+
+Actual result. The filter applies and the grid shows &quot;No markets in this category&quot;. The rail
+displays the count of 0 next to the label, so the interface knows in advance that selecting
+it cannot return a result.
+
+Expected result. Zero-count subcategories hidden or disabled.
+
+Related: once selected, there is no control anywhere on screen to clear the filter. That is
+filed separately.
+
+Build: dpl_74W5o38E8FQjJUZ2DYo5PFDHEsLs</pre></div></section>
+<section class="sub" id="s17"><div class="hd"><span class="n">17</span><span class="fid">F-17</span><span class="sum">A click on empty space in the market grid fired a copy handler and overwrote the operating system clipboard.</span></div><div class="fld choice"><div class="q">What are you submitting?</div><div class="a"><span class="pick">A. A bug</span></div></div><div class="fld choice"><div class="q">How often does this happen?</div><div class="a"><span class="pick">C. It only happened once</span></div></div><div class="fld"><div class="q">What are you submitting?** → **A. A bug**
+
+**Briefly describe the problem in one sentence.<button class="copy" type="button">Copy</button></div><pre class="a">A click on empty space in the market grid fired a copy handler and overwrote the operating system clipboard.</pre></div><div class="fld"><div class="q">How often does this happen?** → **C. It only happened once**
+
+**How do you think this could be improved?<button class="copy" type="button">Copy</button></div><pre class="a">Scope copy handlers to the elements that own them rather than to a container. A silent
+clipboard write from blank space is worth ruling out even if it turns out to be narrow.</pre></div><div class="fld"><div class="q">Anything else you would like to add?<button class="copy" type="button">Copy</button></div><pre class="a">Observed once, at the 375x812 viewport, while clicking an empty region of the market grid on
+https://app.manic.trade/pm. The page fired a copy handler and the operating system clipboard
+was overwritten, with no visible copy control under the cursor and no confirmation.
+
+I could not reproduce it a second time and I did not identify the element responsible, so I
+am filing this as an observation rather than a confirmed defect. Treat the frequency answer
+accordingly.
+
+Reporting it because a silent clipboard write on a trading surface has a specific cost: a
+user part-way through pasting a wallet address or a deposit address would lose it without
+noticing.
+
+Build: dpl_74W5o38E8FQjJUZ2DYo5PFDHEsLs</pre></div></section>
+<section class="sub" id="s18"><div class="hd"><span class="n">18</span><span class="fid">F-18</span><span class="sum">The trading interface renders inside a cross-origin iframe, because neither X-Frame-Options nor a CSP frame-ancestors directive is sent.</span></div><div class="fld choice"><div class="q">What are you submitting?</div><div class="a"><span class="pick">C. A bug with a suggested improvement</span></div></div><div class="fld choice"><div class="q">How often does this happen?</div><div class="a"><span class="pick">A. Every time</span></div></div><div class="fld"><div class="q">What are you submitting?** → **C. A bug with a suggested improvement**
+
+**Briefly describe the problem in one sentence.<button class="copy" type="button">Copy</button></div><pre class="a">The trading interface renders inside a cross-origin iframe, because neither X-Frame-Options nor a CSP frame-ancestors directive is sent.</pre></div><div class="fld"><div class="q">How often does this happen?** → **A. Every time**
+
+**How do you think this could be improved?<button class="copy" type="button">Copy</button></div><pre class="a">Send Content-Security-Policy: frame-ancestors &#x27;none&#x27; on every application route, and
+X-Frame-Options: DENY alongside it for older clients. If any surface is meant to be
+embeddable, allow that origin explicitly rather than leaving the whole application framable.</pre></div><div class="fld"><div class="q">Anything else you would like to add?<button class="copy" type="button">Copy</button></div><pre class="a">Reproduction. Serve this page from any origin that is not manic.trade, and open it:
+
+  &lt;iframe src=&quot;https://app.manic.trade/pm&quot; width=&quot;1200&quot; height=&quot;700&quot;&gt;&lt;/iframe&gt;
+
+Actual result. The frame attaches, loads and paints the live application. Text read back
+from inside the frame, verbatim:
+
+  Skip to content Trade Referral Leaderboard August Rewards Log In Manic Trade
+  Polymarket Trade All Crypto Sports Politics Economy Tech Culture Weather Trending
+  Liquidity Volume Newest Ending Soon Competitive Hantavirus pandemic in 2026?
+  Yes 3% No 97% $18.0M Vol New pandemic in 2026? Yes 6% No 94% $1.
+
+That is the market grid, live prices, the sort controls and the Log In button, rendering
+under a third-party domain. The browser raised no framing objection: a collector watching
+for framing and CSP messages caught none.
+
+Confirmed at the header level too. Neither header is present on the /pm response:
+
+  curl -sSD - -o /dev/null https://app.manic.trade/pm
+
+  Content-Security-Policy   absent
+  X-Frame-Options           absent
+
+Expected result. X-Frame-Options: DENY, or CSP frame-ancestors &#x27;none&#x27;.
+
+Why it matters. On a venue where a click places an order, a framable interface is the setup
+for clickjacking: an attacker overlays their own page on the frame and the victim&#x27;s click
+lands on a control they cannot see. The Log In button being reachable inside the frame is
+the part worth looking at first.
+
+Stated plainly: I demonstrated that the page frames. I did not build a working clickjacking
+exploit and did not attempt one, since that needs an interactive control and a funded
+session, both outside a logged-out read-only test. This is a missing control with the
+framing proven, not a proven end-to-end attack.
+
+Build: dpl_C3bXHquKbKr1sjn9WpRtDt8MWfce</pre></div></section>
+<section class="sub" id="s19"><div class="hd"><span class="n">19</span><span class="fid">F-19</span><span class="sum">No security response headers are sent at all, and the one cookie set on the route carries neither Secure nor HttpOnly.</span></div><div class="fld choice"><div class="q">What are you submitting?</div><div class="a"><span class="pick">C. A bug with a suggested improvement</span></div></div><div class="fld choice"><div class="q">How often does this happen?</div><div class="a"><span class="pick">A. Every time</span></div></div><div class="fld"><div class="q">What are you submitting?** → **C. A bug with a suggested improvement**
+
+**Briefly describe the problem in one sentence.<button class="copy" type="button">Copy</button></div><pre class="a">No security response headers are sent at all, and the one cookie set on the route carries neither Secure nor HttpOnly.</pre></div><div class="fld"><div class="q">How often does this happen?** → **A. Every time**
+
+**How do you think this could be improved?<button class="copy" type="button">Copy</button></div><pre class="a">Add X-Content-Type-Options: nosniff and a Referrer-Policy first, since both are one line
+each and carry no behavioural risk. A Permissions-Policy and a Content-Security-Policy are
+the larger pieces of work. Set Secure on the is-mobile cookie while you are in there.</pre></div><div class="fld"><div class="q">Anything else you would like to add?<button class="copy" type="button">Copy</button></div><pre class="a">Reproduction:
+
+  curl -sSD - -o /dev/null https://app.manic.trade/pm
+
+Actual result. All of these are absent from the response:
+
+  Content-Security-Policy       absent
+  X-Frame-Options               absent
+  X-Content-Type-Options        absent
+  Referrer-Policy               absent
+  Permissions-Policy            absent
+  Cross-Origin-Opener-Policy    absent
+
+What is sent, and is correct: Strict-Transport-Security: max-age=63072000, and http://
+redirects to https:// with a 308.
+
+The one cookie on this route:
+
+  Set-Cookie: is-mobile=0; Path=/; Expires=...; Max-Age=86400; SameSite=lax
+
+with no Secure and no HttpOnly attribute.
+
+Honest scoping, so you can triage this correctly. is-mobile is a viewport hint rather than a
+session token, and HSTS plus the 308 makes the missing Secure flag largely theoretical on
+this host. nosniff and a Referrer-Policy are the two worth adding regardless. The framing
+directive is filed separately, and that is where the real weight sits.
+
+Build: dpl_C3bXHquKbKr1sjn9WpRtDt8MWfce</pre></div></section>
+<section class="sub" id="s20"><div class="hd"><span class="n">20</span><span class="fid">F-20</span><span class="sum">A market slug that does not exist returns HTTP 200 with the landing-page title instead of a 404, and the browser is then silently redirected to the directory.</span></div><div class="fld choice"><div class="q">What are you submitting?</div><div class="a"><span class="pick">A. A bug</span></div></div><div class="fld choice"><div class="q">How often does this happen?</div><div class="a"><span class="pick">A. Every time</span></div></div><div class="fld"><div class="q">What are you submitting?** → **A. A bug**
+
+**Briefly describe the problem in one sentence.<button class="copy" type="button">Copy</button></div><pre class="a">A market slug that does not exist returns HTTP 200 with the landing-page title instead of a 404, and the browser is then silently redirected to the directory.</pre></div><div class="fld"><div class="q">How often does this happen?** → **A. Every time**
+
+**How do you think this could be improved?<button class="copy" type="button">Copy</button></div><pre class="a">Return 404 when a market slug does not resolve, and render a page that says the market was
+not found with a link back to the directory. The neighbouring routes already do this
+correctly, so the fix is to make the event route behave like them.</pre></div><div class="fld"><div class="q">Anything else you would like to add?<button class="copy" type="button">Copy</button></div><pre class="a">Reproduction:
+
+  curl -sS -o /dev/null -w &quot;%{http_code} %{size_download}\n&quot; \
+    https://app.manic.trade/pm/event/this-market-does-not-exist-2099
+
+Actual result. Three invented slugs, all served as successful pages:
+
+  200  1,535,682 bytes   /pm/event/this-market-does-not-exist-2099
+  200  1,535,625 bytes   /pm/event/aaaaaaaaaaaa
+  200  1,535,661 bytes   /pm/event/atp-fake-fake-2099-12-31
+
+The response carries the generic landing-page title rather than a market or an error:
+
+  &lt;title&gt;Manic.Trade: the First Momentum-based Trading Platform on Solana&lt;/title&gt;
+
+with no rel=&quot;canonical&quot;. In the browser the address is then rewritten to /pm and the market
+directory renders, with nothing said about the market that was requested.
+
+The routing is inconsistent, which is what makes this a defect rather than a decision:
+
+  /pm/nonsense-subroute        404   correct
+  /pm/event/                   404   correct
+  /pm/event/anything-at-all    200   wrong
+
+Expected result. 404 for a slug that does not resolve, or a page saying the market was not
+found.
+
+Why it matters. Three separate costs. A user following an old or mistyped market link is
+dumped on the directory with no explanation of where their market went. Search engines are
+invited to index an unbounded space of invalid URLs as valid pages. And uptime monitoring
+cannot distinguish a working market link from a broken one, because both return 200.
+
+Build: dpl_C3bXHquKbKr1sjn9WpRtDt8MWfce</pre></div></section>
+<section class="sub" id="s21"><div class="hd"><span class="n">21</span><span class="fid">F-21</span><span class="sum">Route matching is case-sensitive, so /PM returns a 404 while /pm works.</span></div><div class="fld choice"><div class="q">What are you submitting?</div><div class="a"><span class="pick">A. A bug</span></div></div><div class="fld choice"><div class="q">How often does this happen?</div><div class="a"><span class="pick">A. Every time</span></div></div><div class="fld"><div class="q">What are you submitting?** → **A. A bug**
+
+**Briefly describe the problem in one sentence.<button class="copy" type="button">Copy</button></div><pre class="a">Route matching is case-sensitive, so /PM returns a 404 while /pm works.</pre></div><div class="fld"><div class="q">How often does this happen?** → **A. Every time**
+
+**How do you think this could be improved?<button class="copy" type="button">Copy</button></div><pre class="a">Lower-case the path before matching, or add a redirect from the capitalised form. Either is
+a small change and both remove the failure.</pre></div><div class="fld"><div class="q">Anything else you would like to add?<button class="copy" type="button">Copy</button></div><pre class="a">Reproduction:
+
+  curl -sS -o /dev/null -w &quot;%{http_code}\n&quot; https://app.manic.trade/pm    -&gt;  200
+  curl -sS -o /dev/null -w &quot;%{http_code}\n&quot; https://app.manic.trade/PM    -&gt;  404
+
+Actual result. /PM renders &quot;404 This page could not be found.&quot;
+
+Expected result. Both forms reach the market directory.
+
+Why it matters. A link capitalised by an email client, a CMS, a print asset or a person
+typing it out lands on an error page rather than the product.
+
+Build: dpl_C3bXHquKbKr1sjn9WpRtDt8MWfce</pre></div></section>
+<section class="sub" id="s22"><div class="hd"><span class="n">22</span><span class="fid">F-22</span><span class="sum">There is not one heading element on any page, and each page carries two &lt;main&gt; landmarks, so screen-reader users have no document outline to navigate by.</span></div><div class="fld choice"><div class="q">What are you submitting?</div><div class="a"><span class="pick">C. A bug with a suggested improvement</span></div></div><div class="fld choice"><div class="q">How often does this happen?</div><div class="a"><span class="pick">A. Every time</span></div></div><div class="fld"><div class="q">What are you submitting?** → **C. A bug with a suggested improvement**
+
+**Briefly describe the problem in one sentence.<button class="copy" type="button">Copy</button></div><pre class="a">There is not one heading element on any page, and each page carries two &lt;main&gt; landmarks, so screen-reader users have no document outline to navigate by.</pre></div><div class="fld"><div class="q">How often does this happen?** → **A. Every time**
+
+**How do you think this could be improved?<button class="copy" type="button">Copy</button></div><pre class="a">Give each page one &lt;h1&gt; naming it — the market title on an event page, the category on the
+directory — with section headings below it in order. Reduce to a single &lt;main&gt; and put the
+navigation in a &lt;nav&gt;. The market cards are already styled as headings visually; this is a
+markup change, not a design change.</pre></div><div class="fld"><div class="q">Anything else you would like to add?<button class="copy" type="button">Copy</button></div><pre class="a">Reproduction, counted in the HTML the server returns:
+
+  curl -sS https://app.manic.trade/pm | grep -o &quot;&lt;h1[ &gt;]&quot; | wc -l
+
+Actual result:
+
+                  /pm    event page
+  &lt;h1&gt;             0         0
+  &lt;h2&gt;             0         0
+  &lt;h3&gt;             0         0
+  &lt;main&gt;           2         2
+  &lt;nav&gt;            0         0
+
+Confirmed a second way in the live DOM after hydration: document.querySelectorAll(&quot;h1&quot;)
+returns 0, and querying h1,h2,h3,h4 together returns an empty list.
+
+Expected result. One &lt;h1&gt; per page, section headings in order below it, exactly one &lt;main&gt;.
+
+Why it matters. The heading-jump shortcut is the primary way many screen-reader users move
+through a page, and here it does nothing at all — there is nothing to jump to. Two &lt;main&gt;
+elements is also invalid: the spec allows at most one visible main per document, so
+assistive technology cannot tell which one holds the content.
+
+Related, already filed separately: 21 of 23 images on the directory carry no alt attribute.
+
+Build: dpl_C3bXHquKbKr1sjn9WpRtDt8MWfce</pre></div></section>
+<section class="sub" id="s23"><div class="hd"><span class="n">23</span><span class="fid">F-23</span><span class="sum">The link preview for a settled market advertises it as still open, telling anyone it is shared with that the market ends on 9 September.</span></div><div class="fld choice"><div class="q">What are you submitting?</div><div class="a"><span class="pick">A. A bug</span></div></div><div class="fld choice"><div class="q">How often does this happen?</div><div class="a"><span class="pick">A. Every time</span></div></div><div class="fld"><div class="q">What are you submitting?** → **A. A bug**
+
+**Briefly describe the problem in one sentence.<button class="copy" type="button">Copy</button></div><pre class="a">The link preview for a settled market advertises it as still open, telling anyone it is shared with that the market ends on 9 September.</pre></div><div class="fld"><div class="q">How often does this happen?** → **A. Every time**
+
+**How do you think this could be improved?<button class="copy" type="button">Copy</button></div><pre class="a">Build the preview description from the market&#x27;s current state. A settled market should say
+it settled and give the result, rather than a close date that has passed.</pre></div><div class="fld"><div class="q">Anything else you would like to add?<button class="copy" type="button">Copy</button></div><pre class="a">Reproduction:
+
+  curl -sS https://app.manic.trade/pm/event/atp-faria-alcaraz-2026-09-02 | grep og:description
+
+Actual result. Served to every link unfurler:
+
+  &lt;meta property=&quot;og:title&quot;       content=&quot;US Open ATP: Jaime Faria vs Carlos Alcaraz&quot;&gt;
+  &lt;meta property=&quot;og:description&quot; content=&quot;$4K traded · Ends Sep 9&quot;&gt;
+  &lt;meta name=&quot;description&quot;        content=&quot;$4K traded · Ends Sep 9&quot;&gt;
+
+The match was played on 2 September, which the event slug itself records. The page shows a
+final score of 2-6, marks the market Resolved, and closes the order book. Paste that URL
+into Slack, X, Discord or Telegram and the card still says the market ends 9 September.
+
+Expected result. A preview that reflects the settled state.
+
+Why it matters. This is the same incorrect date reported separately against the Settlement
+Time field, but on a surface with a wider audience: the preview is what people see before
+they click, and it is what gets forwarded. A shared link is currently an advertisement for a
+market nobody can trade.
+
+Build: dpl_C3bXHquKbKr1sjn9WpRtDt8MWfce</pre></div></section>
+<section class="sub" id="s24"><div class="hd"><span class="n">24</span><span class="fid">F-24</span><span class="sum">Every 404 response carries the full application HTML, so a missing page costs 1.44 MB to render five words of error text.</span></div><div class="fld choice"><div class="q">What are you submitting?</div><div class="a"><span class="pick">C. A bug with a suggested improvement</span></div></div><div class="fld choice"><div class="q">How often does this happen?</div><div class="a"><span class="pick">A. Every time</span></div></div><div class="fld"><div class="q">What are you submitting?** → **C. A bug with a suggested improvement**
+
+**Briefly describe the problem in one sentence.<button class="copy" type="button">Copy</button></div><pre class="a">Every 404 response carries the full application HTML, so a missing page costs 1.44 MB to render five words of error text.</pre></div><div class="fld"><div class="q">How often does this happen?** → **A. Every time**
+
+**How do you think this could be improved?<button class="copy" type="button">Copy</button></div><pre class="a">Serve a small static not-found page rather than the full application shell. While you are
+there, publishing /.well-known/security.txt would tell researchers where to report, which
+is worth doing for a platform running a public bounty.</pre></div><div class="fld"><div class="q">Anything else you would like to add?<button class="copy" type="button">Copy</button></div><pre class="a">Reproduction:
+
+  curl -sS -o /dev/null -w &quot;%{http_code} %{size_download}\n&quot; \
+    https://app.manic.trade/this-does-not-exist
+
+Actual result:
+
+  404  1,512,170 bytes   /this-does-not-exist
+  404  1,512,170 bytes   /.well-known/security.txt
+
+Expected result. A not-found response measured in kilobytes.
+
+Why it matters. Every crawler hitting a dead link, every mistyped URL and every stale
+bookmark costs a megabyte and a half of egress. It is not urgent, but it is free to fix.
+
+Also noted: /.well-known/security.txt is absent. For a platform running a public bug bounty
+that file is small housekeeping — it tells researchers where to send reports.
+
+Build: dpl_C3bXHquKbKr1sjn9WpRtDt8MWfce</pre></div></section>
+
+  <footer>
+    Findings 01&ndash;17 observed on dpl_74W5o38E8FQjJUZ2DYo5PFDHEsLs, 3 September 2026<br>
+    Findings 18&ndash;24 on dpl_C3bXHquKbKr1sjn9WpRtDt8MWfce, 4 September 2026<br>
+    <a href="/">Report</a> &middot; <a href="/evidence.html">Evidence locker</a> &middot; <a href="/submission.html">Submission ledger</a> &middot; <a href="/huntstamp.html">Huntstamp</a>
+  </footer>
+</div>
+
+<script>
+document.addEventListener("click", function (e) {
+  var btn = e.target.closest(".copy");
+  if (!btn) return;
+  var pre = btn.closest(".fld").querySelector("pre.a");
+  if (!pre) return;
+  var text = pre.textContent;
+  function done() {
+    var old = btn.getAttribute("data-label") || btn.textContent;
+    btn.setAttribute("data-label", old);
+    btn.textContent = "Copied";
+    btn.classList.add("done");
+    setTimeout(function () { btn.textContent = old; btn.classList.remove("done"); }, 1600);
+  }
+  function fallback() {
+    var ta = document.createElement("textarea");
+    ta.value = text; ta.style.position = "fixed"; ta.style.opacity = "0";
+    document.body.appendChild(ta); ta.select();
+    var ok = false;
+    try { ok = document.execCommand("copy"); } catch (err) { ok = false; }
+    document.body.removeChild(ta);
+    if (ok) { done(); return; }
+    btn.textContent = "Select it";
+    var r = document.createRange(); r.selectNodeContents(pre);
+    var s = getSelection(); s.removeAllRanges(); s.addRange(r);
+  }
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(text).then(done, fallback);
+  } else { fallback(); }
+});
+</script>

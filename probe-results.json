@@ -1,0 +1,186 @@
+{
+  "startedAt": "2026-09-04T03:44:14.041Z",
+  "probes": {
+    "routes": [
+      {
+        "requested": "/pm",
+        "httpStatus": 200,
+        "landedOn": "/pm",
+        "looksLikeError": false,
+        "firstText": "Skip to content"
+      },
+      {
+        "requested": "/pm/",
+        "httpStatus": 200,
+        "landedOn": "/pm",
+        "looksLikeError": false,
+        "firstText": "Skip to content Trade Referral Leaderboard August Rewards Log In Manic Trade Polymarket Trade All Crypto Sports Politics"
+      },
+      {
+        "requested": "/PM",
+        "httpStatus": 404,
+        "landedOn": "/PM",
+        "looksLikeError": true,
+        "firstText": "Skip to content 404 This page could not be found. Login Login to Manic Trade MANIC TRADE Login Close"
+      },
+      {
+        "requested": "/pm/event/this-market-does-not-exist-2099",
+        "httpStatus": 200,
+        "landedOn": "/pm",
+        "looksLikeError": false,
+        "firstText": "Skip to content Trade Referral Leaderboard August Rewards Log In Manic Trade Polymarket Trade All Crypto Sports Politics"
+      },
+      {
+        "requested": "/pm/event/",
+        "httpStatus": 404,
+        "landedOn": "/pm/event/",
+        "looksLikeError": true,
+        "firstText": "Skip to content 404 This page could not be found."
+      },
+      {
+        "requested": "/pm/event/../../etc",
+        "httpStatus": 404,
+        "landedOn": "/etc",
+        "looksLikeError": true,
+        "firstText": "Skip to content 404 This page could not be found. Login Login to Manic Trade MANIC TRADE Login Close"
+      },
+      {
+        "requested": "/pm/nonsense-subroute",
+        "httpStatus": 404,
+        "landedOn": "/pm/nonsense-subroute",
+        "looksLikeError": true,
+        "firstText": "Skip to content 404 This page could not be found."
+      }
+    ],
+    "gridPrices": {
+      "totalPercentages": 30,
+      "adjacentPairs": 8,
+      "sumsOver100": [],
+      "sumsExactly100": 8,
+      "zeroOrHundred": 0
+    },
+    "unpricedOutcomes": {
+      "dashPriceRows": 0,
+      "dashVolume": 1,
+      "emptyPriceTokens": 1
+    },
+    "categoryCounts": {
+      "chips": 0,
+      "zeroCount": [],
+      "sample": []
+    },
+    "searchEdgeCases": [
+      {
+        "query": "<img src=x onerror=alert(1)>",
+        "why": "markup in the query",
+        "bodyLength": 254,
+        "noResults": true,
+        "alertFired": false,
+        "cards": 3
+      },
+      {
+        "query": "'; DROP TABLE markets;--",
+        "why": "quote and semicolon",
+        "bodyLength": 250,
+        "noResults": true,
+        "alertFired": false,
+        "cards": 3
+      },
+      {
+        "query": "   ",
+        "why": "whitespace only",
+        "bodyLength": 1303,
+        "noResults": false,
+        "alertFired": false,
+        "cards": 18
+      },
+      {
+        "query": "ﬀﬁ🎾🇺🇸",
+        "why": "ligatures, emoji, flag",
+        "bodyLength": 234,
+        "noResults": true,
+        "alertFired": false,
+        "cards": 3
+      },
+      {
+        "query": "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz…",
+        "why": "400 characters",
+        "bodyLength": 626,
+        "noResults": true,
+        "alertFired": false,
+        "cards": 3
+      },
+      {
+        "query": "BITCOIN",
+        "why": "case sensitivity",
+        "bodyLength": 272,
+        "noResults": false,
+        "alertFired": false,
+        "cards": 4
+      }
+    ],
+    "documentMetadata": {
+      "directory": {
+        "title": "Prediction Markets · Manic.Trade",
+        "description": "Browse live prediction markets across crypto, politics, sports and culture, and trade Up/Down rounds on Manic — momentum trading with instant settlement on Solana.",
+        "ogTitle": "Prediction Markets · Manic.Trade",
+        "canonical": "https://app.manic.trade/pm",
+        "lang": "en",
+        "h1Count": 0,
+        "headingOrder": [],
+        "landmarks": {
+          "main": 2,
+          "nav": 1
+        },
+        "inputsWithoutLabel": 0,
+        "buttonsWithoutName": 0
+      },
+      "eventPage": {
+        "title": "US Open ATP: Jaime Faria vs Carlos Alcaraz",
+        "description": "$1.5M traded · Ends Sep 9",
+        "ogTitle": "US Open ATP: Jaime Faria vs Carlos Alcaraz",
+        "canonical": "https://app.manic.trade/pm/event/atp-faria-alcaraz-2026-09-02",
+        "h1Count": 0
+      },
+      "titlesIdentical": false
+    },
+    "resolvedInFeed": {
+      "pricesAt100": 2,
+      "pricesAt0": 2,
+      "resolvedBadges": 2,
+      "note": "A card priced at 100% or 0% in the feed has effectively settled; a Resolved badge count of 0 alongside them means the feed does not label them."
+    },
+    "errorsWhileBrowsing": {
+      "consoleErrors": [],
+      "consoleErrorCount": 0,
+      "uncaughtPageErrors": []
+    },
+    "failedRequests": {
+      "totalResources": 190,
+      "zeroSized": 55,
+      "slowest": [
+        {
+          "name": "events?tag=science&sort=trending&limit=500&off",
+          "ms": 2313
+        },
+        {
+          "name": "resolution?market=0xe144a6e585ad52bd59e805eb90",
+          "ms": 1717
+        },
+        {
+          "name": "resolution?market=0xb6159fd250df9d52fda056a446",
+          "ms": 1704
+        },
+        {
+          "name": "resolution?market=0x2a4f7e3e6a17c747970fa50434",
+          "ms": 1689
+        },
+        {
+          "name": "assets",
+          "ms": 1621
+        }
+      ]
+    }
+  },
+  "finishedAt": "2026-09-04T03:55:01.781Z"
+}
