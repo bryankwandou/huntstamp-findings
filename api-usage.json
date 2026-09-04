@@ -1,0 +1,420 @@
+{
+  "summary": {
+    "wallClockMs": 19545,
+    "apiCalls": 58,
+    "tagQueries": 22,
+    "distinctTags": [
+      "pandemics",
+      "science",
+      "business",
+      "geopolitics",
+      "economy",
+      "crypto",
+      "sports",
+      "politics",
+      "elections",
+      "pop-culture",
+      "weather",
+      "world",
+      "tech",
+      "finance"
+    ],
+    "callsRequestingLimit500": 22,
+    "totalApiBytes": 18246307,
+    "totalApiBytesMB": 17.4,
+    "totalItemsReturned": 8610,
+    "cardsActuallyRendered": 24,
+    "biggest": [
+      {
+        "bytes": 1374646,
+        "items": 500,
+        "url": "/charts/pm/events?tag=sports&sort=trending&limit=500&offset=0&lite=true"
+      },
+      {
+        "bytes": 1358399,
+        "items": 500,
+        "url": "/charts/pm/events?tag=sports&sort=trending&limit=500&offset=1000&lite=true"
+      },
+      {
+        "bytes": 1354171,
+        "items": 500,
+        "url": "/charts/pm/events?tag=sports&sort=trending&limit=500&offset=500&lite=true"
+      },
+      {
+        "bytes": 1171786,
+        "items": 500,
+        "url": "/charts/pm/events?tag=elections&sort=trending&limit=500&offset=0&lite=true"
+      },
+      {
+        "bytes": 1124434,
+        "items": 500,
+        "url": "/charts/pm/events?tag=politics&sort=trending&limit=500&offset=0&lite=true"
+      },
+      {
+        "bytes": 1123118,
+        "items": 500,
+        "url": "/charts/pm/events?tag=elections&sort=trending&limit=500&offset=500&lite=true"
+      },
+      {
+        "bytes": 1120448,
+        "items": 500,
+        "url": "/charts/pm/events?tag=politics&sort=trending&limit=500&offset=500&lite=true"
+      },
+      {
+        "bytes": 1070907,
+        "items": 500,
+        "url": "/charts/pm/events?tag=politics&sort=trending&limit=500&offset=1000&lite=true"
+      }
+    ]
+  },
+  "calls": [
+    {
+      "url": "https://app.manic.trade/api/config",
+      "status": 200,
+      "bytes": 996,
+      "items": null
+    },
+    {
+      "url": "https://bo-server-api.manic.trade/charts/pm/events?tag=pandemics&sort=trending&limit=500&offset=0&lite=true",
+      "status": 200,
+      "bytes": 28915,
+      "items": 15
+    },
+    {
+      "url": "https://bo-server-api.manic.trade/user/leaderboard?type=all&metric=pnl&page=1&page_size=10",
+      "status": 200,
+      "bytes": 149,
+      "items": 0
+    },
+    {
+      "url": "https://bo-server-api.manic.trade/charts/pm/events?tag=science&sort=trending&limit=500&offset=0&lite=true",
+      "status": 200,
+      "bytes": 121581,
+      "items": 60
+    },
+    {
+      "url": "https://bo-server-api.manic.trade/charts/pm/events?tag=business&sort=trending&limit=500&offset=0&lite=true",
+      "status": 200,
+      "bytes": 195162,
+      "items": 93
+    },
+    {
+      "url": "https://bo-server-api.manic.trade/charts/pm/events?tag=geopolitics&sort=trending&limit=500&offset=0&lite=true",
+      "status": 200,
+      "bytes": 797382,
+      "items": 414
+    },
+    {
+      "url": "https://bo-server-api.manic.trade/charts/pm/events?tag=economy&sort=trending&limit=500&offset=0&lite=true",
+      "status": 200,
+      "bytes": 358194,
+      "items": 165
+    },
+    {
+      "url": "https://bo-server-api.manic.trade/charts/pm/events?tag=crypto&sort=trending&limit=500&offset=0&lite=true",
+      "status": 200,
+      "bytes": 957792,
+      "items": 500
+    },
+    {
+      "url": "https://bo-server-api.manic.trade/charts/pm/events?tag=sports&sort=trending&limit=500&offset=0&lite=true",
+      "status": 200,
+      "bytes": 1374646,
+      "items": 500
+    },
+    {
+      "url": "https://bo-server-api.manic.trade/charts/pm/events?tag=politics&sort=trending&limit=500&offset=0&lite=true",
+      "status": 200,
+      "bytes": 1124434,
+      "items": 500
+    },
+    {
+      "url": "https://bo-server-api.manic.trade/charts/pm/score?sport=tennis&league=atp",
+      "status": 200,
+      "bytes": 44,
+      "items": null
+    },
+    {
+      "url": "https://bo-server-api.manic.trade/charts/pm/score?sport=soccer&league=nor.1",
+      "status": 200,
+      "bytes": 46,
+      "items": null
+    },
+    {
+      "url": "https://bo-server-api.manic.trade/charts/pm/score?sport=soccer&league=fra.1",
+      "status": 200,
+      "bytes": 46,
+      "items": null
+    },
+    {
+      "url": "https://bo-server-api.manic.trade/charts/pm/score?sport=baseball&league=mlb",
+      "status": 200,
+      "bytes": 46,
+      "items": null
+    },
+    {
+      "url": "https://bo-server-api.manic.trade/charts/pm/score?sport=football&league=college-football",
+      "status": 200,
+      "bytes": 59,
+      "items": null
+    },
+    {
+      "url": "https://bo-server-api.manic.trade/charts/pm/score?sport=soccer&league=eng.1",
+      "status": 200,
+      "bytes": 46,
+      "items": null
+    },
+    {
+      "url": "https://bo-server-api.manic.trade/charts/pm/score?sport=mma&league=ufc",
+      "status": 200,
+      "bytes": 41,
+      "items": null
+    },
+    {
+      "url": "https://bo-server-api.manic.trade/charts/pm/score?sport=tennis&league=wta",
+      "status": 200,
+      "bytes": 44,
+      "items": null
+    },
+    {
+      "url": "https://bo-server-api.manic.trade/charts/pm/score?sport=soccer&league=esp.1",
+      "status": 200,
+      "bytes": 46,
+      "items": null
+    },
+    {
+      "url": "https://bo-server-api.manic.trade/charts/pm/score?sport=soccer&league=ger.1",
+      "status": 200,
+      "bytes": 46,
+      "items": null
+    },
+    {
+      "url": "https://bo-server-api.manic.trade/charts/pm/score?sport=soccer&league=uru.1",
+      "status": 200,
+      "bytes": 46,
+      "items": null
+    },
+    {
+      "url": "https://bo-server-api.manic.trade/charts/pm/score?sport=soccer&league=bul.1",
+      "status": 200,
+      "bytes": 46,
+      "items": null
+    },
+    {
+      "url": "https://bo-server-api.manic.trade/charts/pm/score?sport=soccer&league=den.1",
+      "status": 200,
+      "bytes": 46,
+      "items": null
+    },
+    {
+      "url": "https://bo-server-api.manic.trade/charts/pm/score?sport=soccer&league=mex.1",
+      "status": 200,
+      "bytes": 46,
+      "items": null
+    },
+    {
+      "url": "https://bo-server-api.manic.trade/charts/pm/score?sport=soccer&league=swe.1",
+      "status": 200,
+      "bytes": 46,
+      "items": null
+    },
+    {
+      "url": "https://bo-server-api.manic.trade/charts/pm/score?sport=soccer&league=usa.1",
+      "status": 200,
+      "bytes": 46,
+      "items": null
+    },
+    {
+      "url": "https://bo-server-api.manic.trade/charts/pm/score?sport=soccer&league=usa.nwsl",
+      "status": 200,
+      "bytes": 49,
+      "items": null
+    },
+    {
+      "url": "https://bo-server-api.manic.trade/charts/pm/score?sport=soccer&league=arg.1",
+      "status": 200,
+      "bytes": 46,
+      "items": null
+    },
+    {
+      "url": "https://bo-server-api.manic.trade/charts/pm/score?sport=soccer&league=swe.2",
+      "status": 200,
+      "bytes": 46,
+      "items": null
+    },
+    {
+      "url": "https://bo-server-api.manic.trade/charts/pm/score?sport=soccer&league=isl.1",
+      "status": 200,
+      "bytes": 46,
+      "items": null
+    },
+    {
+      "url": "https://bo-server-api.manic.trade/charts/pm/score?sport=football&league=nfl",
+      "status": 200,
+      "bytes": 46,
+      "items": null
+    },
+    {
+      "url": "https://bo-server-api.manic.trade/charts/pm/score?sport=soccer&league=kor.1",
+      "status": 200,
+      "bytes": 46,
+      "items": null
+    },
+    {
+      "url": "https://bo-server-api.manic.trade/charts/pm/score?sport=soccer&league=bra.1",
+      "status": 200,
+      "bytes": 46,
+      "items": null
+    },
+    {
+      "url": "https://bo-server-api.manic.trade/charts/pm/score?sport=soccer&league=pol.1",
+      "status": 200,
+      "bytes": 46,
+      "items": null
+    },
+    {
+      "url": "https://bo-server-api.manic.trade/charts/pm/score?sport=soccer&league=uefa.champions",
+      "status": 200,
+      "bytes": 55,
+      "items": null
+    },
+    {
+      "url": "https://bo-server-api.manic.trade/charts/pm/events?tag=elections&sort=trending&limit=500&offset=0&lite=true",
+      "status": 200,
+      "bytes": 1171786,
+      "items": 500
+    },
+    {
+      "url": "https://bo-server-api.manic.trade/charts/pm/events?tag=pop-culture&sort=trending&limit=500&offset=0&lite=true",
+      "status": 200,
+      "bytes": 779780,
+      "items": 377
+    },
+    {
+      "url": "https://bo-server-api.manic.trade/charts/pm/events?tag=weather&sort=trending&limit=500&offset=0&lite=true",
+      "status": 200,
+      "bytes": 860356,
+      "items": 370
+    },
+    {
+      "url": "https://bo-server-api.manic.trade/charts/pm/rounds",
+      "status": 200,
+      "bytes": 57409,
+      "items": 105
+    },
+    {
+      "url": "https://bo-server-api.manic.trade/charts/pm/events?tag=world&sort=trending&limit=500&offset=0&lite=true",
+      "status": 200,
+      "bytes": 559096,
+      "items": 284
+    },
+    {
+      "url": "https://bo-server-api.manic.trade/users/asset/status",
+      "status": 200,
+      "bytes": 3988,
+      "items": 7
+    },
+    {
+      "url": "https://bo-server-api.manic.trade/users/tournament/free-friday/state",
+      "status": 200,
+      "bytes": 1572,
+      "items": null
+    },
+    {
+      "url": "https://bo-server-api.manic.trade/charts/pm/events?tag=tech&sort=trending&limit=500&offset=0&lite=true",
+      "status": 200,
+      "bytes": 572631,
+      "items": 261
+    },
+    {
+      "url": "https://bo-server-api.manic.trade/charts/pm/events?tag=finance&sort=trending&limit=500&offset=0&lite=true",
+      "status": 200,
+      "bytes": 760281,
+      "items": 354
+    },
+    {
+      "url": "https://bo-server-api.manic.trade/charts/pm/book?token=43859981549878504181443948864757965733385130213781403065212897594840669532871",
+      "status": 200,
+      "bytes": 1739,
+      "items": null
+    },
+    {
+      "url": "https://bo-server-api.manic.trade/charts/pm/book?token=23662672705692812148194097761773206093783116612941371105862418646773335574817",
+      "status": 200,
+      "bytes": 3310,
+      "items": null
+    },
+    {
+      "url": "https://bo-server-api.manic.trade/charts/pm/book?token=35875924681933449779927653043014412214513682609355892113661507842696054743080",
+      "status": 200,
+      "bytes": 1854,
+      "items": null
+    },
+    {
+      "url": "https://bo-server-api.manic.trade/charts/pm/book?token=57433091030121498636189176674210604890423732964898999076767035647097379860302",
+      "status": 200,
+      "bytes": 3538,
+      "items": null
+    },
+    {
+      "url": "https://bo-server-api.manic.trade/charts/pm/book?token=88360587195740305845754345859098990680381952513112605557154691516902450040134",
+      "status": 200,
+      "bytes": 3349,
+      "items": null
+    },
+    {
+      "url": "https://bo-server-api.manic.trade/charts/pm/events?tag=crypto&sort=trending&limit=500&offset=500&lite=true",
+      "status": 200,
+      "bytes": 808088,
+      "items": 500
+    },
+    {
+      "url": "https://bo-server-api.manic.trade/charts/pm/events?tag=sports&sort=trending&limit=500&offset=500&lite=true",
+      "status": 200,
+      "bytes": 1354171,
+      "items": 500
+    },
+    {
+      "url": "https://bo-server-api.manic.trade/charts/pm/events?tag=crypto&sort=trending&limit=500&offset=1000&lite=true",
+      "status": 200,
+      "bytes": 806748,
+      "items": 500
+    },
+    {
+      "url": "https://bo-server-api.manic.trade/charts/pm/events?tag=elections&sort=trending&limit=500&offset=500&lite=true",
+      "status": 200,
+      "bytes": 1123118,
+      "items": 500
+    },
+    {
+      "url": "https://bo-server-api.manic.trade/charts/pm/events?tag=politics&sort=trending&limit=500&offset=500&lite=true",
+      "status": 200,
+      "bytes": 1120448,
+      "items": 500
+    },
+    {
+      "url": "https://bo-server-api.manic.trade/charts/pm/rounds",
+      "status": 200,
+      "bytes": 57417,
+      "items": 105
+    },
+    {
+      "url": "https://bo-server-api.manic.trade/charts/pm/events?tag=crypto&sort=trending&limit=500&offset=1500&lite=true",
+      "status": 200,
+      "bytes": 805905,
+      "items": 500
+    },
+    {
+      "url": "https://bo-server-api.manic.trade/charts/pm/events?tag=sports&sort=trending&limit=500&offset=1000&lite=true",
+      "status": 200,
+      "bytes": 1358399,
+      "items": 500
+    },
+    {
+      "url": "https://bo-server-api.manic.trade/charts/pm/events?tag=politics&sort=trending&limit=500&offset=1000&lite=true",
+      "status": 200,
+      "bytes": 1070907,
+      "items": 500
+    }
+  ]
+}

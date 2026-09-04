@@ -1,0 +1,15 @@
+$ curl -sS https://app.manic.trade/pm | grep -c '<h1'
+
+directory /pm
+  <h1> count: 0
+  <h2> count: 0
+  <h3> count: 0
+  <main> count: 2
+  <nav> count: 0
+
+event page /pm/event/atp-faria-alcaraz-2026-09-02
+  <h1> count: 0
+  <h2> count: 0
+  <h3> count: 0
+  <main> count: 2
+  <nav> count: 0

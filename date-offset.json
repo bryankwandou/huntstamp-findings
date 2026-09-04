@@ -1,0 +1,421 @@
+{
+  "checkedAt": "2026-09-04T08:53:18.323Z",
+  "datedUrlsInSitemap": 83,
+  "sampled": 45,
+  "withEndsDate": 45,
+  "offsetDistribution": {
+    "0": 28,
+    "1": 2,
+    "7": 15
+  },
+  "allSevenDays": false,
+  "completedButOpen": 0,
+  "completedSample": [],
+  "rows": [
+    {
+      "slug": "lol-kt-dk-2026-09-04",
+      "slugDate": "2026-09-04",
+      "title": "LoL: KT Rolster vs Dplus KIA (BO5) - LCK Playoffs",
+      "ogDesc": "$1.8M traded · First Blood in Game 1? 100.0% · Ends Sep 4",
+      "endsDate": "2026-09-04",
+      "offsetDays": 0,
+      "saysCompleted": false
+    },
+    {
+      "slug": "cs2-fal2-g2-2026-09-04",
+      "slugDate": "2026-09-04",
+      "title": "Counter-Strike: Team Falcons vs G2 (BO3) - BLAST Open Porto Playoffs",
+      "ogDesc": "$338K traded · Match Winner 59% · Ends Sep 4",
+      "endsDate": "2026-09-04",
+      "offsetDays": 0,
+      "saysCompleted": false
+    },
+    {
+      "slug": "atp-wu-alcaraz-2026-09-04",
+      "slugDate": "2026-09-04",
+      "title": "US Open ATP: Yibing Wu vs Carlos Alcaraz",
+      "ogDesc": "$519K traded · US Open ATP: Yibing Wu vs Carlos Alcaraz Set Handicap +/-1.5 81% · Ends Sep 11",
+      "endsDate": "2026-09-11",
+      "offsetDays": 7,
+      "saysCompleted": false
+    },
+    {
+      "slug": "lol-al-lgd-2026-09-04",
+      "slugDate": "2026-09-04",
+      "title": "LoL: Anyone&#x27;s Legend vs LGD Gaming (BO5) - LPL Playoffs",
+      "ogDesc": "$565K traded · O/U 3.5 Games 71% · Ends Sep 4",
+      "endsDate": "2026-09-04",
+      "offsetDays": 0,
+      "saysCompleted": false
+    },
+    {
+      "slug": "bun-stu-koe-2026-09-04",
+      "slugDate": "2026-09-04",
+      "title": "VfB Stuttgart vs. 1. FC Köln",
+      "ogDesc": "$270K traded · VfB Stuttgart 65% · Ends Sep 4",
+      "endsDate": "2026-09-04",
+      "offsetDays": 0,
+      "saysCompleted": false
+    },
+    {
+      "slug": "atp-samrej-aguiard-2026-09-04",
+      "slugDate": "2026-09-04",
+      "title": "Zhangjiagang: Kasidit Samrej vs Enzo Aguiard",
+      "ogDesc": "$208K traded · Zhangjiagang: Kasidit Samrej vs Enzo Aguiard 100.0% · Ends Sep 11",
+      "endsDate": "2026-09-11",
+      "offsetDays": 7,
+      "saysCompleted": false
+    },
+    {
+      "slug": "lal-bet-rea-2026-09-04",
+      "slugDate": "2026-09-04",
+      "title": "Real Betis Balompié vs. Real Madrid CF",
+      "ogDesc": "$261K traded · Real Madrid CF 69% · Ends Sep 4",
+      "endsDate": "2026-09-04",
+      "offsetDays": 0,
+      "saysCompleted": false
+    },
+    {
+      "slug": "cs2-hotu-ef1-2026-09-04",
+      "slugDate": "2026-09-04",
+      "title": "Counter-Strike: HOTU vs Eternal Fire (BO3) - Stake Ranked Episode 4: Closed Qualifier Playoffs",
+      "ogDesc": "$192K traded · Map 2 Winner 51% · Ends Sep 4",
+      "endsDate": "2026-09-04",
+      "offsetDays": 0,
+      "saysCompleted": false
+    },
+    {
+      "slug": "fl1-psg-asm-2026-09-04",
+      "slugDate": "2026-09-04",
+      "title": "Paris Saint-Germain FC vs. AS Monaco FC",
+      "ogDesc": "$79K traded · Paris Saint-Germain FC 73% · Ends Sep 4",
+      "endsDate": "2026-09-04",
+      "offsetDays": 0,
+      "saysCompleted": false
+    },
+    {
+      "slug": "lol-gen-hle1-2026-09-05",
+      "slugDate": "2026-09-05",
+      "title": "LoL: Gen.G vs Hanwha Life Esports (BO5) - LCK Playoffs",
+      "ogDesc": "$74K traded · O/U 3.5 Games 72% · Ends Sep 5",
+      "endsDate": "2026-09-05",
+      "offsetDays": 0,
+      "saysCompleted": false
+    },
+    {
+      "slug": "sea-gen-com-2026-09-04",
+      "slugDate": "2026-09-04",
+      "title": "Genoa CFC vs. Como 1907",
+      "ogDesc": "$101K traded · Como 1907 56% · Ends Sep 4",
+      "endsDate": "2026-09-04",
+      "offsetDays": 0,
+      "saysCompleted": false
+    },
+    {
+      "slug": "cs2-hero-ef1-2026-09-04",
+      "slugDate": "2026-09-04",
+      "title": "Counter-Strike: Heroic vs Eternal Fire (BO3) - IEM Beijing: Global Qualifier Playoffs",
+      "ogDesc": "$92K traded · Map 2 Winner 61% · Ends Sep 4",
+      "endsDate": "2026-09-04",
+      "offsetDays": 0,
+      "saysCompleted": false
+    },
+    {
+      "slug": "atp-bublik-paul-2026-09-04",
+      "slugDate": "2026-09-04",
+      "title": "US Open ATP: Alexander Bublik vs Tommy Paul",
+      "ogDesc": "$70K traded · US Open ATP: Alexander Bublik vs Tommy Paul Set 1 O/U 8.5 80% · Ends Sep 11",
+      "endsDate": "2026-09-11",
+      "offsetDays": 7,
+      "saysCompleted": false
+    },
+    {
+      "slug": "cs2-furia-vit-2026-09-04",
+      "slugDate": "2026-09-04",
+      "title": "Counter-Strike: FURIA vs Vitality (BO3) - BLAST Open Porto Playoffs",
+      "ogDesc": "$69K traded · Map 2 Total Rounds: Over/Under 21.5 51% · Ends Sep 4",
+      "endsDate": "2026-09-04",
+      "offsetDays": 0,
+      "saysCompleted": false
+    },
+    {
+      "slug": "cs2-b8-ntr-2026-09-04",
+      "slugDate": "2026-09-04",
+      "title": "Counter-Strike: B8 vs Nuclear TigeRES (BO3) - IEM Beijing: Global Qualifier Playoffs",
+      "ogDesc": "$57K traded · Map 2 Winner 60% · Ends Sep 4",
+      "endsDate": "2026-09-04",
+      "offsetDays": 0,
+      "saysCompleted": false
+    },
+    {
+      "slug": "cs2-inf6-ntr-2026-09-04",
+      "slugDate": "2026-09-04",
+      "title": "Counter-Strike: Infinite vs Nuclear TigeRES (BO3) - Stake Ranked Episode 4: Closed Qualifier Playoffs",
+      "ogDesc": "$66K traded · Map 2 Rounds Handicap: Nuclear TigeRES (-3.5) vs Infinite (+3.5) 52% · Ends Sep 4",
+      "endsDate": "2026-09-04",
+      "offsetDays": 0,
+      "saysCompleted": false
+    },
+    {
+      "slug": "cs2-mouzn-bw-2026-09-04",
+      "slugDate": "2026-09-04",
+      "title": "Counter-Strike: MOUZ NXT vs Bushido Wildcats (BO3) - CCT Europe Series #8 Group Stage",
+      "ogDesc": "$44K traded · Map 1 Winner 76% · Ends Sep 4",
+      "endsDate": "2026-09-04",
+      "offsetDays": 0,
+      "saysCompleted": false
+    },
+    {
+      "slug": "ufc-dan6-salpar-2026-09-05",
+      "slugDate": "2026-09-05",
+      "title": "UFC Fight Night: Dan Hooker vs. Salahdine Parnasse (Lightweight, Main Card)",
+      "ogDesc": "$32K traded · O/U 0.5 Rounds 78% · Ends Sep 6",
+      "endsDate": "2026-09-06",
+      "offsetDays": 1,
+      "saysCompleted": false
+    },
+    {
+      "slug": "atp-doubles-krawpue-atmarom-2026-09-04",
+      "slugDate": "2026-09-04",
+      "title": "US Open ATP (Doubles): Krawietz/Puetz vs Atmane/Romboli",
+      "ogDesc": "$29K traded · Ends Sep 11",
+      "endsDate": "2026-09-11",
+      "offsetDays": 7,
+      "saysCompleted": false
+    },
+    {
+      "slug": "cs2-sin2-qua1-2026-09-04",
+      "slugDate": "2026-09-04",
+      "title": "Counter-Strike: Sinners vs QUAZAR (BO3) - Logitech G Play Connect Closed Qualifier Playoffs",
+      "ogDesc": "$53K traded · Map 2 Winner 68% · Ends Sep 4",
+      "endsDate": "2026-09-04",
+      "offsetDays": 0,
+      "saysCompleted": false
+    },
+    {
+      "slug": "wta-sabalen-rakhimo-2026-09-04",
+      "slugDate": "2026-09-04",
+      "title": "US Open WTA: Aryna Sabalenka vs Kamilla Rakhimova",
+      "ogDesc": "$41K traded · US Open WTA: Aryna Sabalenka vs Kamilla Rakhimova 95% · Ends Sep 11",
+      "endsDate": "2026-09-11",
+      "offsetDays": 7,
+      "saysCompleted": false
+    },
+    {
+      "slug": "wta-pegula-fernand-2026-09-04",
+      "slugDate": "2026-09-04",
+      "title": "US Open WTA: Jessica Pegula vs Leylah Fernandez",
+      "ogDesc": "$30K traded · US Open WTA: Jessica Pegula vs Leylah Fernandez 84% · Ends Sep 11",
+      "endsDate": "2026-09-11",
+      "offsetDays": 7,
+      "saysCompleted": false
+    },
+    {
+      "slug": "lal-bil-mad-2026-09-05",
+      "slugDate": "2026-09-05",
+      "title": "Athletic Club vs. Club Atlético de Madrid",
+      "ogDesc": "$24K traded · Club Atlético de Madrid 43% · Ends Sep 5",
+      "endsDate": "2026-09-05",
+      "offsetDays": 0,
+      "saysCompleted": false
+    },
+    {
+      "slug": "epl-ips-liv-2026-09-04",
+      "slugDate": "2026-09-04",
+      "title": "Ipswich Town FC vs. Liverpool FC",
+      "ogDesc": "$34K traded · Liverpool FC 65% · Ends Sep 4",
+      "endsDate": "2026-09-04",
+      "offsetDays": 0,
+      "saysCompleted": false
+    },
+    {
+      "slug": "epl-hul-ast-2026-09-05",
+      "slugDate": "2026-09-05",
+      "title": "Hull City AFC vs. Aston Villa FC",
+      "ogDesc": "$32K traded · Aston Villa FC 52% · Ends Sep 5",
+      "endsDate": "2026-09-05",
+      "offsetDays": 0,
+      "saysCompleted": false
+    },
+    {
+      "slug": "val-ns1-ge1-2026-09-04",
+      "slugDate": "2026-09-04",
+      "title": "Valorant: Nongshim RedForce vs Global Esports (BO3) - VCT Pacific Playoffs",
+      "ogDesc": "$48K traded · Map 1 Winner 85% · Ends Sep 4",
+      "endsDate": "2026-09-04",
+      "offsetDays": 0,
+      "saysCompleted": false
+    },
+    {
+      "slug": "crint-nam-zaf-2026-09-04",
+      "slugDate": "2026-09-04",
+      "title": "South Africa and Zimbabwe Tour of Namibia T20s: Namibia vs South Africa",
+      "ogDesc": "$20K traded · South Africa and Zimbabwe Tour of Namibia T20s: Namibia vs South Africa - Who wins the toss? 50% · Ends Sep 11",
+      "endsDate": "2026-09-11",
+      "offsetDays": 7,
+      "saysCompleted": false
+    },
+    {
+      "slug": "sea-rom-ata-2026-09-05",
+      "slugDate": "2026-09-05",
+      "title": "AS Roma vs. Atalanta BC",
+      "ogDesc": "$25K traded · AS Roma 56% · Ends Sep 5",
+      "endsDate": "2026-09-05",
+      "offsetDays": 0,
+      "saysCompleted": false
+    },
+    {
+      "slug": "atp-lehecka-tsitsip-2026-09-04",
+      "slugDate": "2026-09-04",
+      "title": "US Open ATP: Jiri Lehecka vs Stefanos Tsitsipas",
+      "ogDesc": "$30K traded · US Open ATP: Jiri Lehecka vs Stefanos Tsitsipas Total Sets: O/U 3.5 64% · Ends Sep 11",
+      "endsDate": "2026-09-11",
+      "offsetDays": 7,
+      "saysCompleted": false
+    },
+    {
+      "slug": "fl1-lyo-aja-2026-09-04",
+      "slugDate": "2026-09-04",
+      "title": "Olympique Lyonnais vs. AJ Auxerre",
+      "ogDesc": "$32K traded · Olympique Lyonnais 67% · Ends Sep 4",
+      "endsDate": "2026-09-04",
+      "offsetDays": 0,
+      "saysCompleted": false
+    },
+    {
+      "slug": "kbo-kt-kia-2026-09-04",
+      "slugDate": "2026-09-04",
+      "title": "KBO: KT Wiz vs. Kia Tigers",
+      "ogDesc": "$18K traded · KT Wiz 39% · Ends Sep 11",
+      "endsDate": "2026-09-11",
+      "offsetDays": 7,
+      "saysCompleted": false
+    },
+    {
+      "slug": "kbo-nc-kiw-2026-09-04",
+      "slugDate": "2026-09-04",
+      "title": "KBO: NC Dinos vs. Kiwoom Heroes",
+      "ogDesc": "$22K traded · NC Dinos 62% · Ends Sep 11",
+      "endsDate": "2026-09-11",
+      "offsetDays": 7,
+      "saysCompleted": false
+    },
+    {
+      "slug": "por-por-mor-2026-09-04",
+      "slugDate": "2026-09-04",
+      "title": "FC Porto vs. Moreirense FC",
+      "ogDesc": "$24K traded · FC Porto 86% · Ends Sep 4",
+      "endsDate": "2026-09-04",
+      "offsetDays": 0,
+      "saysCompleted": false
+    },
+    {
+      "slug": "itf-suksum-mukun-2026-09-04",
+      "slugDate": "2026-09-04",
+      "title": "M15 Nonthaburi: Thantub Suksumrarn vs Sasikumar Mukund",
+      "ogDesc": "$21K traded · M15 Nonthaburi: Thantub Suksumrarn vs Sasikumar Mukund 99.9% · Ends Sep 11",
+      "endsDate": "2026-09-11",
+      "offsetDays": 7,
+      "saysCompleted": false
+    },
+    {
+      "slug": "cfb-mia-stan-2026-09-04",
+      "slugDate": "2026-09-04",
+      "title": "Miami (FL) vs. Stanford",
+      "ogDesc": "$16K traded · Miami (FL) vs. Stanford 94% · Ends Sep 5",
+      "endsDate": "2026-09-05",
+      "offsetDays": 1,
+      "saysCompleted": false
+    },
+    {
+      "slug": "bun-s04-bay-2026-09-05",
+      "slugDate": "2026-09-05",
+      "title": "FC Schalke 04 vs. FC Bayern München",
+      "ogDesc": "$17K traded · FC Bayern München 86% · Ends Sep 5",
+      "endsDate": "2026-09-05",
+      "offsetDays": 0,
+      "saysCompleted": false
+    },
+    {
+      "slug": "f1-italian-grand-prix-winner-2026-09-06",
+      "slugDate": "2026-09-06",
+      "title": "Italian Grand Prix: Driver Winner",
+      "ogDesc": "$16K traded · Lando Norris 32% · Ends Sep 13",
+      "endsDate": "2026-09-13",
+      "offsetDays": 7,
+      "saysCompleted": false
+    },
+    {
+      "slug": "lol-nip-jdg-2026-09-05",
+      "slugDate": "2026-09-05",
+      "title": "LoL: Ninjas in Pyjamas vs JD Gaming (BO5) - LPL Playoffs",
+      "ogDesc": "$14K traded · O/U 3.5 Games 73% · Ends Sep 5",
+      "endsDate": "2026-09-05",
+      "offsetDays": 0,
+      "saysCompleted": false
+    },
+    {
+      "slug": "wta-kostyuk-alexand-2026-09-04",
+      "slugDate": "2026-09-04",
+      "title": "US Open WTA: Marta Kostyuk vs Ekaterina Alexandrova",
+      "ogDesc": "$51K traded · US Open WTA: Marta Kostyuk vs Ekaterina Alexandrova 76% · Ends Sep 11",
+      "endsDate": "2026-09-11",
+      "offsetDays": 7,
+      "saysCompleted": false
+    },
+    {
+      "slug": "cs2-tyloo-fly-2026-09-04",
+      "slugDate": "2026-09-04",
+      "title": "Counter-Strike: TYLOO vs FlyQuest (BO3) - IEM Beijing: Asian Qualifier Playoffs",
+      "ogDesc": "$18K traded · Match Winner 63% · Ends Sep 4",
+      "endsDate": "2026-09-04",
+      "offsetDays": 0,
+      "saysCompleted": false
+    },
+    {
+      "slug": "val-var-t1-2026-09-04",
+      "slugDate": "2026-09-04",
+      "title": "Valorant: VARREL vs T1 (BO3) - VCT Pacific Playoffs",
+      "ogDesc": "$17K traded · Map 2 Total Rounds: Over/Under 20.5 60% · Ends Sep 4",
+      "endsDate": "2026-09-04",
+      "offsetDays": 0,
+      "saysCompleted": false
+    },
+    {
+      "slug": "itf-ki-chentin-2026-09-04",
+      "slugDate": "2026-09-04",
+      "title": "W15 Yeongwol: Yujin Kim vs Chenting Zhu",
+      "ogDesc": "$14K traded · W15 Yeongwol: Yujin Kim vs Chenting Zhu 67% · Ends Sep 11",
+      "endsDate": "2026-09-11",
+      "offsetDays": 7,
+      "saysCompleted": false
+    },
+    {
+      "slug": "epl-eve-mun-2026-09-06",
+      "slugDate": "2026-09-06",
+      "title": "Everton FC vs. Manchester United FC",
+      "ogDesc": "$15K traded · Manchester United FC 46% · Ends Sep 6",
+      "endsDate": "2026-09-06",
+      "offsetDays": 0,
+      "saysCompleted": false
+    },
+    {
+      "slug": "lal-val-bar-2026-09-06",
+      "slugDate": "2026-09-06",
+      "title": "Valencia CF vs. FC Barcelona",
+      "ogDesc": "$15K traded · FC Barcelona 77% · Ends Sep 6",
+      "endsDate": "2026-09-06",
+      "offsetDays": 0,
+      "saysCompleted": false
+    },
+    {
+      "slug": "atp-michels-aguilar-2026-09-04",
+      "slugDate": "2026-09-04",
+      "title": "US Open ATP: Alex Michelsen vs Daniel Merida Aguilar",
+      "ogDesc": "$58K traded · US Open ATP: Alex Michelsen vs Daniel Merida Aguilar Set 1 O/U 8.5 73% · Ends Sep 11",
+      "endsDate": "2026-09-11",
+      "offsetDays": 7,
+      "saysCompleted": false
+    }
+  ]
+}

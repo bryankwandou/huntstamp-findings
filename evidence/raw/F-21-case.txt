@@ -1,0 +1,4 @@
+$ curl -sS -o /dev/null -w '%{http_code}  /pm\n'  https://app.manic.trade/pm
+
+200  /pm
+404  /PM

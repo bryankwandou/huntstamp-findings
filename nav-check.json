@@ -1,0 +1,33 @@
+{
+  "checkedAt": "2026-09-04T08:41:31.315Z",
+  "totalVisibleLinks": 6,
+  "distinct": 4,
+  "broken": 0,
+  "brokenLinks": [],
+  "all": [
+    {
+      "text": "",
+      "href": "/",
+      "resolved": "https://app.manic.trade/",
+      "status": 200
+    },
+    {
+      "text": "Trade",
+      "href": "/pm",
+      "resolved": "https://app.manic.trade/pm",
+      "status": 200
+    },
+    {
+      "text": "Referral",
+      "href": "/referral",
+      "resolved": "https://app.manic.trade/referral",
+      "status": 200
+    },
+    {
+      "text": "Leaderboard",
+      "href": "/leaderboard",
+      "resolved": "https://app.manic.trade/leaderboard",
+      "status": 200
+    }
+  ]
+}

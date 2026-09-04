@@ -1,0 +1,15 @@
+$ node surface-scan.js   # controls with no accessible name
+
+  route          unnamed controls   inputs without a label
+  /                   4                    1
+  /leaderboard        0                    0
+  /referral           0                    0
+
+  the four on / , sampled by tag and first class:
+    BUTTON.hover:bg-fill-secondary
+    BUTTON.flex
+    BUTTON.flex
+    BUTTON.flex
+
+  none of them expose text, aria-label, title, or a labelled image,
+  and all four are visible and sized.

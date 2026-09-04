@@ -5,7 +5,12 @@ Link to Your Submission
   https://huntstamp-findings.vercel.app
 
 Tweet Link
-  (leave empty — not an X thread bounty)
+  (leave empty)
+
+  Do not fill this in. The Typeform consent you accepted on every submission says
+  "I will not repeatedly exploit or publicly share an unresolved issue." Posting
+  finding details to X before Manic has fixed them breaks that. The field is
+  optional and says so.
 
 What email address did you use for your Typeform submission?
   nayrbryangaming01@gmail.com
@@ -18,61 +23,123 @@ What is your Polymarket deposit address in Manic?
 
 Anything Else?
 --------------
-All findings were first observed against deployment dpl_74W5o38E8FQjJUZ2DYo5PFDHEsLs on
-3 September 2026, Chromium 148 on Windows 11, at 1440x900 and 375x812. Manic shipped a
-newer build, dpl_C3bXHquKbKr1sjn9WpRtDt8MWfce, partway through the session, and every
-finding was then re-checked against it by an automated Playwright pass. The screenshots
-and raw measurements from that pass are published alongside the report.
+Thirty findings filed separately through the Typeform, from three sweeps.
 
-Sixteen findings filed separately through the Typeform.
+Findings 1-17 were observed against deployment dpl_74W5o38E8FQjJUZ2DYo5PFDHEsLs on
+3 September 2026, Chromium 148 on Windows 11, at 1440x900 and 375x812. Manic shipped
+dpl_C3bXHquKbKr1sjn9WpRtDt8MWfce partway through the session, so every one of those was
+re-checked against the newer build by an automated pass. Findings 18-31 were taken on
+4 September against the newer build. Screenshots and raw measurement files for all of it
+are published alongside the report.
 
-The two with the most weight, both re-confirmed on the newer build:
+THE FOUR WITH THE MOST WEIGHT
 
-- A market marked Resolved, with its order book closed and a final score of 2-6 on
-  screen, still advertises Settlement Time: Sep 9, 3:00 PM UTC. The match was played
-  on 2 September, which the event slug itself records. A user checking when funds are
-  released is given a date with no relation to a settlement that already happened.
+1. The trading interface renders inside a cross-origin iframe. Neither X-Frame-Options nor
+   a CSP frame-ancestors directive is sent on any route. A page served from an unrelated
+   origin embedded /pm and the frame attached, loaded and painted the live market grid,
+   prices and Log In button, with no objection from the browser. I demonstrated the framing
+   with a screenshot. I did not build a clickjacking exploit and I am not claiming one - but
+   on a venue where a click places an order, this is a control worth closing.
 
-- /pm stops resolving to the market directory once any event has been opened. The cause
-  is localStorage 'pm-events-store', which restores the stored event and rewrites the
-  address bar. Removing that key restores the directory, so the root cause is isolated
-  rather than just the symptom. This is the entry point named in the bounty brief, so
-  anyone following a documentation link to /pm lands somewhere else.
+2. Settlement information is wrong on settled markets, and it is not a one-off. A market
+   marked Resolved, order book closed, final score 2-6 on screen, advertises Settlement
+   Time: Sep 9, 3:00 PM UTC for a match played on 2 September. Sampling 45 markets whose
+   slug carries a match date, 15 of them - one in three - advertise a close date exactly
+   seven days after the match, with 28 correct and nothing in between one and seven days.
+   The same wrong date is served in the og:description, so shared links advertise settled
+   markets as still open.
 
-Two findings were withdrawn rather than filed. Both withdrawals are documented in the
-report rather than deleted:
+3. /pm stops resolving to the market directory once any event has been opened. The cause is
+   localStorage 'pm-events-store', which restores the stored event and rewrites the address
+   bar. Removing that key restores the directory, so the root cause is isolated rather than
+   just the symptom. This is the entry point named in the bounty brief, so anyone following
+   a documentation link to /pm lands somewhere else.
+
+4. The directory downloads 17.4 MB and 8,610 event objects to render 24 cards. It requests
+   limit=500 for fourteen category tags and paginates each through offset 0, 500 and 1000,
+   on first load, while the user is looking at Trending. That is 359 events fetched per card
+   displayed.
+
+THE REST, IN BRIEF
+
+Routing: any invented market slug returns HTTP 200 with your generic landing-page title
+instead of 404, while neighbouring routes 404 correctly; /PM returns 404 where /pm returns
+200; every 404 ships 1.44 MB of application HTML.
+
+Metadata: the page title and Open Graph tags are emitted at the very end of a 1.5 MB
+document - on 60 of 60 sampled pages the title sits beyond 256 KB, and on 13 of them after
+</head> has closed. A Slackbot-agent request capped at 256 KB receives no title and no
+description at all.
+
+Accessibility: no heading elements anywhere on /pm or the event pages, and two <main>
+landmarks per page; two <h1> elements on /referral against one on the root and none on /pm;
+21 of 23 images on the directory without an alt attribute; four controls on the landing page
+with no accessible name; zero-sized controls from the inactive responsive layout left in the
+keyboard tab order.
+
+Security hygiene: no CSP, X-Content-Type-Options, Referrer-Policy, Permissions-Policy or
+Cross-Origin-Opener-Policy on any response; the is-mobile cookie carries neither Secure nor
+HttpOnly. HSTS is present and http:// redirects correctly, so the foundations are there.
+
+Display: a resolved market promoted in Trending with live buy buttons; prop labels that
+repeat the full event title so the rail truncates exactly where the identifying text begins;
+"-- Vol" where $0 belongs; the same candidate spelled two ways on two cards visible at once;
+a category click that silently discards the search query; zero-count filters offered as
+selectable; the August rewards promotion still advertised in September on the landing page,
+the leaderboard and the referral page.
+
+WHAT I WITHDREW
+
+Two findings were withdrawn rather than filed. Both are documented on the report rather than
+deleted, because you should see what I got wrong before you weigh what I got right.
+
+- I measured the /pm load event at 94s and then 136s through an instrumented browser and had
+  written it up as a performance defect. An automated run on the same machine and connection
+  then loaded the same route with loadEventEnd at 1,581ms and TTFB at 57ms. The slow figures
+  were an artefact of my environment, not your application. What the evidence does support is
+  filed instead as the 17.4 MB payload above, which measures response bodies rather than
+  wall-clock time and so does not depend on my machine.
 
 - Mobile subcategory chips appeared non-functional. Re-testing showed the cause was my
-  automation harness, not the application.
+  automation harness.
 
-- I measured the /pm load event at 94s and then 136s through an instrumented browser and
-  had written it up as a performance defect. An automated run on the same machine and
-  connection then loaded the same route with loadEventEnd at 1,581ms and TTFB at 57ms.
-  The slow figures were an artefact of my environment. The route does request 115 JS
-  chunks, but that is an observation, not a defect on this evidence.
+One filed finding has its frequency answered honestly as "only happened once": a settled
+market rendering two contradictory price sets, one pair summing to 101%. The capture is
+verbatim and the build id is recorded, but it did not reproduce on re-test, so triage should
+expect that. A second is filed the same way: one market whose description reads "Completed
+Match 50% - Ends Sep 11", seen once in a 60-page sample and not found again in a targeted
+re-scan of 45.
 
-One further finding is filed with its frequency answered honestly as "only happened
-once": a settled market rendering two contradictory price sets, one pair summing to
-101%. The capture is verbatim and the build id is recorded, but it did not reproduce on
-re-test, so triage should expect that.
+I also checked several things that turned out to be sound, and I have published those too:
+search rejects markup and SQL-shaped input cleanly with nothing executed; browsing produced
+zero console errors and zero failing requests across four routes; all eight complementary
+price pairs on the directory sum to exactly 100; every visible navigation link resolves; and
+canonical, og:image and twitter:card are present on all 60 sampled pages.
 
-This session ran entirely as a logged-out guest. No funds were deposited and no orders
-were placed. Deposits, order placement, positions, balances and settlement crediting all
-require a funded account with real USDC at risk, and none of that was exercised. That is
-where this programme's P0 weight sits, and it remains untested.
+WHAT I DID NOT TEST
+
+This ran entirely as a logged-out guest. No funds were deposited and no orders were placed.
+Deposits, order placement, order matching, positions, balances, withdrawals and settlement
+crediting all require a funded account with real USDC at risk, and none of it was exercised.
+That is where this programme's P0 weight sits, and it remains untested. I would be glad to
+run the same pass against a funded account if that is useful.
 
 Testing was AI-driven browser automation rather than manual QA. Stated up front, because
-every finding rests on reproduction steps your own team can run.
+every finding rests on reproduction steps your own team can run, and the capture scripts are
+in the repository so you can re-run any measurement rather than taking mine on trust.
 
-Report:   https://huntstamp-findings.vercel.app
-Evidence: https://huntstamp-findings.vercel.app/evidence.html
-Ledger:   https://huntstamp-findings.vercel.app/submission.html
+Report:      https://huntstamp-findings.vercel.app
+Evidence:    https://huntstamp-findings.vercel.app/evidence.html
+Submissions: https://huntstamp-findings.vercel.app/forms.html
+Ledger:      https://huntstamp-findings.vercel.app/submission.html
+Source:      https://github.com/bryankwandou/huntstamp-findings
 
 
 SUPPORTING PAGES (all public, all HTTP 200)
 ===========================================
-  Report    https://huntstamp-findings.vercel.app
-  Evidence  https://huntstamp-findings.vercel.app/evidence.html
-  Ledger    https://huntstamp-findings.vercel.app/submission.html
-  Huntstamp https://huntstamp-findings.vercel.app/huntstamp.html
-  Source    https://github.com/bryankwandou/huntstamp-findings
+  Report       https://huntstamp-findings.vercel.app
+  Evidence     https://huntstamp-findings.vercel.app/evidence.html
+  Submissions  https://huntstamp-findings.vercel.app/forms.html
+  Ledger       https://huntstamp-findings.vercel.app/submission.html
+  Huntstamp    https://huntstamp-findings.vercel.app/huntstamp.html
+  Source       https://github.com/bryankwandou/huntstamp-findings

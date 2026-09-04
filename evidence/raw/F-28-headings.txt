@@ -1,0 +1,10 @@
+$ node surface-scan.js   # h1 count per route, read from the hydrated DOM
+
+  route          h1   headings   main   navs
+  /              1       1        2      1
+  /leaderboard   1       2        2      2
+  /referral      2       4        2      1
+  /pm            0       0        2      1
+
+  the spec allows one top-level heading naming the page.
+  /referral has two; /pm has none.

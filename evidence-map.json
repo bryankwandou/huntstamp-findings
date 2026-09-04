@@ -1,0 +1,163 @@
+{
+  "_comment": "Which captured image backs which finding, and what the reviewer is looking at. A finding with no image says so rather than borrowing one.",
+  "F-01": [
+    {
+      "file": "F-01-pm-redirected-to-event.png",
+      "caption": "The script requested /pm and landed on /pm/event/atp-faria-alcaraz-2026-09-02. The stored tab in localStorage reopened the previous market and rewrote the address bar."
+    }
+  ],
+  "F-02": [],
+  "F-03": [
+    {
+      "file": "F-03-settlement-vs-resolved.png",
+      "caption": "Settlement Time reads Sep 9, 3:00 PM UTC on a market that shows a final score of 2-6, is marked Resolved, and has its order book closed. The match was played on 2 September."
+    }
+  ],
+  "F-04": [],
+  "F-05": [
+    {
+      "file": "F-05-trending-grid.png",
+      "caption": "The default Trending grid, which is where resolved markets are promoted with live buy buttons."
+    }
+  ],
+  "F-06": [],
+  "F-07": [
+    {
+      "file": "F-07-props-rail-truncated.png",
+      "caption": "Every prop label repeats the full event title before the part that identifies it, so the rail truncates exactly where the distinguishing text begins. 48 rows carry the prefix."
+    }
+  ],
+  "F-08": [
+    {
+      "file": "F-07-props-rail-truncated.png",
+      "caption": "The same rail, showing 13 rows rendering \"-- Vol\" beside neighbours that show $4K Vol and $116 Vol."
+    }
+  ],
+  "F-09": [],
+  "F-10": [],
+  "F-11": [
+    {
+      "file": "F-05-trending-grid.png",
+      "caption": "Both 2028 cards render in this grid at the same time, one spelling the candidate \"J.D. Vance\" and the other \"JD Vance\"."
+    }
+  ],
+  "F-12": [
+    {
+      "file": "F-12a-search-bitcoin.png",
+      "caption": "Before: a search for bitcoin has narrowed the grid to matching markets, and the query is in the box."
+    },
+    {
+      "file": "F-12b-query-cleared.png",
+      "caption": "After one click on the Politics chip: the search box is empty and the query is gone. Read back from the DOM immediately afterwards, both search inputs returned an empty string."
+    }
+  ],
+  "F-13": [
+    {
+      "file": "F-14-mobile.png",
+      "caption": "The subcategory rail, where entries showing a count of 0 are still offered as selectable filters."
+    }
+  ],
+  "F-14": [
+    {
+      "file": "F-14-mobile.png",
+      "caption": "At 375x812 the subcategory rail scrolls horizontally, so the filter responsible for an empty result can sit off-screen with no control to clear it."
+    }
+  ],
+  "F-15": [
+    {
+      "file": "F-05-trending-grid.png",
+      "caption": "The directory whose inactive responsive layout stays focusable at zero size, putting invisible stops in the keyboard tab order ahead of the first market card."
+    }
+  ],
+  "F-16": [
+    {
+      "file": "F-16-nav-august-rewards.png",
+      "caption": "The nav reads \"August Rewards\", captured with the browser clock in the same run at 2026-09-03T09:46:37Z."
+    }
+  ],
+  "F-17": [],
+  "F-18": [
+    {
+      "file": "F-18-framed.png",
+      "caption": "app.manic.trade/pm rendering inside an iframe on a page served from an unrelated origin. The market grid, live prices and the Log In button are all present, and the browser raised no framing objection."
+    }
+  ],
+  "F-19": [
+    {
+      "file": "F-19-headers.png",
+      "caption": "The full response headers for /pm. CSP, X-Frame-Options, X-Content-Type-Options, Referrer-Policy and Permissions-Policy are all absent; the is-mobile cookie carries neither Secure nor HttpOnly."
+    }
+  ],
+  "F-20": [
+    {
+      "file": "F-20-soft404.png",
+      "caption": "Three invented market slugs, each served as HTTP 200 with 1.5 MB and the generic landing-page title, against control routes that 404 correctly."
+    }
+  ],
+  "F-21": [
+    {
+      "file": "F-21-case.png",
+      "caption": "/pm returns 200 and /PM returns 404."
+    }
+  ],
+  "F-22": [
+    {
+      "file": "F-22-headings.png",
+      "caption": "Heading and landmark counts taken from the HTML the server returns: zero h1, h2 and h3 on both the directory and an event page, and two <main> elements on each."
+    }
+  ],
+  "F-23": [
+    {
+      "file": "F-23-preview.png",
+      "caption": "The Open Graph and meta description served for a market that resolved on 2 September, still reading \"Ends Sep 9\"."
+    }
+  ],
+  "F-24": [
+    {
+      "file": "F-24-404size.png",
+      "caption": "Two missing paths, each answered with 1,512,170 bytes of application HTML."
+    }
+  ],
+  "F-25": [
+    {
+      "file": "F-25-unfurl.png",
+      "caption": "A Slackbot-agent request stopped at each byte cap. Below 512 KB the page yields no title and no description at all; the byte offsets underneath show why."
+    }
+  ],
+  "F-26": [
+    {
+      "file": "F-26-completed.png",
+      "caption": "The Open Graph description served for itf-danil-laro-2026-09-04, reading Completed Match, 50%, and Ends Sep 11 in one string."
+    }
+  ],
+  "F-27": [
+    {
+      "file": "F-27-api-volume.png",
+      "caption": "The network the /pm directory makes on its own with no interaction: 58 calls, 17.4 MB, 8,610 event objects returned, 24 cards drawn."
+    }
+  ],
+  "F-28": [
+    {
+      "file": "F-28-headings.png",
+      "caption": "Heading counts per route, read from the hydrated DOM. The referral page carries two top-level headings where the root carries one and /pm carries none."
+    }
+  ],
+  "F-29": [
+    {
+      "file": "F-29-date-offset.png",
+      "caption": "The Ends date compared against the date in each slug across 45 dated markets. Twenty-eight are correct; fifteen sit at exactly seven days, with nothing in between."
+    }
+  ],
+  "F-30": [
+    {
+      "file": "F-30-august.png",
+      "caption": "The string August present in the rendered text of three routes, with the browser clock reading 4 September in the same run."
+    }
+  ],
+  "F-31": [
+    {
+      "file": "F-31-unnamed.png",
+      "caption": "Controls exposing no text, aria-label, title or labelled image. Four on the landing page; none on the leaderboard or referral pages."
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+$ curl -sS https://app.manic.trade/pm/event/itf-danil-laro-2026-09-04 | grep og:description
+
+<meta property="og:description" content="$44K traded - Completed Match 50% - Ends Sep 11">
+
+  a completed match cannot sit at 50%
+  a completed match cannot close a week after it finished
+  the slug records the match date as 2026-09-04; today is 2026-09-04
+
+frequency: seen once in a 60-page sample. A targeted re-scan of 45 dated
+markets found no second instance. Filed as a single observation.

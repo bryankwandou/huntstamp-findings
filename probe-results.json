@@ -1,5 +1,5 @@
 {
-  "startedAt": "2026-09-04T03:44:14.041Z",
+  "startedAt": "2026-09-04T08:20:16.232Z",
   "probes": {
     "routes": [
       {
@@ -7,7 +7,7 @@
         "httpStatus": 200,
         "landedOn": "/pm",
         "looksLikeError": false,
-        "firstText": "Skip to content"
+        "firstText": "Skip to content Trade Referral Leaderboard August Rewards Log In Manic Trade Polymarket Trade All Crypto Sports Politics"
       },
       {
         "requested": "/pm/",
@@ -53,16 +53,16 @@
       }
     ],
     "gridPrices": {
-      "totalPercentages": 30,
-      "adjacentPairs": 8,
+      "totalPercentages": 41,
+      "adjacentPairs": 7,
       "sumsOver100": [],
-      "sumsExactly100": 8,
+      "sumsExactly100": 7,
       "zeroOrHundred": 0
     },
     "unpricedOutcomes": {
       "dashPriceRows": 0,
-      "dashVolume": 1,
-      "emptyPriceTokens": 1
+      "dashVolume": 0,
+      "emptyPriceTokens": 0
     },
     "categoryCounts": {
       "chips": 0,
@@ -89,10 +89,10 @@
       {
         "query": "   ",
         "why": "whitespace only",
-        "bodyLength": 1303,
+        "bodyLength": 2004,
         "noResults": false,
         "alertFired": false,
-        "cards": 18
+        "cards": 24
       },
       {
         "query": "ﬀﬁ🎾🇺🇸",
@@ -113,10 +113,10 @@
       {
         "query": "BITCOIN",
         "why": "case sensitivity",
-        "bodyLength": 272,
+        "bodyLength": 1985,
         "noResults": false,
         "alertFired": false,
-        "cards": 4
+        "cards": 24
       }
     ],
     "documentMetadata": {
@@ -137,7 +137,7 @@
       },
       "eventPage": {
         "title": "US Open ATP: Jaime Faria vs Carlos Alcaraz",
-        "description": "$1.5M traded · Ends Sep 9",
+        "description": "$4K traded · Ends Sep 9",
         "ogTitle": "US Open ATP: Jaime Faria vs Carlos Alcaraz",
         "canonical": "https://app.manic.trade/pm/event/atp-faria-alcaraz-2026-09-02",
         "h1Count": 0
@@ -156,31 +156,31 @@
       "uncaughtPageErrors": []
     },
     "failedRequests": {
-      "totalResources": 190,
-      "zeroSized": 55,
+      "totalResources": 214,
+      "zeroSized": 77,
       "slowest": [
         {
-          "name": "events?tag=science&sort=trending&limit=500&off",
-          "ms": 2313
+          "name": "events?tag=sports&sort=trending&limit=500&offs",
+          "ms": 1908
         },
         {
-          "name": "resolution?market=0xe144a6e585ad52bd59e805eb90",
-          "ms": 1717
+          "name": "events?tag=crypto&sort=trending&limit=500&offs",
+          "ms": 1836
         },
         {
-          "name": "resolution?market=0xb6159fd250df9d52fda056a446",
-          "ms": 1704
+          "name": "events?tag=elections&sort=trending&limit=500&o",
+          "ms": 1815
         },
         {
-          "name": "resolution?market=0x2a4f7e3e6a17c747970fa50434",
-          "ms": 1689
+          "name": "events?tag=pop-culture&sort=trending&limit=500",
+          "ms": 1801
         },
         {
-          "name": "assets",
-          "ms": 1621
+          "name": "events?tag=geopolitics&sort=trending&limit=500",
+          "ms": 1714
         }
       ]
     }
   },
-  "finishedAt": "2026-09-04T03:55:01.781Z"
+  "finishedAt": "2026-09-04T08:26:37.277Z"
 }

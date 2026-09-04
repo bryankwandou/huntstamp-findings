@@ -1,0 +1,10 @@
+$ curl -sS https://app.manic.trade/pm/event/atp-faria-alcaraz-2026-09-02 | grep -E 'og:(title|description)|name="description"'
+
+<meta property="og:title" content="US Open ATP: Jaime Faria vs Carlos Alcaraz"
+<meta property="og:description" content="Ends Sep 9"
+<meta name="description" content="Ends Sep 9"
+
+the market this describes:
+  slug date  2026-09-02   (the match was played on 2 September)
+  today      2026-09-04
+  page state Resolved / Market Ended / final score 2 - 6

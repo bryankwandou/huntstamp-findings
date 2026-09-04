@@ -1,0 +1,4 @@
+$ curl -sS -o /dev/null -w '%{http_code}  %{size_download} bytes  $path\n' ...
+
+404  1512170 bytes  /this-does-not-exist
+404  1512170 bytes  /.well-known/security.txt

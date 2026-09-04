@@ -1,0 +1,20 @@
+$ node api-usage.js   # observes the network the /pm directory makes on its own
+
+  API calls                        : 58
+  of those requesting limit=500    : 22
+  distinct category tags queried   : 14
+    pandemics, science, business, geopolitics, economy, crypto, sports, politics, elections, pop-culture, weather, world, tech, finance
+
+  total API bytes downloaded       : 18,246,307  (17.4 MB)
+  event objects returned           : 8,610
+  market cards actually rendered   : 24
+
+  ratio fetched to displayed       : 359 to 1
+
+largest responses:
+  1,374,646 bytes  500 items  /charts/pm/events?tag=sports&sort=trending&limit=500&offset=0&lite=true
+  1,358,399 bytes  500 items  /charts/pm/events?tag=sports&sort=trending&limit=500&offset=1000&lite=true
+  1,354,171 bytes  500 items  /charts/pm/events?tag=sports&sort=trending&limit=500&offset=500&lite=true
+  1,171,786 bytes  500 items  /charts/pm/events?tag=elections&sort=trending&limit=500&offset=0&lite=true
+  1,124,434 bytes  500 items  /charts/pm/events?tag=politics&sort=trending&limit=500&offset=0&lite=true
+  1,123,118 bytes  500 items  /charts/pm/events?tag=elections&sort=trending&limit=500&offset=500&lite=true

@@ -1,0 +1,20 @@
+$ curl -sSD - -o /dev/null https://app.manic.trade/pm
+
+HTTP/1.1 200 OK
+Age: 165
+Cache-Control: public, max-age=0, must-revalidate
+Content-Length: 1531935
+Content-Type: text/html; charset=utf-8
+Date: Fri, 04 Sep 2026 08:36:20 GMT
+Etag: "11f1jpyiw58wu0x"
+Server: Vercel
+Set-Cookie: is-mobile=0; Path=/; Expires=Sat, 05 Sep 2026 08:39:07 GMT; Max-Age=86400; SameSite=lax
+Strict-Transport-Security: max-age=63072000
+Vary: rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch
+X-Matched-Path: /pm
+X-Nextjs-Prerender: 1
+X-Nextjs-Stale-Time: 300
+X-Powered-By: Next.js
+X-Vercel-Cache: HIT
+X-Vercel-Id: sin1::iad1::8qmxf-1788511147710-4e83fd392e18
+

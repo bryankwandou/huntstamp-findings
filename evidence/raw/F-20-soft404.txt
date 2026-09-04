@@ -1,0 +1,17 @@
+$ for slug in this-market-does-not-exist-2099 aaaaaaaaaaaa atp-fake-fake-2099-12-31; do
+    curl -sS -o /dev/null -w '%{http_code}  %{size_download} bytes  /pm/event/'$slug'\n' \
+      https://app.manic.trade/pm/event/$slug
+  done
+
+200  1535682 bytes  /pm/event/this-market-does-not-exist-2099
+200  1535625 bytes  /pm/event/aaaaaaaaaaaa
+200  1535661 bytes  /pm/event/atp-fake-fake-2099-12-31
+
+$ curl -sS https://app.manic.trade/pm/event/this-market-does-not-exist-2099 | grep -o '<title>.*</title>'
+
+<title>Manic.Trade: the First Momentum-based Trading Platform on Solana</title>
+
+control routes:
+404  /pm/nonsense-subroute
+404  /pm/event/
+404  /PM

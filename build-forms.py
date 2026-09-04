@@ -16,9 +16,14 @@ Fields are emitted in the order the real Typeform asks them:
   8. Anything else you would like to add?        text
   9. + 10. the two consent questions             shared, in the page header
 """
-import io, re, html
+import io, re, json, html
 
-FILES = ["TYPEFORM-ANSWERS.md", "NEW-TYPEFORM-ANSWERS.md"]
+FILES = ["TYPEFORM-ANSWERS.md", "NEW-TYPEFORM-ANSWERS.md", "NEW-TYPEFORM-ANSWERS-2.md"]
+
+# Which image backs which finding. Kept in its own file so the mapping can be
+# reviewed on its own, and so a finding without evidence says so rather than
+# borrowing a screenshot from a neighbour.
+EVIDENCE = json.load(io.open("evidence-map.json", encoding="utf-8"))
 
 # The five per-submission fields, in Typeform order. Matching on a prefix keeps
 # this robust to the exact wording used in the markdown headings.
@@ -104,13 +109,45 @@ for it in items:
                 f'<button class="copy" type="button">Copy</button></div>'
                 f'<pre class="a">{v}</pre></div>'
             )
+    shots = EVIDENCE.get(it["fid"], [])
+    if shots:
+        figs = "".join(
+            f'<figure class="shot">'
+            f'<a href="evidence/{s_["file"]}" download><img src="evidence/{s_["file"]}" '
+            f'alt="{esc(s_["caption"])}" loading="lazy"></a>'
+            f'<figcaption>{esc(s_["caption"])}'
+            f'<a class="dl" href="evidence/{s_["file"]}" download>Download {s_["file"]}</a>'
+            f'</figcaption></figure>'
+            for s_ in shots)
+        upload = (f'<div class="fld upload"><div class="q">Please upload a screenshot or '
+                  f'screen recording<span class="req">required</span></div>{figs}</div>')
+    else:
+        upload = ('<div class="fld upload none"><div class="q">Please upload a screenshot or '
+                  'screen recording<span class="req">required</span></div>'
+                  '<p class="nofile">No capture exists for this one. It did not reproduce when '
+                  'I went back for the screenshot, and inventing an image of evidence I never '
+                  'photographed would be fabricating it. Reproduce the steps above and capture '
+                  'your own, or file it without an upload and say why.</p></div>')
+
     notes = "".join(f'<p class="note">{esc(n)}</p>' for n in it["notes"])
+
+    # Drop the upload block where the real form asks for it: after the frequency
+    # question, before the improvement question.
+    joined = "".join(fields_html)
+    marker = '<div class="fld choice"><div class="q">How often does this happen?</div>'
+    idx = joined.find(marker)
+    if idx >= 0:
+        end = joined.index("</div></div>", idx) + len("</div></div>")
+        joined = joined[:end] + upload + joined[end:]
+    else:
+        joined += upload
+
     rows.append(
         f'<section class="sub" id="s{it["num"]}">'
         f'<div class="hd"><span class="n">{it["num"]}</span>'
         f'<span class="fid">{it["fid"]}</span>'
         f'<span class="sum">{esc(one)}</span></div>'
-        f'{notes}{"".join(fields_html)}</section>'
+        f'{notes}{joined}</section>'
     )
 
 index = "".join(f'<a href="#s{it["num"]}"><b>{it["num"]}</b> {it["fid"]}</a>' for it in items)

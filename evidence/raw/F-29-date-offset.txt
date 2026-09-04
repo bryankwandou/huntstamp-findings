@@ -1,0 +1,26 @@
+$ node date-offset.js   # reads og:description from each dated market page
+
+83 event URLs in the sitemap carry a date in the slug; 45 sampled.
+
+offset distribution (Ends date minus the date in the slug):
+  +0 days : 28 markets
+  +1 days :  2 markets
+  +7 days : 15 markets
+
+the 15 markets off by exactly seven days:
+
+  atp-wu-alcaraz-2026-09-04        match 2026-09-04  ->  · Ends Sep 11
+  atp-samrej-aguiard-2026-09-04    match 2026-09-04  ->  · Ends Sep 11
+  atp-bublik-paul-2026-09-04       match 2026-09-04  ->  · Ends Sep 11
+  atp-doubles-krawpue-atmarom-2026-09-04 match 2026-09-04  ->  · Ends Sep 11
+  wta-sabalen-rakhimo-2026-09-04   match 2026-09-04  ->  · Ends Sep 11
+  wta-pegula-fernand-2026-09-04    match 2026-09-04  ->  · Ends Sep 11
+  crint-nam-zaf-2026-09-04         match 2026-09-04  ->  · Ends Sep 11
+  atp-lehecka-tsitsip-2026-09-04   match 2026-09-04  ->  · Ends Sep 11
+  kbo-kt-kia-2026-09-04            match 2026-09-04  ->  · Ends Sep 11
+  kbo-nc-kiw-2026-09-04            match 2026-09-04  ->  · Ends Sep 11
+  itf-suksum-mukun-2026-09-04      match 2026-09-04  ->  · Ends Sep 11
+  f1-italian-grand-prix-winner-2026-09-06 match 2026-09-06  ->  · Ends Sep 13
+  wta-kostyuk-alexand-2026-09-04   match 2026-09-04  ->  · Ends Sep 11
+  itf-ki-chentin-2026-09-04        match 2026-09-04  ->  · Ends Sep 11
+  atp-michels-aguilar-2026-09-04   match 2026-09-04  ->  · Ends Sep 11

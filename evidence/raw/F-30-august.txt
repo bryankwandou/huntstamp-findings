@@ -1,0 +1,8 @@
+$ node surface-scan.js   # search rendered text for stale month names
+
+  browser clock during the run : 2026-09-04  (September)
+
+  /              stale month names present: August
+  /leaderboard   stale month names present: August
+  /referral      stale month names present: August
+  /pm            stale month names present: (none)

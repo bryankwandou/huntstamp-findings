@@ -75,6 +75,24 @@
     background:var(--ok-lo);border:1px solid var(--ok);padding:2px 9px;font-size:12px}
   .sub.withdrawn .pick{color:var(--no);background:var(--no-lo);border-color:var(--no)}
 
+  /* the upload field, with its evidence sitting in it rather than elsewhere */
+  .upload .q{margin-bottom:12px}
+  .req{margin-left:auto;font-size:9.5px;letter-spacing:.09em;color:var(--no);
+    border:1px solid var(--no);background:var(--no-lo);padding:2px 7px}
+  .shot{margin:0 0 16px;border:1px solid var(--line);background:var(--surface-2)}
+  .shot:last-child{margin-bottom:0}
+  .shot a{display:block;line-height:0}
+  .shot img{display:block;width:100%;height:auto;border-bottom:1px solid var(--line)}
+  .shot figcaption{padding:11px 14px;font-family:"Source Serif 4",Georgia,serif;
+    font-size:.92rem;line-height:1.5;color:var(--muted)}
+  .dl{display:inline-block;margin-top:9px;font-family:"IBM Plex Mono",monospace;
+    font-size:10.5px;letter-spacing:.05em;text-decoration:none;
+    color:var(--accent);background:var(--accent-lo);border:1px solid var(--accent);
+    padding:4px 10px}
+  .dl:hover,.dl:focus-visible{background:var(--accent);color:var(--surface)}
+  .nofile{margin:0;padding:13px 15px;background:var(--warn-lo);color:var(--warn);
+    font-size:.92rem;line-height:1.55;border:1px solid var(--warn)}
+
   footer{margin-top:64px;padding-top:20px;border-top:2px solid var(--text);
     font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--faint);line-height:1.8}
   footer a{color:var(--accent)}
@@ -83,9 +101,9 @@
 
 <div class="shell">
   <header>
-    <span class="eyebrow">Manic Trade bounty &middot; 24 submissions, ready to paste</span>
+    <span class="eyebrow">Manic Trade bounty &middot; 31 submissions, ready to paste</span>
     <h1>Every Typeform field, filled</h1>
-    <p class="standfirst">One block per finding, with the exact text for each field and a copy button beside it. Nothing here is a placeholder. Submission 03 is marked withdrawn and should not be filed &mdash; the reason sits on the block itself. The written report is at <a href="/">huntstamp-findings.vercel.app</a>, the screenshots are in the <a href="/evidence.html">evidence locker</a>, and the sponsor form values are on the <a href="/submission.html">ledger</a>.</p>
+    <p class="standfirst">One block per finding, with the exact text for each field and a copy button beside it. Nothing here is a placeholder. Thirty of the thirty-one are for filing; submission 03 is marked withdrawn and should not be sent &mdash; the reason sits on the block itself. The written report is at <a href="/">huntstamp-findings.vercel.app</a>, the screenshots are in the <a href="/evidence.html">evidence locker</a>, and the sponsor form values are on the <a href="/submission.html">ledger</a>.</p>
   </header>
 
   <div class="shared">
@@ -94,6 +112,8 @@
     <div class="fld"><div class="q">Device and browser &mdash; findings 18&ndash;24<button class="copy" type="button">Copy</button></div><pre class="a">Desktop PC / Windows 11 build 26200 / headless Chromium via Playwright / no wallet connected (logged-out guest session)</pre></div>
     <div class="fld"><div class="q">When &mdash; findings 01&ndash;17<button class="copy" type="button">Copy</button></div><pre class="a">September 3, 2026, 04:00-09:48, UTC</pre></div>
     <div class="fld"><div class="q">When &mdash; findings 18&ndash;24<button class="copy" type="button">Copy</button></div><pre class="a">September 4, 2026, 03:40-04:00, UTC</pre></div>
+    <div class="fld"><div class="q">Device and browser &mdash; findings 25&ndash;31<button class="copy" type="button">Copy</button></div><pre class="a">Desktop PC / Windows 11 build 26200 / headless Chromium via Playwright and curl / no wallet connected (logged-out guest session)</pre></div>
+    <div class="fld"><div class="q">When &mdash; findings 25&ndash;31<button class="copy" type="button">Copy</button></div><pre class="a">September 4, 2026, 08:20-09:00, UTC</pre></div>
     <div class="fld choice"><div class="q">No secrets, no public disclosure</div><div class="a"><span class="pick">A. I accept</span></div></div>
     <div class="fld choice"><div class="q">Created with AI, no manual testing</div><div class="a"><span class="pick">A. I accept</span></div></div>
   </div>
@@ -102,7 +122,7 @@
 
   <footer>
     Findings 01&ndash;17 observed on dpl_74W5o38E8FQjJUZ2DYo5PFDHEsLs, 3 September 2026<br>
-    Findings 18&ndash;24 on dpl_C3bXHquKbKr1sjn9WpRtDt8MWfce, 4 September 2026<br>
+    Findings 18&ndash;31 on dpl_C3bXHquKbKr1sjn9WpRtDt8MWfce, 4 September 2026<br>
     <a href="/">Report</a> &middot; <a href="/evidence.html">Evidence locker</a> &middot; <a href="/submission.html">Submission ledger</a> &middot; <a href="/huntstamp.html">Huntstamp</a>
   </footer>
 </div>

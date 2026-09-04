@@ -1,0 +1,21 @@
+A link unfurler reading only the first N bytes of
+https://app.manic.trade/pm/event/atp-faria-alcaraz-2026-09-02
+
+  cap        read      title                        og:description
+  --------------------------------------------------------------------------
+  64KB      64KB     (none)                       (none)
+  128KB     128KB    (none)                       (none)
+  256KB     256KB    (none)                       (none)
+  512KB     512KB    US Open ATP: Jaime Faria v   Ends Sep 9
+  1024KB    1024KB   US Open ATP: Jaime Faria v   Ends Sep 9
+  1536KB    1498KB   US Open ATP: Jaime Faria v   Ends Sep 9
+
+byte offsets measured on the same page:
+  <head> opens at             55
+  </head> closes at      504,898
+  <title> appears at   1,533,738   (99.9% of the document, inside <body>)
+
+across 60 sampled event pages:
+  <title> beyond 256 KB            60 of 60
+  <title> after </head>            13 of 60
+  earliest <title> offset     501,187 bytes
