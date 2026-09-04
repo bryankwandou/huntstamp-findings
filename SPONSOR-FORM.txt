@@ -23,7 +23,7 @@ What is your Polymarket deposit address in Manic?
 
 Anything Else?
 --------------
-Twenty-nine findings filed separately through the Typeform, from three sweeps, plus one
+Forty-one findings filed separately through the Typeform, from four sweeps, plus one
 observation carried in this field because I have no artefact for it.
 
 Findings 1-17 were observed against deployment dpl_74W5o38E8FQjJUZ2DYo5PFDHEsLs on
@@ -33,7 +33,22 @@ re-checked against the newer build by an automated pass. Findings 18-31 were tak
 4 September against the newer build. Screenshots and raw measurement files for all of it
 are published alongside the report.
 
-THE FOUR WITH THE MOST WEIGHT
+THE CLOSEST THING TO A P0, AND THE ONE PLACE I STOP AT THE EDGE
+
+0. On matches your own API marks finished (score.period FT), the order book stays open and
+   still quotes an executable ask on outcomes that are now impossible. Read-only, no orders:
+   of the 12 FT markets in one snapshot, all 12 were still acceptingOrders, and 8 carried a
+   buyable losing outcome. Worked example atc-alt-sb-2026-09-04, final 7-0: the "Draw"
+   outcome (ask 0.001), the exact score "0-0" (ask 0.005) and "loser scores first" (ask 0.01)
+   were each still buyable with acceptingOrders true. A 7-0 result makes all three impossible.
+   I did NOT place an order - logged out, no funds - so I have not confirmed a fill; I have
+   shown the venue still quotes buy prices on decided results. The confirming step (fund a
+   test account, place a minimum order against one of these asks, watch it fill and settle to
+   zero) needs a funded account and belongs to your team or a tester, not to me. If it fills,
+   real funds bought a worthless token on a decided market, and that is your P0. Full steps
+   are in submission 42 on the report.
+
+THE FOUR NEXT-HEAVIEST
 
 1. The trading interface renders inside a cross-origin iframe. Neither X-Frame-Options nor
    a CSP frame-ancestors directive is sent on any route. A page served from an unrelated

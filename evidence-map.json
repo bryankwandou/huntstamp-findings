@@ -239,5 +239,11 @@
       "file": "F-41-dup-outcome-name.png",
       "caption": "Nine events rendering two outcomes with the identical name. From the events API; raw capture beside it."
     }
+  ],
+  "F-42": [
+    {
+      "file": "F-42-decided-book.png",
+      "caption": "Read-only from the events API: all 12 finished (FT) markets in the snapshot were still accepting orders, with 8 impossible outcomes still carrying an executable ask. The worked example is a 7-0 final where Draw, 0-0, and the loser scoring first are each still buyable. No order was placed; the confirming step is left to a funded account."
+    }
   ]
 }

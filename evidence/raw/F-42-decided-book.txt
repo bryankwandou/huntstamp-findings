@@ -1,0 +1,41 @@
+$ node decided-book-ft.js   # read-only: quotes the platform publishes on FINISHED matches
+
+A market is counted here only when the API marks it score.period == "FT"
+(full time - the match is over). No orders placed, no funds moved: this reads
+the bestBid/bestAsk the events API serves to a logged-out visitor.
+
+  distinct events scanned                : 6530
+  FINISHED (FT) markets                  : 12
+  FT markets still acceptingOrders=true  : 12   <- every one of them
+  asks quoted on a finished outcome      : 8
+  losing/impossible outcome still buyable: 8
+  resting bids on a finished outcome     : 14
+
+WORKED EXAMPLE, verified live at capture time:
+  slug   : atc-alt-sb-2026-09-04
+  score  : 7-0   period FT   (SC Rheindorf Altach beat SK Bischofshofen 7-0)
+  closed : false        status still open
+  event acceptingOrders : true
+
+  Outcomes that are now IMPOSSIBLE, still carrying a buy price:
+    "Draw"                         chance 0.0005   bestAsk 0.001   acceptingOrders true
+    exact score "0 - 0"            chance 0.0025   bestAsk 0.005   acceptingOrders true
+    "Bischofshofen first to score" chance 0.005    bestAsk 0.01    acceptingOrders true
+  A 7-0 final makes a draw, a 0-0, and the loser scoring first all impossible,
+  yet the book still quotes an executable ask on each.
+
+Other finished matches in the same snapshot with a buyable losing outcome:
+    atp-butvila-potenza-2026-09-04           Manacor: Edas Butvilas vs Luca ask=0.001  (final 6-4, 5-7, 6-7(6-8))
+    atc-alt-sb-2026-09-04                    Draw (SC Rheindorf Altach vs.  ask=0.001  (final 7-0)
+    atp-doubles-milepop-aboiser-2026-09-04   Plovdiv 3 (Doubles): Milev/Pop ask=0.001  (final 0-0)
+    atc-ksv-fhw-2026-09-04                   Kapfenberger SV 1919           ask=0.008  (final 0-1)
+    atp-doubles-luquroc-gornwal-2026-09-04   Porto (Doubles): Luque/Rocha v ask=0.009  (final 0-0)
+    atc-alt-sb-2026-09-04-exact-score        SC Rheindorf Altach 0 - 0 SK B ask=0.005  (final 7-0)
+
+WHAT THIS IS, STATED EXACTLY.
+The platform publishes an executable ask on outcomes of matches that are over.
+I did NOT place an order (logged out, no funds), so I have not confirmed a fill;
+I have shown the venue is still quoting buy prices on decided results. The one
+confirming step - place a minimum order against one of these asks and see if it
+fills - needs a funded account and belongs to the tester, not to me. Steps for
+that are in the finding.

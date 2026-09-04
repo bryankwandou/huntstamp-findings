@@ -22,6 +22,7 @@ const TITLES = {
   "F-22-headings": "F-22 · No heading elements, and two <main> landmarks",
   "F-23-preview": "F-23 · Share preview says a settled market is still open",
   "F-24-404size": "F-24 · Every 404 ships 1.44 MB",
+  "F-42-decided-book": "F-42 · Finished matches still quoting a buy price on impossible outcomes",
   "F-32-scored-but-open": "F-32 · Markets with a final score still accepting orders",
   "F-33-past-end-open": "F-33 · 338 markets past their end time, still open for orders",
   "F-34-ends-before-start": "F-34 · End time set before the game starts",

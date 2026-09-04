@@ -1,0 +1,179 @@
+{
+  "scannedAt": "2026-09-04T18:45:01.653Z",
+  "distinctEvents": 6530,
+  "decidedMarkets": 12,
+  "decidedStillAcceptingOrders": 12,
+  "counts": {
+    "askQuotedOnDecidedOutcome": 8,
+    "winningSideBuyableBelowOne": 0,
+    "losingSideStillHasAsk": 8,
+    "openBidOnDecidedOutcome": 14
+  },
+  "samples": {
+    "winningSideBuyableBelowOne": [],
+    "losingSideStillHasAsk": [
+      {
+        "slug": "atp-butvila-potenza-2026-09-04",
+        "score": "6-4, 5-7, 6-7(6-8)",
+        "period": "FT",
+        "market": "Manacor: Edas Butvilas vs Luca Potenza",
+        "chance": 0.0005,
+        "bestBid": null,
+        "bestAsk": 0.001,
+        "acceptingOrders": true
+      },
+      {
+        "slug": "atc-alt-sb-2026-09-04",
+        "score": "7-0",
+        "period": "FT",
+        "market": "Draw (SC Rheindorf Altach vs. SK Bischofshofen)",
+        "chance": 0.0005,
+        "bestBid": null,
+        "bestAsk": 0.001,
+        "acceptingOrders": true
+      },
+      {
+        "slug": "atp-doubles-milepop-aboiser-2026-09-04",
+        "score": "0-0",
+        "period": "FT",
+        "market": "Plovdiv 3 (Doubles): Milev/Popovic vs Aboian/Serna",
+        "chance": 0.0005,
+        "bestBid": null,
+        "bestAsk": 0.001,
+        "acceptingOrders": true
+      },
+      {
+        "slug": "atc-ksv-fhw-2026-09-04",
+        "score": "0-1",
+        "period": "FT",
+        "market": "Kapfenberger SV 1919",
+        "chance": 0.004,
+        "bestBid": null,
+        "bestAsk": 0.008,
+        "acceptingOrders": true
+      },
+      {
+        "slug": "atp-doubles-luquroc-gornwal-2026-09-04",
+        "score": "0-0",
+        "period": "FT",
+        "market": "Porto (Doubles): Luque/Rocha vs Gornes/Walkow",
+        "chance": 0.005,
+        "bestBid": 0.001,
+        "bestAsk": 0.009,
+        "acceptingOrders": true
+      },
+      {
+        "slug": "atc-alt-sb-2026-09-04-exact-score",
+        "score": "7-0",
+        "period": "FT",
+        "market": "SC Rheindorf Altach 0 - 0 SK Bischofshofen",
+        "chance": 0.0025,
+        "bestBid": null,
+        "bestAsk": 0.005,
+        "acceptingOrders": true
+      },
+      {
+        "slug": "atc-alt-sb-2026-09-04-first-to-score",
+        "score": "7-0",
+        "period": "FT",
+        "market": "SK Bischofshofen",
+        "chance": 0.005,
+        "bestBid": null,
+        "bestAsk": 0.01,
+        "acceptingOrders": true
+      },
+      {
+        "slug": "atc-ksv-fhw-2026-09-04-exact-score",
+        "score": "0-1",
+        "period": "FT",
+        "market": "Any Other Score",
+        "chance": 0.004,
+        "bestBid": null,
+        "bestAsk": 0.008,
+        "acceptingOrders": true
+      }
+    ],
+    "askQuotedOnDecidedOutcome": [
+      {
+        "slug": "atp-butvila-potenza-2026-09-04",
+        "score": "6-4, 5-7, 6-7(6-8)",
+        "period": "FT",
+        "market": "Manacor: Edas Butvilas vs Luca Potenza",
+        "chance": 0.0005,
+        "bestBid": null,
+        "bestAsk": 0.001,
+        "acceptingOrders": true
+      },
+      {
+        "slug": "atc-alt-sb-2026-09-04",
+        "score": "7-0",
+        "period": "FT",
+        "market": "Draw (SC Rheindorf Altach vs. SK Bischofshofen)",
+        "chance": 0.0005,
+        "bestBid": null,
+        "bestAsk": 0.001,
+        "acceptingOrders": true
+      },
+      {
+        "slug": "atp-doubles-milepop-aboiser-2026-09-04",
+        "score": "0-0",
+        "period": "FT",
+        "market": "Plovdiv 3 (Doubles): Milev/Popovic vs Aboian/Serna",
+        "chance": 0.0005,
+        "bestBid": null,
+        "bestAsk": 0.001,
+        "acceptingOrders": true
+      },
+      {
+        "slug": "atc-ksv-fhw-2026-09-04",
+        "score": "0-1",
+        "period": "FT",
+        "market": "Kapfenberger SV 1919",
+        "chance": 0.004,
+        "bestBid": null,
+        "bestAsk": 0.008,
+        "acceptingOrders": true
+      },
+      {
+        "slug": "atp-doubles-luquroc-gornwal-2026-09-04",
+        "score": "0-0",
+        "period": "FT",
+        "market": "Porto (Doubles): Luque/Rocha vs Gornes/Walkow",
+        "chance": 0.005,
+        "bestBid": 0.001,
+        "bestAsk": 0.009,
+        "acceptingOrders": true
+      },
+      {
+        "slug": "atc-alt-sb-2026-09-04-exact-score",
+        "score": "7-0",
+        "period": "FT",
+        "market": "SC Rheindorf Altach 0 - 0 SK Bischofshofen",
+        "chance": 0.0025,
+        "bestBid": null,
+        "bestAsk": 0.005,
+        "acceptingOrders": true
+      },
+      {
+        "slug": "atc-alt-sb-2026-09-04-first-to-score",
+        "score": "7-0",
+        "period": "FT",
+        "market": "SK Bischofshofen",
+        "chance": 0.005,
+        "bestBid": null,
+        "bestAsk": 0.01,
+        "acceptingOrders": true
+      },
+      {
+        "slug": "atc-ksv-fhw-2026-09-04-exact-score",
+        "score": "0-1",
+        "period": "FT",
+        "market": "Any Other Score",
+        "chance": 0.004,
+        "bestBid": null,
+        "bestAsk": 0.008,
+        "acceptingOrders": true
+      }
+    ]
+  }
+}

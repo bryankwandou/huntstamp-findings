@@ -1,0 +1,330 @@
+{
+  "scannedAt": "2026-09-04T18:43:47.463Z",
+  "distinctEvents": 6530,
+  "decidedMarkets": 199,
+  "decidedStillAcceptingOrders": 199,
+  "counts": {
+    "askQuotedOnDecidedOutcome": 236,
+    "winningSideBuyableBelowOne": 13,
+    "losingSideStillHasAsk": 39,
+    "openBidOnDecidedOutcome": 288
+  },
+  "samples": {
+    "winningSideBuyableBelowOne": [
+      {
+        "slug": "spl-ahl-riy-2026-09-04",
+        "score": "1-0",
+        "period": "1H",
+        "market": "Al Ahli Saudi Club",
+        "chance": 0.905,
+        "bestBid": 0.9,
+        "bestAsk": 0.91,
+        "acceptingOrders": true,
+        "edgePerShare": 0.09
+      },
+      {
+        "slug": "cs2-bhe-quin-2026-09-04",
+        "score": "0-0|0-0|Bo3",
+        "period": "0/3",
+        "market": "Match Winner",
+        "chance": 0.9,
+        "bestBid": 0.89,
+        "bestAsk": 0.91,
+        "acceptingOrders": true,
+        "edgePerShare": 0.09
+      },
+      {
+        "slug": "cs2-imp11-alkaa-2026-09-04",
+        "score": "0-0|0-0|Bo3",
+        "period": "0/3",
+        "market": "Match Winner",
+        "chance": 0.925,
+        "bestBid": 0.92,
+        "bestAsk": 0.93,
+        "acceptingOrders": true,
+        "edgePerShare": 0.07
+      },
+      {
+        "slug": "atp-medvede-rinderk-2026-09-04",
+        "score": "6-4, 6-4, 4-3",
+        "period": "S3",
+        "market": "US Open ATP: Daniil Medvedev vs Arthur Rinderknech Set 3 Winner",
+        "chance": 0.93,
+        "bestBid": 0.91,
+        "bestAsk": 0.95,
+        "acceptingOrders": true,
+        "edgePerShare": 0.05
+      },
+      {
+        "slug": "den-vib-lyn-2026-09-04",
+        "score": "0-2",
+        "period": "2H",
+        "market": "Lyngby BK",
+        "chance": 0.945,
+        "bestBid": 0.94,
+        "bestAsk": 0.95,
+        "acceptingOrders": true,
+        "edgePerShare": 0.05
+      },
+      {
+        "slug": "atp-doubles-helipat-cerucer-2026-09-04",
+        "score": "0-0",
+        "period": "S2",
+        "market": "US Open ATP (Doubles): Helioevaara/Patten vs Cerundolo/Cerundolo",
+        "chance": 0.935,
+        "bestBid": 0.92,
+        "bestAsk": 0.95,
+        "acceptingOrders": true,
+        "edgePerShare": 0.05
+      },
+      {
+        "slug": "spl-sha-hil-2026-09-04-more-markets",
+        "score": "0-0",
+        "period": "1H",
+        "market": "O/U 0.5",
+        "chance": 0.9505,
+        "bestBid": 0.95,
+        "bestAsk": 0.951,
+        "acceptingOrders": true,
+        "edgePerShare": 0.049
+      },
+      {
+        "slug": "bun-stu-koe-2026-09-04-more-markets",
+        "score": "0-0",
+        "period": "1H",
+        "market": "O/U 0.5",
+        "chance": 0.9755,
+        "bestBid": 0.972,
+        "bestAsk": 0.979,
+        "acceptingOrders": true,
+        "edgePerShare": 0.021
+      },
+      {
+        "slug": "ere-spa-zwo-2026-09-04-more-markets",
+        "score": "1-1",
+        "period": "1H",
+        "market": "O/U 2.5",
+        "chance": 0.925,
+        "bestBid": 0.87,
+        "bestAsk": 0.98,
+        "acceptingOrders": true,
+        "edgePerShare": 0.02
+      },
+      {
+        "slug": "nor-aal-ik-2026-09-04",
+        "score": "2-0",
+        "period": "2H",
+        "market": "Aalesunds FK",
+        "chance": 0.96,
+        "bestBid": 0.94,
+        "bestAsk": 0.98,
+        "acceptingOrders": true,
+        "edgePerShare": 0.02
+      }
+    ],
+    "losingSideStillHasAsk": [
+      {
+        "slug": "fl1-lyo-aja-2026-09-04",
+        "score": "3-1",
+        "period": "2H",
+        "market": "Draw (Olympique Lyonnais vs. AJ Auxerre)",
+        "chance": 0.015,
+        "bestBid": 0.012,
+        "bestAsk": 0.018,
+        "acceptingOrders": true
+      },
+      {
+        "slug": "atp-butvila-potenza-2026-09-04",
+        "score": "6-4, 5-7, 6-7(6-8)",
+        "period": "FT",
+        "market": "Manacor: Edas Butvilas vs Luca Potenza",
+        "chance": 0.0005,
+        "bestBid": null,
+        "bestAsk": 0.001,
+        "acceptingOrders": true
+      },
+      {
+        "slug": "den-vib-lyn-2026-09-04",
+        "score": "0-2",
+        "period": "2H",
+        "market": "Draw (Viborg FF vs. Lyngby BK)",
+        "chance": 0.055,
+        "bestBid": 0.05,
+        "bestAsk": 0.06,
+        "acceptingOrders": true
+      },
+      {
+        "slug": "bl2-h96-ksc-2026-09-04",
+        "score": "2-2",
+        "period": "VFT",
+        "market": "Hannover 96",
+        "chance": 0.0005,
+        "bestBid": null,
+        "bestAsk": 0.001,
+        "acceptingOrders": true
+      },
+      {
+        "slug": "spl-abh-ett-2026-09-04",
+        "score": "0-1",
+        "period": "VFT",
+        "market": "Abha Saudi Club",
+        "chance": 0.0005,
+        "bestBid": null,
+        "bestAsk": 0.001,
+        "acceptingOrders": true
+      },
+      {
+        "slug": "bl2-bie-stp-2026-09-04",
+        "score": "2-2",
+        "period": "VFT",
+        "market": "DSC Arminia Bielefeld",
+        "chance": 0.0005,
+        "bestBid": null,
+        "bestAsk": 0.001,
+        "acceptingOrders": true
+      },
+      {
+        "slug": "spl-ahl-riy-2026-09-04",
+        "score": "1-0",
+        "period": "1H",
+        "market": "Draw (Al Ahli Saudi Club vs. Al Riyadh Saudi Club)",
+        "chance": 0.08,
+        "bestBid": 0.07,
+        "bestAsk": 0.09,
+        "acceptingOrders": true
+      },
+      {
+        "slug": "bl2-h96-ksc-2026-09-04-exact-score",
+        "score": "2-2",
+        "period": "VFT",
+        "market": "Any Other Score",
+        "chance": 0.0045,
+        "bestBid": null,
+        "bestAsk": 0.009,
+        "acceptingOrders": true
+      },
+      {
+        "slug": "bun-stu-koe-2026-09-04-exact-score",
+        "score": "0-0",
+        "period": "1H",
+        "market": "VfB Stuttgart 2 - 1 1. FC Köln",
+        "chance": 0.1,
+        "bestBid": 0.09,
+        "bestAsk": 0.11,
+        "acceptingOrders": true
+      },
+      {
+        "slug": "nor-aal-ik-2026-09-04",
+        "score": "2-0",
+        "period": "2H",
+        "market": "Draw (Aalesunds FK vs. IK Start)",
+        "chance": 0.055,
+        "bestBid": null,
+        "bestAsk": 0.11,
+        "acceptingOrders": true
+      }
+    ],
+    "askQuotedOnDecidedOutcome": [
+      {
+        "slug": "cs2-furia-vit-2026-09-04",
+        "score": "9-9|1-0|Bo3",
+        "period": "2/3",
+        "market": "Match Winner",
+        "chance": 0.705,
+        "bestBid": 0.7,
+        "bestAsk": 0.71,
+        "acceptingOrders": true
+      },
+      {
+        "slug": "cs2-furia-vit-2026-09-04",
+        "score": "9-9|1-0|Bo3",
+        "period": "2/3",
+        "market": "Map 2 Winner",
+        "chance": 0.535,
+        "bestBid": 0.53,
+        "bestAsk": 0.54,
+        "acceptingOrders": true
+      },
+      {
+        "slug": "atp-wu-alcaraz-2026-09-04",
+        "score": "1-2",
+        "period": "S1",
+        "market": "US Open ATP: Yibing Wu vs Carlos Alcaraz Game Spread +/-6.5",
+        "chance": 0.72,
+        "bestBid": 0.65,
+        "bestAsk": 0.79,
+        "acceptingOrders": true
+      },
+      {
+        "slug": "atp-bublik-paul-2026-09-04",
+        "score": "4-6, 6-3, 2-3",
+        "period": "S3",
+        "market": "US Open ATP: Alexander Bublik vs Tommy Paul Match O/U 38.5",
+        "chance": 0.815,
+        "bestBid": 0.79,
+        "bestAsk": 0.84,
+        "acceptingOrders": true
+      },
+      {
+        "slug": "atp-bublik-paul-2026-09-04",
+        "score": "4-6, 6-3, 2-3",
+        "period": "S3",
+        "market": "US Open ATP: Alexander Bublik vs Tommy Paul Set Handicap +/-1.5",
+        "chance": 0.555,
+        "bestBid": 0.13,
+        "bestAsk": 0.98,
+        "acceptingOrders": true
+      },
+      {
+        "slug": "fl1-lyo-aja-2026-09-04",
+        "score": "3-1",
+        "period": "2H",
+        "market": "Olympique Lyonnais",
+        "chance": 0.9845,
+        "bestBid": 0.98,
+        "bestAsk": 0.989,
+        "acceptingOrders": true
+      },
+      {
+        "slug": "fl1-lyo-aja-2026-09-04",
+        "score": "3-1",
+        "period": "2H",
+        "market": "Draw (Olympique Lyonnais vs. AJ Auxerre)",
+        "chance": 0.015,
+        "bestBid": 0.012,
+        "bestAsk": 0.018,
+        "acceptingOrders": true
+      },
+      {
+        "slug": "atp-medvede-rinderk-2026-09-04",
+        "score": "6-4, 6-4, 4-3",
+        "period": "S3",
+        "market": "US Open ATP: Daniil Medvedev vs Arthur Rinderknech",
+        "chance": 0.984,
+        "bestBid": 0.98,
+        "bestAsk": 0.988,
+        "acceptingOrders": true
+      },
+      {
+        "slug": "atp-medvede-rinderk-2026-09-04",
+        "score": "6-4, 6-4, 4-3",
+        "period": "S3",
+        "market": "US Open ATP: Daniil Medvedev vs Arthur Rinderknech Set 3 Winner",
+        "chance": 0.93,
+        "bestBid": 0.91,
+        "bestAsk": 0.95,
+        "acceptingOrders": true
+      },
+      {
+        "slug": "fl1-lyo-aja-2026-09-04-more-markets",
+        "score": "3-1",
+        "period": "2H",
+        "market": "Olympique Lyonnais (-1.5)",
+        "chance": 0.85,
+        "bestBid": 0.84,
+        "bestAsk": 0.86,
+        "acceptingOrders": true
+      }
+    ]
+  }
+}

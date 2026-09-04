@@ -1,0 +1,30 @@
+{
+ "slug": "atc-alt-sb-2026-09-04-more-markets",
+ "score": {
+  "period": "FT",
+  "raw": "7-0",
+  "sides": [
+   "7",
+   "0"
+  ]
+ },
+ "closed": false,
+ "status": "live",
+ "acceptingOrders": true,
+ "outcomes": [
+  {
+   "name": "SC Rheindorf Altach (-1.5)",
+   "chance": 0.9995,
+   "bestBid": 0.999,
+   "bestAsk": 1.0,
+   "acceptingOrders": true
+  },
+  {
+   "name": "SC Rheindorf Altach (-2.5)",
+   "chance": 0.9995,
+   "bestBid": 0.999,
+   "bestAsk": 1.0,
+   "acceptingOrders": true
+  }
+ ]
+}
