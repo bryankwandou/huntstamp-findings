@@ -1,0 +1,78 @@
+SPONSOR FORM — values to enter
+==============================
+
+Link to Your Submission
+  https://huntstamp-findings.vercel.app
+
+Tweet Link
+  (leave empty — not an X thread bounty)
+
+What email address did you use for your Typeform submission?
+  nayrbryangaming01@gmail.com
+
+What Manic account did you use for testing?
+  nayrbryangaming3@gmail.com
+
+What is your Polymarket deposit address in Manic?
+  AdXEHNYtN26dmp7G9eAnjmDbQJG9wDuHS4v7BB1MWwEf
+
+Anything Else?
+--------------
+All findings were first observed against deployment dpl_74W5o38E8FQjJUZ2DYo5PFDHEsLs on
+3 September 2026, Chromium 148 on Windows 11, at 1440x900 and 375x812. Manic shipped a
+newer build, dpl_C3bXHquKbKr1sjn9WpRtDt8MWfce, partway through the session, and every
+finding was then re-checked against it by an automated Playwright pass. The screenshots
+and raw measurements from that pass are published alongside the report.
+
+Sixteen findings filed separately through the Typeform.
+
+The two with the most weight, both re-confirmed on the newer build:
+
+- A market marked Resolved, with its order book closed and a final score of 2-6 on
+  screen, still advertises Settlement Time: Sep 9, 3:00 PM UTC. The match was played
+  on 2 September, which the event slug itself records. A user checking when funds are
+  released is given a date with no relation to a settlement that already happened.
+
+- /pm stops resolving to the market directory once any event has been opened. The cause
+  is localStorage 'pm-events-store', which restores the stored event and rewrites the
+  address bar. Removing that key restores the directory, so the root cause is isolated
+  rather than just the symptom. This is the entry point named in the bounty brief, so
+  anyone following a documentation link to /pm lands somewhere else.
+
+Two findings were withdrawn rather than filed. Both withdrawals are documented in the
+report rather than deleted:
+
+- Mobile subcategory chips appeared non-functional. Re-testing showed the cause was my
+  automation harness, not the application.
+
+- I measured the /pm load event at 94s and then 136s through an instrumented browser and
+  had written it up as a performance defect. An automated run on the same machine and
+  connection then loaded the same route with loadEventEnd at 1,581ms and TTFB at 57ms.
+  The slow figures were an artefact of my environment. The route does request 115 JS
+  chunks, but that is an observation, not a defect on this evidence.
+
+One further finding is filed with its frequency answered honestly as "only happened
+once": a settled market rendering two contradictory price sets, one pair summing to
+101%. The capture is verbatim and the build id is recorded, but it did not reproduce on
+re-test, so triage should expect that.
+
+This session ran entirely as a logged-out guest. No funds were deposited and no orders
+were placed. Deposits, order placement, positions, balances and settlement crediting all
+require a funded account with real USDC at risk, and none of that was exercised. That is
+where this programme's P0 weight sits, and it remains untested.
+
+Testing was AI-driven browser automation rather than manual QA. Stated up front, because
+every finding rests on reproduction steps your own team can run.
+
+Report:   https://huntstamp-findings.vercel.app
+Evidence: https://huntstamp-findings.vercel.app/evidence.html
+Ledger:   https://huntstamp-findings.vercel.app/submission.html
+
+
+SUPPORTING PAGES (all public, all HTTP 200)
+===========================================
+  Report    https://huntstamp-findings.vercel.app
+  Evidence  https://huntstamp-findings.vercel.app/evidence.html
+  Ledger    https://huntstamp-findings.vercel.app/submission.html
+  Huntstamp https://huntstamp-findings.vercel.app/huntstamp.html
+  Source    https://github.com/bryankwandou/huntstamp-findings
