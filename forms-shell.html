@@ -49,7 +49,12 @@
   .hd .n{font-family:Archivo,sans-serif;font-weight:700;font-size:1.15rem;color:var(--accent)}
   .hd .fid{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.09em;
     color:var(--faint);border:1px solid var(--line);padding:2px 7px}
-  .hd .sum{flex:1 1 320px;font-size:.96rem;color:var(--text);min-width:0}
+  .hd .sum{flex:1 1 260px;font-size:.96rem;color:var(--text);min-width:0}
+  .copyall{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.07em;
+    text-transform:uppercase;cursor:pointer;white-space:nowrap;
+    background:var(--accent);color:var(--surface);border:1px solid var(--accent);padding:5px 11px}
+  .copyall:hover{background:var(--accent-lo);color:var(--accent)}
+  .copyall.done{background:var(--ok-lo);border-color:var(--ok);color:var(--ok)}
 
   .warn{margin:0;padding:13px 18px;background:var(--no-lo);color:var(--no);
     font-size:.93rem;border-bottom:1px solid var(--line-soft)}
@@ -106,18 +111,6 @@
     <p class="standfirst">One block per finding, with the exact text for each field and a copy button beside it. Nothing here is a placeholder. Thirty of the thirty-one are for filing; submission 03 is marked withdrawn and should not be sent &mdash; the reason sits on the block itself. The written report is at <a href="/">huntstamp-findings.vercel.app</a>, the screenshots are in the <a href="/evidence.html">evidence locker</a>, and the sponsor form values are on the <a href="/submission.html">ledger</a>.</p>
   </header>
 
-  <div class="shared">
-    <h2>Repeated on every submission</h2>
-    <div class="fld"><div class="q">Device and browser &mdash; findings 01&ndash;17<button class="copy" type="button">Copy</button></div><pre class="a">Desktop PC / Windows 11 build 26200 / Chromium 148.0.7778.280 / no wallet connected (logged-out guest session)</pre></div>
-    <div class="fld"><div class="q">Device and browser &mdash; findings 18&ndash;24<button class="copy" type="button">Copy</button></div><pre class="a">Desktop PC / Windows 11 build 26200 / headless Chromium via Playwright / no wallet connected (logged-out guest session)</pre></div>
-    <div class="fld"><div class="q">When &mdash; findings 01&ndash;17<button class="copy" type="button">Copy</button></div><pre class="a">September 3, 2026, 04:00-09:48, UTC</pre></div>
-    <div class="fld"><div class="q">When &mdash; findings 18&ndash;24<button class="copy" type="button">Copy</button></div><pre class="a">September 4, 2026, 03:40-04:00, UTC</pre></div>
-    <div class="fld"><div class="q">Device and browser &mdash; findings 25&ndash;31<button class="copy" type="button">Copy</button></div><pre class="a">Desktop PC / Windows 11 build 26200 / headless Chromium via Playwright and curl / no wallet connected (logged-out guest session)</pre></div>
-    <div class="fld"><div class="q">When &mdash; findings 25&ndash;31<button class="copy" type="button">Copy</button></div><pre class="a">September 4, 2026, 08:20-09:00, UTC</pre></div>
-    <div class="fld choice"><div class="q">No secrets, no public disclosure</div><div class="a"><span class="pick">A. I accept</span></div></div>
-    <div class="fld choice"><div class="q">Created with AI, no manual testing</div><div class="a"><span class="pick">A. I accept</span></div></div>
-  </div>
-
 <!--BODY-->
 
   <footer>
@@ -128,7 +121,44 @@
 </div>
 
 <script>
+// Copy one whole submission: every field label and answer, in form order.
 document.addEventListener("click", function (e) {
+  var all = e.target.closest(".copyall");
+  if (all) {
+    var sec = all.closest(".sub");
+    var parts = [];
+    sec.querySelectorAll(".fld").forEach(function (f) {
+      var q = f.querySelector(".q");
+      if (!q) return;
+      var label = q.cloneNode(true);
+      label.querySelectorAll("button,.req").forEach(function (n) { n.remove(); });
+      var pre = f.querySelector("pre.a");
+      var pick = f.querySelector(".pick");
+      var value = pre ? pre.textContent
+        : pick ? pick.textContent
+        : f.querySelector(".nofile") ? "(no capture; see the note in the block)"
+        : [].map.call(f.querySelectorAll(".shot img"), function (i) {
+            return i.getAttribute("src").split("/").pop(); }).join(", ");
+      parts.push(label.textContent.trim() + "
+" + (value || "").trim());
+    });
+    var text = parts.join("
+
+");
+    navigator.clipboard && navigator.clipboard.writeText
+      ? navigator.clipboard.writeText(text).then(flash, flash)
+      : flash();
+    function flash() {
+      all.textContent = "Copied";
+      all.classList.add("done");
+      setTimeout(function () {
+        all.textContent = "Copy whole submission";
+        all.classList.remove("done");
+      }, 1700);
+    }
+    return;
+  }
+
   var btn = e.target.closest(".copy");
   if (!btn) return;
   var pre = btn.closest(".fld").querySelector("pre.a");

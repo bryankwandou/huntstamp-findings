@@ -35,6 +35,33 @@ ORDER = [
     "Anything else you would like to add",
 ]
 
+# Every submission block carries all ten Typeform fields in full, including the
+# four that are identical across a batch. They are repeated rather than shared,
+# because each block has to stand alone as one complete form: a reviewer reading
+# submission 27 should not have to scroll to a header to learn which browser it
+# was taken in.
+BATCH = [
+    (1, 17, "Desktop PC / Windows 11 build 26200 / Chromium 148.0.7778.280 / no wallet connected (logged-out guest session)",
+            "September 3, 2026, 04:00-09:48, UTC"),
+    (18, 24, "Desktop PC / Windows 11 build 26200 / headless Chromium via Playwright / no wallet connected (logged-out guest session)",
+             "September 4, 2026, 03:40-04:00, UTC"),
+    (25, 99, "Desktop PC / Windows 11 build 26200 / headless Chromium via Playwright and curl / no wallet connected (logged-out guest session)",
+             "September 4, 2026, 08:20-09:00, UTC"),
+]
+
+CONSENT_1 = ("I have not included passwords, private keys, or seed phrases. "
+             "I will not repeatedly exploit or publicly share an unresolved issue. "
+             "Manic may reproduce the issue internally and contact me for more information.")
+CONSENT_2 = "i create with ai, no manual testing."
+
+
+def batch_for(num):
+    n = int(num)
+    for lo, hi, device, when in BATCH:
+        if lo <= n <= hi:
+            return device, when
+    raise SystemExit("no batch covers submission " + num)
+
 
 def field_rank(label):
     for i, prefix in enumerate(ORDER):
@@ -109,6 +136,21 @@ for it in items:
                 f'<button class="copy" type="button">Copy</button></div>'
                 f'<pre class="a">{v}</pre></div>'
             )
+    device, when = batch_for(it["num"])
+    fields_html.insert(2,
+        f'<div class="fld"><div class="q">What device and browser were you using?'
+        f'<button class="copy" type="button">Copy</button></div>'
+        f'<pre class="a">{esc(device)}</pre></div>'
+        f'<div class="fld"><div class="q">When did it happen?'
+        f'<button class="copy" type="button">Copy</button></div>'
+        f'<pre class="a">{esc(when)}</pre></div>')
+
+    consents = (
+        f'<div class="fld choice"><div class="q">{esc(CONSENT_1)}</div>'
+        f'<div class="a"><span class="pick">A. I accept</span></div></div>'
+        f'<div class="fld choice"><div class="q">{esc(CONSENT_2)}</div>'
+        f'<div class="a"><span class="pick">A. I accept</span></div></div>')
+
     shots = EVIDENCE.get(it["fid"], [])
     if shots:
         figs = "".join(
@@ -141,12 +183,14 @@ for it in items:
         joined = joined[:end] + upload + joined[end:]
     else:
         joined += upload
+    joined += consents
 
     rows.append(
         f'<section class="sub" id="s{it["num"]}">'
         f'<div class="hd"><span class="n">{it["num"]}</span>'
         f'<span class="fid">{it["fid"]}</span>'
-        f'<span class="sum">{esc(one)}</span></div>'
+        f'<span class="sum">{esc(one)}</span>'
+        f'<button class="copyall" type="button">Copy whole submission</button></div>'
         f'{notes}{joined}</section>'
     )
 
