@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Seventeen findings from a guest-session test of the Polymarket integration on Manic Trade.">
+<meta name="description" content="Sixteen findings from a logged-out test of the Polymarket integration on Manic Trade, with two withdrawn.">
 <title>Manic Polymarket Findings</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap">
 <style>
@@ -370,6 +370,7 @@
     color: var(--faint);
     line-height: 1.7;
   }
+  footer a { color: var(--accent); }
 
   @media (max-width: 640px) {
     body { font-size: 16px; }
@@ -387,7 +388,7 @@
 
   <header class="masthead">
     <span class="eyebrow">Bug bounty · Polymarket integration</span>
-    <h1>Seventeen findings on Manic Trade</h1>
+    <h1>Sixteen findings on Manic Trade</h1>
     <p class="standfirst">A single guest session against <code>app.manic.trade/pm</code> on 3 September 2026. No account, no deposit, no orders placed — everything below was reached from the logged-out surface, which is also why the categories carrying this bounty's P0 weight are still untouched.</p>
   </header>
 
@@ -505,30 +506,32 @@ Carlos Alcaraz
       </div>
     </article>
 
-    <article class="entry" style="--sev: var(--p2); --sev-lo: var(--p2-lo)">
+    <article class="entry" style="--sev: var(--muted); --sev-lo: var(--surface-2)">
       <div class="stamp">
         <span class="fid">F-10</span>
-        <span class="sev">P2</span>
-        <span class="freq">Both cold loads</span>
+        <span class="sev">Withdrawn</span>
+        <span class="freq">Not filed</span>
       </div>
       <div class="body">
-        <h3>The trading screen takes 94 to 136 seconds to finish loading</h3>
-        <p>Two consecutive cold loads of <code>/pm</code>, with the Manic logo and a spinner on screen for nearly all of it. Time to first byte was 55 ms both times, so the server is not the problem.</p>
+        <h3>A slow page load that turned out to be my own test environment</h3>
+        <p>I measured two consecutive cold loads of <code>/pm</code> reaching <code>loadEventEnd</code> at 94,029&nbsp;ms and 135,689&nbsp;ms, with time to first byte at 55&nbsp;ms both times, and wrote it up as connection-pool saturation across 113 JavaScript chunks.</p>
+        <p>An automated Playwright run on the same machine and the same connection then loaded the same route and measured this:</p>
 
-        <span class="lbl">Measured</span>
+        <span class="lbl">Re-measured, headless Chromium</span>
         <div class="scroller">
         <table class="metrics">
-          <thead><tr><th>Load</th><th>TTFB</th><th>DOMContentLoaded</th><th>loadEventEnd</th></tr></thead>
+          <thead><tr><th>Run</th><th>TTFB</th><th>DOMContentLoaded</th><th>loadEventEnd</th><th>JS chunks</th></tr></thead>
           <tbody>
-            <tr><td>1</td><td>56 ms</td><td>1,653 ms</td><td>94,029 ms</td></tr>
-            <tr><td>2</td><td>55 ms</td><td>4,817 ms</td><td>135,689 ms</td></tr>
-            <tr class="control"><th>polymarket.com</th><td>181 ms</td><td>1,349 ms</td><td>—</td></tr>
+            <tr><td>Instrumented browser, load 1</td><td>56 ms</td><td>1,653 ms</td><td>94,029 ms</td><td>113</td></tr>
+            <tr><td>Instrumented browser, load 2</td><td>55 ms</td><td>4,817 ms</td><td>135,689 ms</td><td>113</td></tr>
+            <tr class="control"><th>Playwright, headless</th><td>57 ms</td><td>1,193 ms</td><td>1,581 ms</td><td>115</td></tr>
           </tbody>
         </table>
         </div>
 
-        <p>The control ran in the same session, on the same machine and connection, minutes apart. <code>performance.getEntriesByType('resource')</code> counts <strong>113</strong> separate <code>_next/static/chunks/*.js</code> requests and 250 resources for this one route. Around a hundred of those chunks each report roughly 84 seconds of wall time and resolve together — connection-pool saturation, not one slow response.</p>
-        <p>Measured from Indonesia on a residential line, so the absolute numbers travel poorly. The ratio against the same-session control is the part that reproduces.</p>
+        <p>One and a half seconds, not ninety-four. The slow figures came from the instrumented browser I was driving, not from the application. The programme excludes issues caused by the reporter&rsquo;s own device or network, and this one belongs in that category, so it was withdrawn before filing rather than submitted.</p>
+        <p>The chunk count itself &mdash; 115 requests for one route &mdash; still stands as an observation. It is not a defect on this evidence, and it is not worth a submission.</p>
+        <p>It is recorded here rather than deleted, on the view that a reviewer is owed the failures as well as the findings. The raw numbers are in <a href="/evidence.html">the evidence locker</a>.</p>
       </div>
     </article>
 
@@ -675,8 +678,9 @@ Carlos Alcaraz
   </div>
 
   <footer>
-    Tested 3 September 2026 · deployment dpl_74W5o38E8FQjJUZ2DYo5PFDHEsLs<br>
-    Each finding filed separately through the official Typeform · Manic Bug Bounty
+    Tested 3 September 2026 · first observed on dpl_74W5o38E8FQjJUZ2DYo5PFDHEsLs,<br>
+    re-checked by automated capture on dpl_C3bXHquKbKr1sjn9WpRtDt8MWfce<br>
+    <a href="/evidence.html">Evidence locker</a> · <a href="/submission.html">Submission ledger</a> · <a href="/huntstamp.html">Huntstamp</a>
   </footer>
 
 </div>

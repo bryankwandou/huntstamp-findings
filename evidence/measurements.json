@@ -1,0 +1,122 @@
+{
+  "startedAt": "2026-09-03T09:46:27.158Z",
+  "findings": {
+    "F-16": {
+      "navText": "August Rewards",
+      "clockNow": "2026-09-03T09:46:37.315Z"
+    },
+    "F-06": {
+      "total": 33,
+      "withDecimal": [],
+      "all": [
+        "74%",
+        "26%",
+        "79%",
+        "61%",
+        "53%",
+        "50%",
+        "25%",
+        "13%",
+        "63%",
+        "37%",
+        "40%",
+        "22%",
+        "17%",
+        "16%",
+        "83%",
+        "51%",
+        "59%",
+        "39%",
+        "93%",
+        "7%",
+        "55%",
+        "43%",
+        "35%",
+        "28%",
+        "20%",
+        "84%",
+        "12%",
+        "21%",
+        "36%",
+        "9%",
+        "24%",
+        "19%",
+        "69%"
+      ]
+    },
+    "F-15": {
+      "zeroSizedFocusable": 19,
+      "sample": [
+        "Monthly TournamentReal-m",
+        "Free Friday$200100 Demo ",
+        "",
+        "All",
+        "Crypto",
+        "Sports",
+        "Politics",
+        "Economy"
+      ],
+      "imagesTotal": 23,
+      "imagesWithoutAlt": 21
+    },
+    "F-10": {
+      "ttfbMs": 57,
+      "domContentLoadedMs": 1193,
+      "loadEventEndMs": 1581,
+      "jsChunkRequests": 115,
+      "totalResources": 242
+    },
+    "F-11": {
+      "dottedSpelling": true,
+      "plainSpelling": true
+    },
+    "F-12": {
+      "searchValuesAfterCategoryClick": [
+        "",
+        ""
+      ]
+    },
+    "F-03": {
+      "settlementTime": "Sep 9, 3:00 PM UTC",
+      "resolved": true,
+      "marketEnded": true,
+      "score": "2 - 6\n",
+      "eventSlugDate": "2026-09-02"
+    },
+    "F-02": {
+      "outcomeBanner": "OUTCOME: CARLOS ALCARAZ",
+      "pricePairs": [
+        "Jaime Faria 0%",
+        "Carlos Alcaraz 100%",
+        "Carlos Alcaraz 100%",
+        "Jaime Faria 0%"
+      ]
+    },
+    "F-08": {
+      "dashVolumeRows": 13
+    },
+    "F-07": {
+      "propsPrefixedWithEventTitle": 48,
+      "sample": [
+        "US Open ATP: Jaime Faria vs Carlos Alcaraz Set 1 Winner",
+        "US Open ATP: Jaime Faria vs Carlos Alcaraz Set 1 Winner",
+        "US Open ATP: Jaime Faria vs Carlos Alcaraz Set 1 O/U 8.5",
+        "US Open ATP: Jaime Faria vs Carlos Alcaraz Set 1 O/U 8.5"
+      ]
+    },
+    "F-01": {
+      "requested": "/pm",
+      "landedOn": "/pm/event/atp-faria-alcaraz-2026-09-02",
+      "storedStateBefore": "{\"state\":{\"category\":\"all\",\"surface\":\"catalog\",\"sidebarCollapsed\":false,\"openEventIds\":[\"atp-faria-alcaraz-2026-09-02\"],\"tabMeta\":{\"atp-faria-alcaraz-2026-09-02\":{\"title\":\"US Open ATP: Jaime Faria vs Carlos Alcaraz\",\"ico"
+    },
+    "F-09": {
+      "preloadWarningCount": 16,
+      "distinct": [
+        "[warning] The resource https://app.manic.trade/landing-v2/hero-video-fallback.png was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally."
+      ]
+    }
+  },
+  "build": "dpl_C3bXHquKbKr1sjn9WpRtDt8MWfce",
+  "gridRendered": true,
+  "finishedAt": "2026-09-03T09:47:53.609Z"
+}

@@ -1,0 +1,200 @@
+<title>Submission Ledger</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap">
+<style>
+  :root{
+    --bg:#E6ECEB;--surface:#F8FBFA;--surface-2:#DDE6E4;--line:#C2D0CD;--line-soft:#D5E0DE;
+    --text:#0E1A19;--muted:#4C5F5C;--faint:#6E817E;--accent:#0A6E66;--accent-lo:#D6E8E5;
+    --ok:#1F6B4B;--ok-lo:#D8EBE2;--no:#A62A42;--no-lo:#F3DDE1;--warn:#9A6510;--warn-lo:#F2E6CE;
+  }
+  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+    --bg:#0A100F;--surface:#121D1B;--surface-2:#182523;--line:#263936;--line-soft:#1D2C2A;
+    --text:#DEEAE7;--muted:#93A8A4;--faint:#748985;--accent:#4FB8AC;--accent-lo:#10302C;
+    --ok:#6BBF95;--ok-lo:#12281F;--no:#E4738A;--no-lo:#34141B;--warn:#D7A244;--warn-lo:#2E2210;
+  }}
+  :root[data-theme="dark"]{
+    --bg:#0A100F;--surface:#121D1B;--surface-2:#182523;--line:#263936;--line-soft:#1D2C2A;
+    --text:#DEEAE7;--muted:#93A8A4;--faint:#748985;--accent:#4FB8AC;--accent-lo:#10302C;
+    --ok:#6BBF95;--ok-lo:#12281F;--no:#E4738A;--no-lo:#34141B;--warn:#D7A244;--warn-lo:#2E2210;
+  }
+  *{box-sizing:border-box}
+  body{background:var(--bg);color:var(--text);font-family:"Source Serif 4",Georgia,serif;
+    font-size:16.5px;line-height:1.62;-webkit-font-smoothing:antialiased}
+  .shell{max-width:1080px;margin:0 auto;padding:0 28px 96px}
+  header{border-bottom:2px solid var(--text);padding:56px 0 22px;display:flex;flex-direction:column;gap:16px}
+  .eyebrow{font-family:"IBM Plex Mono",monospace;font-size:11.5px;font-weight:500;
+    letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+  h1{font-family:Archivo,Arial,sans-serif;font-weight:700;font-size:clamp(2rem,5vw,3.2rem);
+    line-height:1.03;letter-spacing:-.028em;margin:0;text-wrap:balance}
+  .standfirst{max-width:66ch;font-size:1.06rem;color:var(--muted);margin:0}
+  .standfirst a{color:var(--accent)}
+  h2{font-family:Archivo,sans-serif;font-weight:600;font-size:1.45rem;letter-spacing:-.018em;
+    margin:62px 0 6px;padding-bottom:10px;border-bottom:1px solid var(--line)}
+  .sec-note{max-width:66ch;color:var(--muted);font-size:.97rem;margin:0 0 24px}
+  .scroll{overflow-x:auto}
+  table{width:100%;border-collapse:collapse;font-size:.94rem;min-width:600px}
+  th{text-align:left;font-family:"IBM Plex Mono",monospace;font-weight:500;font-size:10.5px;
+    letter-spacing:.11em;text-transform:uppercase;color:var(--faint);
+    padding:0 14px 9px 0;border-bottom:1px solid var(--line)}
+  td{padding:10px 14px 10px 0;border-bottom:1px solid var(--line-soft);vertical-align:top;color:var(--muted)}
+  td:first-child{color:var(--text);font-family:"IBM Plex Mono",monospace;font-size:12.5px;white-space:nowrap}
+  .tag{font-family:"IBM Plex Mono",monospace;font-size:10.5px;font-weight:600;letter-spacing:.07em;
+    padding:2px 7px;white-space:nowrap;border:1px solid currentColor}
+  .t-ok{color:var(--ok);background:var(--ok-lo)}
+  .t-no{color:var(--no);background:var(--no-lo)}
+  .t-warn{color:var(--warn);background:var(--warn-lo)}
+  .fields{border:1px solid var(--line);background:var(--surface);margin-top:24px}
+  .field{display:grid;grid-template-columns:minmax(190px,26%) minmax(0,1fr);border-bottom:1px solid var(--line-soft)}
+  .field:last-child{border-bottom:none}
+  .field dt{padding:14px 16px;margin:0;font-family:"IBM Plex Mono",monospace;font-size:11px;
+    letter-spacing:.09em;text-transform:uppercase;color:var(--faint);
+    border-right:1px solid var(--line-soft);background:var(--surface-2)}
+  .field dd{padding:14px 16px;margin:0;font-family:"IBM Plex Mono",monospace;font-size:12.5px;
+    color:var(--text);word-break:break-all}
+  .field dd a{color:var(--accent)}
+  .field dd .hint{display:block;margin-top:6px;font-family:"Source Serif 4",Georgia,serif;
+    font-size:.9rem;color:var(--faint);word-break:normal}
+  pre{font-family:"IBM Plex Mono",monospace;font-size:12.5px;line-height:1.6;
+    background:var(--surface-2);border-left:2px solid var(--accent);padding:16px 18px;
+    margin:20px 0 0;overflow-x:auto;color:var(--text);white-space:pre-wrap}
+  code{font-family:"IBM Plex Mono",monospace;font-size:.88em;background:var(--accent-lo);padding:1px 4px}
+  pre code{background:none;padding:0}
+  .callout{border:1px solid var(--line);background:var(--surface);padding:22px 24px;margin-top:26px}
+  .callout h3{font-family:Archivo,sans-serif;font-weight:600;font-size:1.08rem;margin:0 0 8px}
+  .callout p{max-width:68ch;margin:0 0 10px;color:var(--muted)}
+  .callout p:last-child{margin:0}
+  .callout.pull{border-left:3px solid var(--no)}
+  .callout.flag{border-left:3px solid var(--warn)}
+  footer{margin-top:70px;padding-top:20px;border-top:2px solid var(--text);
+    font-family:"IBM Plex Mono",monospace;font-size:11.5px;letter-spacing:.04em;
+    color:var(--faint);line-height:1.8}
+  footer a{color:var(--accent)}
+  @media(max-width:640px){.shell{padding:0 16px 64px}body{font-size:16px}
+    .field{grid-template-columns:1fr}.field dt{border-right:none}}
+</style>
+
+<div class="shell">
+  <header>
+    <span class="eyebrow">Submission ledger &middot; Manic Trade bounty, stage 0</span>
+    <h1>Every field, and what backs it</h1>
+    <p class="standfirst">The exact values entered on the sponsor form and on each Typeform submission, recorded so a reviewer can match a report to its evidence without asking. The written report is at <a href="/">huntstamp-findings.vercel.app</a>; the captured screenshots and raw measurements are in the <a href="/evidence.html">evidence locker</a>.</p>
+  </header>
+
+  <h2>Sponsor form</h2>
+  <p class="sec-note">Values as entered, so the sponsor can match the Typeform reports to this account.</p>
+  <dl class="fields">
+    <div class="field"><dt>Submission link</dt><dd><a href="https://huntstamp-findings.vercel.app">https://huntstamp-findings.vercel.app</a><span class="hint">Public, no authentication. Verified anonymously at HTTP 200.</span></dd></div>
+    <div class="field"><dt>Tweet link</dt><dd>&mdash;<span class="hint">Left empty. This is not an X thread bounty.</span></dd></div>
+    <div class="field"><dt>Typeform email</dt><dd>nayrbryangaming01@gmail.com<span class="hint">The address used on all sixteen Typeform submissions, so the sponsor can match them to this entry.</span></dd></div>
+    <div class="field"><dt>Manic account</dt><dd>nayrbryangaming3@gmail.com</dd></div>
+    <div class="field"><dt>Polymarket deposit address</dt><dd>AdXEHNYtN26dmp7G9eAnjmDbQJG9wDuHS4v7BB1MWwEf<span class="hint">A receive address, published here deliberately because the sponsor asked for it as an identifier. It holds nothing; no deposit was made at any point during testing.</span></dd></div>
+  </dl>
+
+  <h2>Anything Else &mdash; corrected text</h2>
+  <p class="sec-note">Use this rather than the earlier draft. The reason for the change is set out directly below it.</p>
+  <pre><code>All findings were first observed against deployment dpl_74W5o38E8FQjJUZ2DYo5PFDHEsLs on
+3 September 2026, Chromium 148 on Windows 11, at 1440x900 and 375x812. Manic shipped a
+newer build, dpl_C3bXHquKbKr1sjn9WpRtDt8MWfce, partway through the session, and every
+finding was then re-checked against it by an automated Playwright pass. The screenshots
+and raw measurements from that pass are published alongside the report.
+
+Sixteen findings filed separately through the Typeform.
+
+The two with the most weight, both re-confirmed on the newer build:
+
+- A market marked Resolved, with its order book closed and a final score of 2-6 on
+  screen, still advertises Settlement Time: Sep 9, 3:00 PM UTC. The match was played
+  on 2 September, which the event slug itself records. A user checking when funds are
+  released is given a date with no relation to a settlement that already happened.
+
+- /pm stops resolving to the market directory once any event has been opened. The cause
+  is localStorage 'pm-events-store', which restores the stored event and rewrites the
+  address bar. Removing that key restores the directory, so the root cause is isolated
+  rather than just the symptom. This is the entry point named in the bounty brief, so
+  anyone following a documentation link to /pm lands somewhere else.
+
+Two findings were withdrawn rather than filed. Both withdrawals are documented in the
+report rather than deleted:
+
+- Mobile subcategory chips appeared non-functional. Re-testing showed the cause was my
+  automation harness, not the application.
+
+- I measured the /pm load event at 94s and then 136s through an instrumented browser and
+  had written it up as a performance defect. An automated run on the same machine and
+  connection then loaded the same route with loadEventEnd at 1,581ms and TTFB at 57ms.
+  The slow figures were an artefact of my environment. The route does request 115 JS
+  chunks, but that is an observation, not a defect on this evidence.
+
+One further finding is filed with its frequency answered honestly as "only happened
+once": a settled market rendering two contradictory price sets, one pair summing to
+101%. The capture is verbatim and the build id is recorded, but it did not reproduce on
+re-test, so triage should expect that.
+
+This session ran entirely as a logged-out guest. No funds were deposited and no orders
+were placed. Deposits, order placement, positions, balances and settlement crediting all
+require a funded account with real USDC at risk, and none of that was exercised. That is
+where this programme's P0 weight sits, and it remains untested.
+
+Testing was AI-driven browser automation rather than manual QA. Stated up front, because
+every finding rests on reproduction steps your own team can run.
+
+Report:   https://huntstamp-findings.vercel.app
+Evidence: https://huntstamp-findings.vercel.app/evidence.html
+Ledger:   https://huntstamp-findings.vercel.app/submission.html</code></pre>
+
+  <div class="callout pull">
+    <h3>Why the third bullet was removed</h3>
+    <p>The earlier draft led with a performance claim: <code>loadEventEnd</code> at 94s and then 136s, against a same-session control load of 1.3s. That measurement was real, but it was not measuring the application. An automated Playwright run on the same machine and the same connection loaded the same route with <code>loadEventEnd</code> at <strong>1,581 ms</strong> and TTFB at 57 ms, with the same 115 chunks.</p>
+    <p>The programme excludes issues caused by the reporter's own device or network. Sending that bullet to a CTO invites them to measure it themselves, find a second and a half, and discount the rest of the report by association. Removing it costs one finding and protects the other sixteen.</p>
+  </div>
+
+  <h2>Per-finding ledger</h2>
+  <p class="sec-note">Sixteen to file, two withdrawn. Status reflects the automated re-test against the newer build. The capture column names the screenshot backing it in the evidence locker.</p>
+  <div class="scroll">
+    <table>
+      <thead><tr><th>#</th><th>ID</th><th>Finding</th><th>Re-test</th><th>Capture</th></tr></thead>
+      <tbody>
+        <tr><td>01</td><td>F-02</td><td>Contradictory price sets on a settled market, one pair summing to 101%</td><td><span class="tag t-warn">Once only</span></td><td>&mdash;</td></tr>
+        <tr><td>02</td><td>F-01</td><td>The <code>/pm</code> entry URL hijacked by a stored tab</td><td><span class="tag t-ok">Holds</span></td><td>F-01</td></tr>
+        <tr><td>03</td><td>F-10</td><td>Slow page load</td><td><span class="tag t-no">Withdrawn</span></td><td>&mdash;</td></tr>
+        <tr><td>04</td><td>F-03</td><td>Settlement date a week after the event it settles</td><td><span class="tag t-ok">Holds</span></td><td>F-03</td></tr>
+        <tr><td>05</td><td>F-04</td><td>Unpriced outcome with both buy buttons enabled</td><td><span class="tag t-warn">Transient</span></td><td>&mdash;</td></tr>
+        <tr><td>06</td><td>F-05</td><td>Resolved market promoted in Trending with live controls</td><td><span class="tag t-ok">Holds</span></td><td>F-05</td></tr>
+        <tr><td>07</td><td>F-12</td><td>A category click silently discards the search query</td><td><span class="tag t-ok">Holds</span></td><td>F-12a, F-12b</td></tr>
+        <tr><td>08</td><td>F-14</td><td>Empty state with no reset, and the filter off-screen on mobile</td><td><span class="tag t-ok">Holds</span></td><td>F-14</td></tr>
+        <tr><td>09</td><td>F-15</td><td>Inactive responsive layout stays focusable at zero size</td><td><span class="tag t-warn">Count varies</span></td><td>F-05</td></tr>
+        <tr><td>10</td><td>F-07</td><td>Prop labels repeat the event title and truncate identically</td><td><span class="tag t-ok">Holds, 48 rows</span></td><td>F-07</td></tr>
+        <tr><td>11</td><td>F-16</td><td>Nav still reads "August Rewards" in September</td><td><span class="tag t-ok">Holds</span></td><td>F-16</td></tr>
+        <tr><td>12</td><td>F-06</td><td>A whole-number price rendered as <code>100.0%</code></td><td><span class="tag t-no">Not reproduced</span></td><td>&mdash;</td></tr>
+        <tr><td>13</td><td>F-08</td><td>Zero volume renders as <code>-- Vol</code> rather than <code>$0</code></td><td><span class="tag t-ok">Holds, 13 rows</span></td><td>F-07</td></tr>
+        <tr><td>14</td><td>F-09</td><td>Landing-page hero preloaded on the trading route, warned 16 times</td><td><span class="tag t-ok">Holds</span></td><td>console.log</td></tr>
+        <tr><td>15</td><td>F-11</td><td>The same candidate spelled two ways on two cards visible at once</td><td><span class="tag t-ok">Holds</span></td><td>F-05</td></tr>
+        <tr><td>16</td><td>F-13</td><td>Zero-count subcategories offered as selectable filters</td><td><span class="tag t-ok">Holds</span></td><td>F-14</td></tr>
+        <tr><td>17</td><td>F-17</td><td>Clipboard overwritten by a click on empty grid space</td><td><span class="tag t-warn">Once only</span></td><td>&mdash;</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Answers repeated on every Typeform submission</h2>
+  <div class="scroll">
+    <table>
+      <thead><tr><th>Field</th><th>Value</th></tr></thead>
+      <tbody>
+        <tr><td>Device, browser</td><td>Desktop PC / Windows 11 build 26200 / Chromium 148 / no wallet connected, logged-out guest session</td></tr>
+        <tr><td>When</td><td>3 September 2026, 04:00&ndash;09:48 UTC</td></tr>
+        <tr><td>No secrets, no disclosure</td><td>Accepted. Nothing secret was included, nothing was exploited repeatedly or disclosed publicly, and Manic is welcome to reproduce and follow up.</td></tr>
+        <tr><td>Created with AI, no manual testing</td><td>Accepted. AI-driven browser automation against the live application: real page loads, real DOM reads, real timings, no manual QA pass and no funded account.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout flag">
+    <h3>What no amount of automation could cover</h3>
+    <p>Deposits, order placement, order matching, positions, balances, withdrawal and settlement crediting all require a funded account with real USDC at risk. None of it was touched. On a real-money venue that is exactly where the severe defects live, so this report should be read as covering the surface a logged-out visitor can reach and nothing beyond it.</p>
+    <p>The screenshot upload on each Typeform submission is the one field that had to be filled by hand, from the captured PNGs. Producing an image of evidence that was never photographed would be fabricating evidence, which is the specific thing these programmes screen for.</p>
+  </div>
+
+  <footer>
+    Recorded 2026-09-03 &middot; builds dpl_74W5o38E8FQjJUZ2DYo5PFDHEsLs and dpl_C3bXHquKbKr1sjn9WpRtDt8MWfce<br>
+    <a href="/">Report</a> &middot; <a href="/evidence.html">Evidence locker</a> &middot; <a href="/huntstamp.html">Huntstamp</a> &middot; <a href="https://github.com/bryankwandou/huntstamp-findings">Source</a>
+  </footer>
+</div>

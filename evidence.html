@@ -1,0 +1,232 @@
+<title>Findings Evidence Locker</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap">
+<style>
+  :root{
+    --bg:#E6ECEB;--surface:#F8FBFA;--surface-2:#DDE6E4;--line:#C2D0CD;--line-soft:#D5E0DE;
+    --text:#0E1A19;--muted:#4C5F5C;--faint:#6E817E;--accent:#0A6E66;--accent-lo:#D6E8E5;
+    --ok:#1F6B4B;--ok-lo:#D8EBE2;--no:#A62A42;--no-lo:#F3DDE1;--warn:#9A6510;--warn-lo:#F2E6CE;
+  }
+  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+    --bg:#0A100F;--surface:#121D1B;--surface-2:#182523;--line:#263936;--line-soft:#1D2C2A;
+    --text:#DEEAE7;--muted:#93A8A4;--faint:#748985;--accent:#4FB8AC;--accent-lo:#10302C;
+    --ok:#6BBF95;--ok-lo:#12281F;--no:#E4738A;--no-lo:#34141B;--warn:#D7A244;--warn-lo:#2E2210;
+  }}
+  :root[data-theme="dark"]{
+    --bg:#0A100F;--surface:#121D1B;--surface-2:#182523;--line:#263936;--line-soft:#1D2C2A;
+    --text:#DEEAE7;--muted:#93A8A4;--faint:#748985;--accent:#4FB8AC;--accent-lo:#10302C;
+    --ok:#6BBF95;--ok-lo:#12281F;--no:#E4738A;--no-lo:#34141B;--warn:#D7A244;--warn-lo:#2E2210;
+  }
+  *{box-sizing:border-box}
+  body{background:var(--bg);color:var(--text);font-family:"Source Serif 4",Georgia,serif;
+    font-size:16.5px;line-height:1.62;-webkit-font-smoothing:antialiased}
+  .shell{max-width:1080px;margin:0 auto;padding:0 28px 96px}
+  .mono{font-family:"IBM Plex Mono",ui-monospace,monospace}
+
+  header{border-bottom:2px solid var(--text);padding:56px 0 22px;display:flex;flex-direction:column;gap:16px}
+  .eyebrow{font-family:"IBM Plex Mono",monospace;font-size:11.5px;font-weight:500;
+    letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+  h1{font-family:Archivo,Arial,sans-serif;font-weight:700;font-size:clamp(2rem,5vw,3.2rem);
+    line-height:1.03;letter-spacing:-.028em;margin:0;text-wrap:balance}
+  .standfirst{max-width:66ch;font-size:1.06rem;color:var(--muted);margin:0}
+  .standfirst a{color:var(--accent)}
+
+  h2{font-family:Archivo,sans-serif;font-weight:600;font-size:1.45rem;letter-spacing:-.018em;
+    margin:62px 0 6px;padding-bottom:10px;border-bottom:1px solid var(--line)}
+  .sec-note{max-width:66ch;color:var(--muted);font-size:.97rem;margin:0 0 24px}
+
+  .scroll{overflow-x:auto}
+  table{width:100%;border-collapse:collapse;font-size:.94rem;min-width:560px}
+  th{text-align:left;font-family:"IBM Plex Mono",monospace;font-weight:500;font-size:10.5px;
+    letter-spacing:.11em;text-transform:uppercase;color:var(--faint);
+    padding:0 14px 9px 0;border-bottom:1px solid var(--line)}
+  td{padding:10px 14px 10px 0;border-bottom:1px solid var(--line-soft);vertical-align:top;color:var(--muted)}
+  td:first-child{color:var(--text);font-family:"IBM Plex Mono",monospace;font-size:12.5px;white-space:nowrap}
+  .tag{font-family:"IBM Plex Mono",monospace;font-size:10.5px;font-weight:600;letter-spacing:.07em;
+    padding:2px 7px;white-space:nowrap;border:1px solid currentColor}
+  .t-ok{color:var(--ok);background:var(--ok-lo)}
+  .t-no{color:var(--no);background:var(--no-lo)}
+  .t-warn{color:var(--warn);background:var(--warn-lo)}
+
+  figure{margin:0 0 40px;border:1px solid var(--line);background:var(--surface)}
+  figure img{display:block;width:100%;height:auto;border-bottom:1px solid var(--line)}
+  figcaption{padding:16px 18px 18px;display:flex;flex-direction:column;gap:8px}
+  .fig-id{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.1em;
+    text-transform:uppercase;color:var(--faint)}
+  .fig-t{font-family:Archivo,sans-serif;font-weight:600;font-size:1.08rem;color:var(--text);
+    line-height:1.3}
+  figcaption p{margin:0;font-size:.95rem;color:var(--muted);max-width:70ch}
+  pre{font-family:"IBM Plex Mono",monospace;font-size:12.5px;line-height:1.55;
+    background:var(--surface-2);border-left:2px solid var(--accent);padding:11px 13px;
+    margin:4px 0 0;overflow-x:auto;color:var(--text)}
+  code{font-family:"IBM Plex Mono",monospace;font-size:.88em;background:var(--accent-lo);padding:1px 4px}
+  pre code{background:none;padding:0}
+
+  .callout{border:1px solid var(--line);background:var(--surface);padding:22px 24px;margin-top:26px}
+  .callout h3{font-family:Archivo,sans-serif;font-weight:600;font-size:1.08rem;margin:0 0 8px}
+  .callout p{max-width:68ch;margin:0 0 10px;color:var(--muted)}
+  .callout p:last-child{margin:0}
+  .callout.pull{border-left:3px solid var(--no)}
+
+  footer{margin-top:70px;padding-top:20px;border-top:2px solid var(--text);
+    font-family:"IBM Plex Mono",monospace;font-size:11.5px;letter-spacing:.04em;
+    color:var(--faint);line-height:1.8}
+  footer a{color:var(--accent)}
+  @media(max-width:640px){.shell{padding:0 16px 64px}body{font-size:16px}}
+</style>
+
+<div class="shell">
+  <header>
+    <span class="eyebrow">Evidence locker · captured 2026-09-03</span>
+    <h1>What the camera saw</h1>
+    <p class="standfirst">Eight screenshots and one measurement file, captured by a Playwright script against the live application rather than by hand. Each image is the unedited frame the script took; each number underneath was read from the same page in the same run. The written report is at <a href="/">huntstamp-findings.vercel.app</a>.</p>
+  </header>
+
+  <h2>Build under test</h2>
+  <p class="sec-note">Manic shipped a new deployment partway through the session. Everything on this page comes from the newer build.</p>
+  <div class="scroll">
+    <table>
+      <thead><tr><th>Field</th><th>Value</th></tr></thead>
+      <tbody>
+        <tr><td>build</td><td>dpl_C3bXHquKbKr1sjn9WpRtDt8MWfce</td></tr>
+        <tr><td>capture window</td><td>2026-09-03T09:46:27Z → 09:47:53Z</td></tr>
+        <tr><td>viewport</td><td>1440 × 900 at 2× device pixel ratio, plus 375 × 812 for the mobile frame</td></tr>
+        <tr><td>session</td><td>Logged out, no wallet, no funds</td></tr>
+        <tr><td>capture script</td><td>capture-evidence.js, Playwright with headless Chromium</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>What survived the re-test</h2>
+  <p class="sec-note">Findings were first observed on an earlier build through an instrumented browser. This automated pass re-checked them. Two did not hold, and one was withdrawn outright.</p>
+  <div class="scroll">
+    <table>
+      <thead><tr><th>Finding</th><th>Status</th><th>Measured this run</th></tr></thead>
+      <tbody>
+        <tr><td>F-01</td><td><span class="tag t-ok">Holds</span></td><td>Requested <code>/pm</code>, landed on <code>/pm/event/atp-faria-alcaraz-2026-09-02</code></td></tr>
+        <tr><td>F-03</td><td><span class="tag t-ok">Holds</span></td><td><code>Sep 9, 3:00 PM UTC</code> · resolved true · marketEnded true · score 2 - 6</td></tr>
+        <tr><td>F-12</td><td><span class="tag t-ok">Holds</span></td><td>Both search inputs read <code>""</code> after the category click</td></tr>
+        <tr><td>F-16</td><td><span class="tag t-ok">Holds</span></td><td>Nav reads <code>August Rewards</code> at <code>2026-09-03T09:46:37Z</code></td></tr>
+        <tr><td>F-07</td><td><span class="tag t-ok">Holds, larger</span></td><td>48 prop rows prefixed with the event title, not 26</td></tr>
+        <tr><td>F-08</td><td><span class="tag t-ok">Holds</span></td><td>13 rows rendering <code>-- Vol</code></td></tr>
+        <tr><td>F-09</td><td><span class="tag t-ok">Holds</span></td><td>1 unused preloaded asset, warned 16 times in one load</td></tr>
+        <tr><td>F-11</td><td><span class="tag t-ok">Holds</span></td><td>Both <code>J.D. Vance</code> and <code>JD Vance</code> present</td></tr>
+        <tr><td>F-15</td><td><span class="tag t-warn">Count unstable</span></td><td>19 zero-size focusable controls this run, 58 earlier; 21 of 23 images without alt</td></tr>
+        <tr><td>F-02</td><td><span class="tag t-no">Not reproduced</span></td><td>Both readouts agree at 0% / 100%; the 9% / 92% legend is gone</td></tr>
+        <tr><td>F-06</td><td><span class="tag t-no">Not reproduced</span></td><td>33 percentages, none carrying a decimal</td></tr>
+        <tr><td>F-10</td><td><span class="tag t-no">Withdrawn</span></td><td><code>loadEventEnd</code> 1,581 ms — see below</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout pull">
+    <h3>F-10 was my error, not Manic's</h3>
+    <p>I measured the <code>/pm</code> load event at 94,029 ms and then 135,689 ms through an instrumented browser pane, and wrote it up as a performance defect. This automated run, on the same machine and the same connection, loaded the same route with <code>loadEventEnd</code> at <strong>1,581 ms</strong> — time to first byte 57 ms, DOMContentLoaded 1,193 ms, the same 115 JavaScript chunks.</p>
+    <p>The slow figures came from my test environment. The bounty excludes issues caused by the reporter's own device or network, and it is right to exclude this one. It is recorded here rather than deleted, because a reviewer is owed the failures as well as the findings.</p>
+  </div>
+
+  <h2>The frames</h2>
+  <p class="sec-note">Unedited screenshots. No annotation has been added to any image; the numbers sit underneath rather than on top of them.</p>
+
+  <figure>
+    <img src="evidence/F-03-settlement-vs-resolved.png" alt="Manic event page showing a resolved market with a settlement time dated a week later">
+    <figcaption>
+      <span class="fig-id">F-03 · settlement date on a resolved market</span>
+      <span class="fig-t">A market that has finished says it settles next week</span>
+      <p>The match was played on 2 September, which the event slug itself records. The page shows the final score, marks the market Resolved, closes the order book — and still advertises a settlement six days after the date of capture.</p>
+      <pre><code>settlementTime : "Sep 9, 3:00 PM UTC"
+resolved       : true
+marketEnded    : true
+score          : "2 - 6"
+eventSlugDate  : "2026-09-02"</code></pre>
+    </figcaption>
+  </figure>
+
+  <figure>
+    <img src="evidence/F-01-pm-redirected-to-event.png" alt="The /pm URL rendering a single event instead of the market directory">
+    <figcaption>
+      <span class="fig-id">F-01 · the entry URL is hijacked</span>
+      <span class="fig-t">Asking for the directory returns yesterday's market</span>
+      <p>The script cleared nothing and simply requested <code>/pm</code>, the URL named in the bounty brief. A stored tab in <code>localStorage</code> reopened the previously viewed event and rewrote the address bar. Removing the key restores the directory, which is what identifies the cause rather than the symptom.</p>
+      <pre><code>requested : "/pm"
+landedOn  : "/pm/event/atp-faria-alcaraz-2026-09-02"
+storedStateBefore :
+  {"state":{"category":"all","surface":"catalog",
+   "openEventIds":["atp-faria-alcaraz-2026-09-02"], …}}</code></pre>
+    </figcaption>
+  </figure>
+
+  <figure>
+    <img src="evidence/F-12a-search-bitcoin.png" alt="Nine Bitcoin markets returned by the search box">
+    <figcaption>
+      <span class="fig-id">F-12 · before</span>
+      <span class="fig-t">A search for bitcoin returns its markets</span>
+      <p>The query is in the box and the grid has narrowed to match it.</p>
+    </figcaption>
+  </figure>
+
+  <figure>
+    <img src="evidence/F-12b-query-cleared.png" alt="The same screen after clicking Politics, with the search box emptied">
+    <figcaption>
+      <span class="fig-id">F-12 · after one click on Politics</span>
+      <span class="fig-t">The query is gone, and nothing said so</span>
+      <p>One click on a category chip empties the search field and discards the query. Read back from the DOM immediately afterwards, both search inputs return an empty string.</p>
+      <pre><code>searchValuesAfterCategoryClick : ["", ""]</code></pre>
+    </figcaption>
+  </figure>
+
+  <figure>
+    <img src="evidence/F-16-nav-august-rewards.png" alt="Manic navigation bar reading August Rewards">
+    <figcaption>
+      <span class="fig-id">F-16 · stale promotion label</span>
+      <span class="fig-t">The loudest item in the header names last month</span>
+      <p>Captured with the browser clock inside the same run, so the date and the label are from one moment rather than two.</p>
+      <pre><code>navText  : "August Rewards"
+clockNow : "2026-09-03T09:46:37.315Z"</code></pre>
+    </figcaption>
+  </figure>
+
+  <figure>
+    <img src="evidence/F-07-props-rail-truncated.png" alt="Props rail where every row truncates to the same text">
+    <figcaption>
+      <span class="fig-id">F-07 · unreadable prop labels</span>
+      <span class="fig-t">Forty-eight rows that all read the same</span>
+      <p>Every prop label repeats the full event title before the part that identifies it, and the rail truncates exactly where the distinguishing text begins.</p>
+      <pre><code>propsPrefixedWithEventTitle : 48
+sample : "US Open ATP: Jaime Faria vs Carlos Alcaraz Set 1 Winner"
+         "US Open ATP: Jaime Faria vs Carlos Alcaraz Set 1 O/U 8.5"</code></pre>
+    </figcaption>
+  </figure>
+
+  <figure>
+    <img src="evidence/F-05-trending-grid.png" alt="The default Trending grid of the Polymarket integration">
+    <figcaption>
+      <span class="fig-id">F-05, F-11 · the default discovery surface</span>
+      <span class="fig-t">The first screen of the integration</span>
+      <p>The context frame for the grid findings: resolved markets carried with live buy buttons, and the same candidate spelled two ways on two cards visible at once.</p>
+      <pre><code>dottedSpelling : true   ("J.D. Vance")
+plainSpelling  : true   ("JD Vance")</code></pre>
+    </figcaption>
+  </figure>
+
+  <figure>
+    <img src="evidence/F-14-mobile.png" alt="The Polymarket integration at a 375 by 812 mobile viewport">
+    <figcaption>
+      <span class="fig-id">F-14 · mobile</span>
+      <span class="fig-t">Where the empty state leaves a phone user stranded</span>
+      <p>At this width the subcategory rail scrolls horizontally and the selected filter can sit off-screen, so an empty result gives no visible cause and no control to undo it.</p>
+    </figcaption>
+  </figure>
+
+  <h2>How these were produced</h2>
+  <div class="callout">
+    <h3>A script, not a person, and not a picture editor</h3>
+    <p>Every image on this page was written to disk by <code>capture-evidence.js</code> driving headless Chromium against <code>app.manic.trade</code>. Nothing was cropped, annotated, composited or retouched. The measurements printed under each frame were read from the same page during the same run and stored in <code>measurements.json</code> beside the images.</p>
+    <p>The testing was AI-driven rather than manual. That is stated plainly on every submission, because the findings stand on reproduction steps that Manic's own team can run, and a method discovered later reads as concealment.</p>
+    <p>What no script could supply: deposits, order placement, positions, balances and settlement crediting all need a funded account with real USDC at risk. None of that was exercised, and that is where this bounty's P0 weight sits.</p>
+  </div>
+
+  <footer>
+    Captured 2026-09-03 · build dpl_C3bXHquKbKr1sjn9WpRtDt8MWfce · Playwright, headless Chromium<br>
+    <a href="/">Written report</a> · <a href="/huntstamp.html">Huntstamp</a> · <a href="https://github.com/bryankwandou/huntstamp-findings">Source</a>
+  </footer>
+</div>
