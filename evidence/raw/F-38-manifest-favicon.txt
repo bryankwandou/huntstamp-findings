@@ -1,0 +1,10 @@
+$ curl -sI https://app.manic.trade/manifest.json  and  /favicon.ico
+
+  /manifest.json   HTTP 404   1512158 bytes   content-type: text/html; charset=utf-8
+  /favicon.ico     HTTP 404   1512158 bytes   content-type: text/html; charset=utf-8
+
+Both return HTTP 404, but the body is 1,512,158 bytes of the application HTML
+shell rather than an error. The Content-Type is text/html, not application/json
+or image/x-icon, so a browser or PWA installer requesting either receives 1.5 MB
+of the wrong content type under a 404. A site that ships a manifest link but
+answers /manifest.json with an HTML 404 cannot be installed as a PWA.

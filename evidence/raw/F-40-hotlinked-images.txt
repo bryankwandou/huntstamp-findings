@@ -1,0 +1,12 @@
+$ node api-structure.js   # host of every event image, across 6,521 markets
+
+Distinct image hosts found: 1
+
+  polymarket-upload.s3.us-east-2.amazonaws.com   6521 of 6,521 events
+
+Every market image and icon on the venue is loaded directly from Polymarket's
+own S3 bucket, not from a Manic origin or CDN. Two consequences:
+  - availability: if that bucket rotates keys, removes an object, or blocks
+    hotlinking, every card image on Manic breaks at once, with no fallback.
+  - privacy: each visitor's browser discloses its IP and User-Agent to a
+    third-party AWS bucket on every page load, on a site users reach to trade.

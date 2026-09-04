@@ -1,0 +1,170 @@
+{
+  "scannedAt": "2026-09-04T18:23:54.622Z",
+  "wellKnown": {
+    "/robots.txt": {
+      "status": 200,
+      "bytes": 69,
+      "firstLine": "User-Agent: *",
+      "contentType": "text/plain"
+    },
+    "/.well-known/security.txt": {
+      "status": 404,
+      "bytes": 1512158,
+      "firstLine": "<!DOCTYPE html><!--IQSImi85_xW3cQZBeZsAu--><html lang=\"en\" style=\"background:#000\"><head><meta charSet=\"utf-8\"/><meta na",
+      "contentType": "text/html; charset=utf-8"
+    },
+    "/security.txt": {
+      "status": 404,
+      "bytes": 1512158,
+      "firstLine": "<!DOCTYPE html><!--IQSImi85_xW3cQZBeZsAu--><html lang=\"en\" style=\"background:#000\"><head><meta charSet=\"utf-8\"/><meta na",
+      "contentType": "text/html; charset=utf-8"
+    },
+    "/sitemap.xml": {
+      "status": 200,
+      "bytes": 43761,
+      "firstLine": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>",
+      "contentType": "application/xml"
+    },
+    "/manifest.json": {
+      "status": 404,
+      "bytes": 1512158,
+      "firstLine": "<!DOCTYPE html><!--IQSImi85_xW3cQZBeZsAu--><html lang=\"en\" style=\"background:#000\"><head><meta charSet=\"utf-8\"/><meta na",
+      "contentType": "text/html; charset=utf-8"
+    },
+    "/favicon.ico": {
+      "status": 404,
+      "bytes": 1512158,
+      "firstLine": "<!DOCTYPE html><!--IQSImi85_xW3cQZBeZsAu--><html lang=\"en\" style=\"background:#000\"><head><meta charSet=\"utf-8\"/><meta na",
+      "contentType": "text/html; charset=utf-8"
+    }
+  },
+  "headers": {
+    "app.manic.trade/": {
+      "status": 200,
+      "present": {
+        "strict-transport-security": "max-age=63072000",
+        "cache-control": "public, max-age=0, must-revalidate",
+        "vary": "rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch",
+        "server": "Vercel",
+        "x-powered-by": "Next.js",
+        "set-cookie": [
+          "is-mobile=0; Path=/; Expires=Sat, 05 Sep 2026 18:24:05 GMT; Max-Age=86400; SameSite=lax"
+        ],
+        "content-type": "text/html; charset=utf-8"
+      },
+      "missingSecurity": [
+        "content-security-policy",
+        "x-frame-options",
+        "x-content-type-options",
+        "referrer-policy",
+        "permissions-policy",
+        "cross-origin-opener-policy",
+        "cross-origin-resource-policy",
+        "cross-origin-embedder-policy"
+      ]
+    },
+    "app.manic.trade/pm": {
+      "status": 200,
+      "present": {
+        "strict-transport-security": "max-age=63072000",
+        "cache-control": "public, max-age=0, must-revalidate",
+        "vary": "rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch",
+        "server": "Vercel",
+        "x-powered-by": "Next.js",
+        "set-cookie": [
+          "is-mobile=0; Path=/; Expires=Sat, 05 Sep 2026 18:24:07 GMT; Max-Age=86400; SameSite=lax"
+        ],
+        "content-type": "text/html; charset=utf-8"
+      },
+      "missingSecurity": [
+        "content-security-policy",
+        "x-frame-options",
+        "x-content-type-options",
+        "referrer-policy",
+        "permissions-policy",
+        "cross-origin-opener-policy",
+        "cross-origin-resource-policy",
+        "cross-origin-embedder-policy"
+      ]
+    },
+    "app.manic.trade/leaderboard": {
+      "status": 200,
+      "present": {
+        "strict-transport-security": "max-age=63072000",
+        "cache-control": "public, max-age=0, must-revalidate",
+        "vary": "rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch",
+        "server": "Vercel",
+        "x-powered-by": "Next.js",
+        "set-cookie": [
+          "is-mobile=0; Path=/; Expires=Sat, 05 Sep 2026 18:24:08 GMT; Max-Age=86400; SameSite=lax"
+        ],
+        "content-type": "text/html; charset=utf-8"
+      },
+      "missingSecurity": [
+        "content-security-policy",
+        "x-frame-options",
+        "x-content-type-options",
+        "referrer-policy",
+        "permissions-policy",
+        "cross-origin-opener-policy",
+        "cross-origin-resource-policy",
+        "cross-origin-embedder-policy"
+      ]
+    },
+    "bo-server-api.manic.trade/charts/pm/events": {
+      "status": 200,
+      "present": {
+        "cache-control": "public, max-age=15, stale-while-revalidate=60",
+        "access-control-allow-origin": "*",
+        "vary": "origin, access-control-request-method, access-control-request-headers",
+        "server": "cloudflare",
+        "content-type": "application/json"
+      },
+      "missingSecurity": [
+        "content-security-policy",
+        "x-frame-options",
+        "x-content-type-options",
+        "referrer-policy",
+        "permissions-policy",
+        "strict-transport-security",
+        "cross-origin-opener-policy",
+        "cross-origin-resource-policy",
+        "cross-origin-embedder-policy"
+      ]
+    }
+  },
+  "cors": {
+    "bo-server-api.manic.trade/charts/pm/events": {
+      "allowOrigin": "*",
+      "allowCredentials": null,
+      "reflectsArbitraryOrigin": false,
+      "wildcard": true
+    }
+  },
+  "cookies": {
+    "app.manic.trade/": [
+      {
+        "name": "is-mobile",
+        "secure": false,
+        "httpOnly": false,
+        "sameSite": "lax"
+      }
+    ],
+    "app.manic.trade/pm": [
+      {
+        "name": "is-mobile",
+        "secure": false,
+        "httpOnly": false,
+        "sameSite": "lax"
+      }
+    ],
+    "app.manic.trade/leaderboard": [
+      {
+        "name": "is-mobile",
+        "secure": false,
+        "httpOnly": false,
+        "sameSite": "lax"
+      }
+    ]
+  }
+}

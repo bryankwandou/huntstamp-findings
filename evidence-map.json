@@ -179,5 +179,65 @@
       "file": "F-31-unnamed.png",
       "caption": "Controls exposing no text, aria-label, title or labelled image. Four on the landing page; none on the leaderboard or referral pages."
     }
+  ],
+  "F-32": [
+    {
+      "file": "F-32-scored-but-open.png",
+      "caption": "194 markets carry a score while still flagged acceptingOrders; the box shows one verified live - a finished match (period FT, Pegula won 1-6 6-4 6-3) still status live and accepting orders at an ask of 1.0. A rendering of the exact API bytes; the raw capture is published beside it."
+    }
+  ],
+  "F-33": [
+    {
+      "file": "F-33-past-end-open.png",
+      "caption": "338 of 6,519 events had an end timestamp already in the past while still accepting orders and not closed. Rendered from the scan output; raw capture beside it."
+    }
+  ],
+  "F-34": [
+    {
+      "file": "F-34-ends-before-start.png",
+      "caption": "81 events whose advertised end time falls before their start time, each 12 hours out. From the events API; raw capture beside it."
+    }
+  ],
+  "F-35": [
+    {
+      "file": "F-35-inactive-accepting.png",
+      "caption": "47 outcomes marked active=false while still acceptingOrders=true. From the events API; raw capture beside it."
+    }
+  ],
+  "F-36": [
+    {
+      "file": "F-36-volume-impossible.png",
+      "caption": "30 outcomes and 25 events reporting a 24-hour volume larger than their all-time volume. From the events API; raw capture beside it."
+    }
+  ],
+  "F-37": [
+    {
+      "file": "F-37-no-securitytxt.png",
+      "caption": "Both security.txt locations return 404 while robots.txt and sitemap.xml are present, so the well-known mechanism works and only the security contact is missing. curl headers; raw capture beside it."
+    }
+  ],
+  "F-38": [
+    {
+      "file": "F-38-manifest-favicon.png",
+      "caption": "/manifest.json and /favicon.ico each answered with HTTP 404 carrying 1,512,158 bytes of HTML under content-type text/html. curl headers; raw capture beside it."
+    }
+  ],
+  "F-39": [
+    {
+      "file": "F-39-chance-vs-book.png",
+      "caption": "The 5-minute BTC and ETH up/down markets, where the displayed chance sits 22 points away from the mid of the live order book. From the events API; raw capture beside it."
+    }
+  ],
+  "F-40": [
+    {
+      "file": "F-40-hotlinked-images.png",
+      "caption": "One image host across all 6,521 events: polymarket-upload.s3.amazonaws.com. From the events API; raw capture beside it."
+    }
+  ],
+  "F-41": [
+    {
+      "file": "F-41-dup-outcome-name.png",
+      "caption": "Nine events rendering two outcomes with the identical name. From the events API; raw capture beside it."
+    }
   ]
 }

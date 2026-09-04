@@ -1,0 +1,19 @@
+$ node api-integrity2.js   # displayed chance vs order-book mid price
+
+Markets where the displayed chance disagrees with the book mid by >20 points: 2
+
+  btc-updown-5m-1788546000
+    market      : Bitcoin Up or Down - September 4, 2:20PM-2:25PM ET
+    chance shown : 0.825   (82%)
+    book mid     : 0.605   (60%)   from bestBid/bestAsk
+    gap          : 22 points
+
+  eth-updown-5m-1788546000
+    market      : Ethereum Up or Down - September 4, 2:20PM-2:25PM ET
+    chance shown : 0.795   (80%)
+    book mid     : 0.575   (57%)   from bestBid/bestAsk
+    gap          : 22 points
+
+Both are the 5-minute Bitcoin and Ethereum up/down markets. The percentage the
+user reads is 22 points away from what the live order book implies, on the
+fastest-settling markets on the venue.

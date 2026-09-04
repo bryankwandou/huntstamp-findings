@@ -1,0 +1,16 @@
+$ node api-integrity.js   # endTs earlier than gameStartTs
+
+Events whose advertised end time is before their start time: 81
+
+  republican-presidential-nominee-2028         start 2028-11-07 12:00 UTC   end 2028-11-07 00:00 UTC
+    end is 12 hours before start
+  brazil-presidential-election                 start 2026-10-04 12:00 UTC   end 2026-10-04 00:00 UTC
+    end is 12 hours before start
+  democratic-presidential-nominee-2028         start 2028-11-07 12:00 UTC   end 2028-11-07 00:00 UTC
+    end is 12 hours before start
+  presidential-election-winner-2028            start 2028-11-07 12:00 UTC   end 2028-11-07 00:00 UTC
+    end is 12 hours before start
+  which-party-will-gain-most-seats-in-russian-parliamentary-election start 2026-09-20 12:00 UTC   end 2026-09-20 00:00 UTC
+    end is 12 hours before start
+  next-prime-minister-of-sweden                start 2026-09-13 12:00 UTC   end 2026-09-13 00:00 UTC
+    end is 12 hours before start

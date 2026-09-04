@@ -1,0 +1,58 @@
+{
+  "scannedAt": "2026-09-04T18:28:04.066Z",
+  "distinctEvents": 6521,
+  "counts": {
+    "C7-external-image-host": 6521,
+    "C5-dup-outcome-name": 9
+  },
+  "samples": {
+    "C7-external-image-host": [
+      {
+        "host": "polymarket-upload.s3.us-east-2.amazonaws.com",
+        "count": 6521
+      }
+    ],
+    "C5-dup-outcome-name": [
+      {
+        "slug": "dota2-pr1-synaps-2026-09-04",
+        "name": "Ends in Daytime",
+        "count": 2
+      },
+      {
+        "slug": "lol-ot-exe-2026-09-05",
+        "name": "Odd/Even Total Kills",
+        "count": 2
+      },
+      {
+        "slug": "lol-sen-c9-2026-09-05",
+        "name": "Both Teams Slay a Dragon",
+        "count": 2
+      },
+      {
+        "slug": "lol-al-blg-2026-09-07",
+        "name": "Both Teams Slay a Dragon",
+        "count": 2
+      },
+      {
+        "slug": "lol-sr-fly-2026-09-06",
+        "name": "Both Teams Slay a Dragon",
+        "count": 2
+      },
+      {
+        "slug": "cs2-lph-unity-2026-06-02",
+        "name": "Odd/Even Total Kills",
+        "count": 2
+      },
+      {
+        "slug": "lol-hrts-koia-2026-09-06",
+        "name": "Both Teams Slay a Dragon",
+        "count": 2
+      },
+      {
+        "slug": "lol-drxc-dnsc-2026-09-07",
+        "name": "Both Teams Slay a Dragon",
+        "count": 2
+      }
+    ]
+  }
+}

@@ -1,0 +1,176 @@
+{
+  "scannedAt": "2026-09-04T18:26:21.027Z",
+  "distinctEvents": 6515,
+  "outcomesChecked": 10786,
+  "counts": {
+    "B3-priced-without-feed": 5157,
+    "B6-laststale": 421,
+    "B4-wide-spread-open": 2027,
+    "B5-chance-vs-mid": 2,
+    "B8-slug-repeated": 26
+  },
+  "samples": {
+    "B3-priced-without-feed": [
+      {
+        "slug": "cs2-furia-vit-2026-09-04",
+        "hasPriceFeed": false,
+        "sampleChance": 0.74
+      },
+      {
+        "slug": "atp-wu-alcaraz-2026-09-04",
+        "hasPriceFeed": false,
+        "sampleChance": 0.87
+      },
+      {
+        "slug": "atp-bublik-paul-2026-09-04",
+        "hasPriceFeed": false,
+        "sampleChance": 0.775
+      },
+      {
+        "slug": "epl-ips-liv-2026-09-04",
+        "hasPriceFeed": false,
+        "sampleChance": 0.615
+      },
+      {
+        "slug": "wta-pegula-fernand-2026-09-04",
+        "hasPriceFeed": false,
+        "sampleChance": 0.9995
+      },
+      {
+        "slug": "2026-mens-us-open-winner-tennis",
+        "hasPriceFeed": false,
+        "sampleChance": 0.42
+      }
+    ],
+    "B6-laststale": [
+      {
+        "slug": "atp-bublik-paul-2026-09-04",
+        "market": "US Open ATP: Alexander Bublik vs Tommy Paul Match O/U 38.5",
+        "lastPrice": 0.56,
+        "bestBid": 0.73,
+        "bestAsk": 0.82
+      },
+      {
+        "slug": "atp-medvede-rinderk-2026-09-04",
+        "market": "US Open ATP: Daniil Medvedev vs Arthur Rinderknech Set 3 Winner",
+        "lastPrice": 0.8,
+        "bestBid": 0.92,
+        "bestAsk": 0.94
+      },
+      {
+        "slug": "lal-bet-rea-2026-09-04-total-corners",
+        "market": "1st Half Total Corners: O/U 3.5",
+        "lastPrice": 0.92,
+        "bestBid": 0.67,
+        "bestAsk": 0.78
+      },
+      {
+        "slug": "saf1-mgl-pol-2026-09-04",
+        "market": "Draw (Marumo Gallants FC vs. Polokwane City)",
+        "lastPrice": 0.3,
+        "bestBid": 0.43,
+        "bestAsk": 0.51
+      },
+      {
+        "slug": "swe2-ost-nou-2026-09-04",
+        "market": "Nordic United FC",
+        "lastPrice": 0.36,
+        "bestBid": 0.68,
+        "bestAsk": 0.94
+      },
+      {
+        "slug": "atp-doubles-nysroge-paulvoc-2026-09-04",
+        "market": "US Open ATP (Doubles): Nys/Roger-Vasselin vs Paul/Vocel",
+        "lastPrice": 0.72,
+        "bestBid": 0.83,
+        "bestAsk": 0.87
+      }
+    ],
+    "B4-wide-spread-open": [
+      {
+        "slug": "atp-bublik-paul-2026-09-04",
+        "market": "US Open ATP: Alexander Bublik vs Tommy Paul Set Handicap +/-1.5",
+        "bestBid": 0.15,
+        "bestAsk": 0.99,
+        "spread": 0.84
+      },
+      {
+        "slug": "fl1-lyo-aja-2026-09-04-more-markets",
+        "market": "2nd Half O/U 1.5",
+        "bestBid": 0.58,
+        "bestAsk": 1,
+        "spread": 0.42
+      },
+      {
+        "slug": "dota2-pr1-synaps-2026-09-04",
+        "market": "Ends in Daytime",
+        "bestBid": 0.01,
+        "bestAsk": 1,
+        "spread": 0.99
+      },
+      {
+        "slug": "atp-etcheve-navone-2026-09-04",
+        "market": "US Open ATP: Tomas Etcheverry vs Mariano Navone Set 1 O/U 8.5",
+        "bestBid": 0.49,
+        "bestAsk": 0.78,
+        "spread": 0.29
+      },
+      {
+        "slug": "nor-ffk-bog-2026-09-04-more-markets",
+        "market": "FK Bodø/Glimt O/U 1.5",
+        "bestBid": 0.42,
+        "bestAsk": 0.99,
+        "spread": 0.57
+      },
+      {
+        "slug": "bl2-h96-ksc-2026-09-04-more-markets",
+        "market": "Both Teams to Score in Second Half",
+        "bestBid": 0.01,
+        "bestAsk": 1,
+        "spread": 0.99
+      }
+    ],
+    "B5-chance-vs-mid": [
+      {
+        "slug": "btc-updown-5m-1788546000",
+        "market": "Bitcoin Up or Down - September 4, 2:20PM-2:25PM ET",
+        "chance": 0.825,
+        "mid": 0.605,
+        "gap": 0.22
+      },
+      {
+        "slug": "eth-updown-5m-1788546000",
+        "market": "Ethereum Up or Down - September 4, 2:20PM-2:25PM ET",
+        "chance": 0.795,
+        "mid": 0.575,
+        "gap": 0.22
+      }
+    ],
+    "B8-slug-repeated": [
+      {
+        "slug": "who-will-be-the-next-prime-minister-of-israel-after-the-next-election",
+        "times": 4
+      },
+      {
+        "slug": "2026-taiwanese-local-elections-party-winner",
+        "times": 4
+      },
+      {
+        "slug": "will-china-unban-bitcoin-by-2027",
+        "times": 5
+      },
+      {
+        "slug": "israel-election-unity-party-blue-and-white-run-on-same-list",
+        "times": 4
+      },
+      {
+        "slug": "israel-election-yashar-together-run-on-same-list",
+        "times": 4
+      },
+      {
+        "slug": "how-low-will-10-year-treasury-yield-get-before-2027",
+        "times": 4
+      }
+    ]
+  }
+}

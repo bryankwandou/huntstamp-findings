@@ -1,0 +1,15 @@
+$ node api-structure.js   # two outcomes sharing one name inside a single event
+
+Events rendering two outcomes with identical names: 9
+
+  dota2-pr1-synaps-2026-09-04   "Ends in Daytime"  x2
+  lol-ot-exe-2026-09-05         "Odd/Even Total Kills"  x2
+  lol-sen-c9-2026-09-05         "Both Teams Slay a Dragon"  x2
+  lol-al-blg-2026-09-07         "Both Teams Slay a Dragon"  x2
+  lol-sr-fly-2026-09-06         "Both Teams Slay a Dragon"  x2
+  cs2-lph-unity-2026-06-02      "Odd/Even Total Kills"  x2
+  lol-hrts-koia-2026-09-06      "Both Teams Slay a Dragon"  x2
+  lol-drxc-dnsc-2026-09-07      "Both Teams Slay a Dragon"  x2
+
+In each of these the market list shows the same label twice with nothing to
+tell the two rows apart, so a user cannot know which one they are buying.

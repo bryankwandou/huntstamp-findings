@@ -1,0 +1,27 @@
+$ node api-integrity.js   # 6,519 distinct events, 10,786 outcomes, from the public events API
+
+Markets carrying a final or in-play score while still flagged acceptingOrders: 194
+
+  cs2-furia-vit-2026-09-04        period=2/3  score=3-7|1-0|Bo3
+    Counter-Strike: FURIA vs Vitality (BO3) - BLAST Open Porto Playoffs
+  atp-bublik-paul-2026-09-04      period=S3   score=4-6, 6-3, 0-0
+    US Open ATP: Alexander Bublik vs Tommy Paul
+  wta-pegula-fernand-2026-09-04   period=FT   score=1-6, 6-4, 6-3
+    US Open WTA: Jessica Pegula vs Leylah Fernandez
+  fl1-lyo-aja-2026-09-04          period=2H   score=3-1
+    Olympique Lyonnais vs. AJ Auxerre
+  atp-medvede-rinderk-2026-09-04  period=S3   score=6-4, 6-4, 1-0
+    US Open ATP: Daniil Medvedev vs Arthur Rinderknech
+
+Verified live against the API at capture time:
+  slug            : wta-pegula-fernand-2026-09-04
+  score.period    : FT   (FT = full time; the match has finished)
+  score.raw       : 1-6, 6-4, 6-3
+  closed          : False
+  status          : live
+  acceptingOrders : True   <-- still true on a finished match
+  outcome chance  : 0.9995   bestBid 0.999  bestAsk 1.0
+
+The API advertises these markets as accepting orders. This session placed
+no orders (logged-out, no funds), so this is what the data states, verifiable
+by anyone with the same GET; it is not a claim about what happens on submit.

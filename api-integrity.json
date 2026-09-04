@@ -1,0 +1,319 @@
+{
+  "scannedAt": "2026-09-04T18:24:01.406Z",
+  "now": 1788546206,
+  "apiCalls": 42,
+  "apiMB": 17.6,
+  "distinctEvents": 6519,
+  "outcomesChecked": 10786,
+  "counts": {
+    "A10-scored-but-open": 194,
+    "A9-past-end-still-open": 338,
+    "A6-24h-exceeds-total": 30,
+    "A12-event-24h-exceeds-total": 25,
+    "A4-inactive-but-accepting": 47,
+    "A11-ends-before-start": 81
+  },
+  "samples": {
+    "A10-scored-but-open": [
+      {
+        "slug": "cs2-furia-vit-2026-09-04",
+        "title": "Counter-Strike: FURIA vs Vitality (BO3) - BLAST Open Porto Playoffs",
+        "score": {
+          "bestOf": 3,
+          "live": "3-7",
+          "period": "2/3",
+          "raw": "3-7|1-0|Bo3",
+          "sides": [
+            "1",
+            "0"
+          ]
+        }
+      },
+      {
+        "slug": "atp-bublik-paul-2026-09-04",
+        "title": "US Open ATP: Alexander Bublik vs Tommy Paul",
+        "score": {
+          "period": "S3",
+          "periods": [
+            "4-6",
+            "6-3",
+            "0-0"
+          ],
+          "raw": "4-6, 6-3, 0-0",
+          "sides": [
+            "0",
+            "0"
+          ]
+        }
+      },
+      {
+        "slug": "wta-pegula-fernand-2026-09-04",
+        "title": "US Open WTA: Jessica Pegula vs Leylah Fernandez",
+        "score": {
+          "period": "FT",
+          "periods": [
+            "1-6",
+            "6-4",
+            "6-3"
+          ],
+          "raw": "1-6, 6-4, 6-3",
+          "sides": [
+            "6",
+            "3"
+          ]
+        }
+      },
+      {
+        "slug": "fl1-lyo-aja-2026-09-04",
+        "title": "Olympique Lyonnais vs. AJ Auxerre",
+        "score": {
+          "period": "2H",
+          "raw": "3-1",
+          "sides": [
+            "3",
+            "1"
+          ]
+        }
+      },
+      {
+        "slug": "atp-medvede-rinderk-2026-09-04",
+        "title": "US Open ATP: Daniil Medvedev vs Arthur Rinderknech",
+        "score": {
+          "period": "S3",
+          "periods": [
+            "6-4",
+            "6-4",
+            "1-0"
+          ],
+          "raw": "6-4, 6-4, 1-0",
+          "sides": [
+            "1",
+            "0"
+          ]
+        }
+      },
+      {
+        "slug": "cs2-hero-ef1-2026-09-04",
+        "title": "Counter-Strike: Heroic vs Eternal Fire (BO3) - IEM Beijing: Global Qualifier Playoffs",
+        "score": {
+          "bestOf": 3,
+          "live": "000-000",
+          "period": "3/3",
+          "raw": "000-000|2-1|Bo3",
+          "sides": [
+            "2",
+            "1"
+          ]
+        }
+      }
+    ],
+    "A9-past-end-still-open": [
+      {
+        "slug": "fl1-lyo-aja-2026-09-04",
+        "title": "Olympique Lyonnais vs. AJ Auxerre",
+        "endTs": 1788541200,
+        "endedDaysAgo": 0.1,
+        "acceptingOrders": true
+      },
+      {
+        "slug": "fl1-lyo-aja-2026-09-04-more-markets",
+        "title": "Olympique Lyonnais vs. AJ Auxerre - More Markets",
+        "endTs": 1788541200,
+        "endedDaysAgo": 0.1,
+        "acceptingOrders": true
+      },
+      {
+        "slug": "spl-abh-ett-2026-09-04-more-markets",
+        "title": "Abha Saudi Club vs. Al Ettifaq Saudi Club - More Markets",
+        "endTs": 1788537600,
+        "endedDaysAgo": 0.1,
+        "acceptingOrders": true
+      },
+      {
+        "slug": "tur-iba-gal-2026-09-04",
+        "title": "Rams Başakşehir FK vs. Galatasaray SK",
+        "endTs": 1788541200,
+        "endedDaysAgo": 0.1,
+        "acceptingOrders": true
+      },
+      {
+        "slug": "spl-abh-ett-2026-09-04",
+        "title": "Abha Saudi Club vs. Al Ettifaq Saudi Club",
+        "endTs": 1788537600,
+        "endedDaysAgo": 0.1,
+        "acceptingOrders": true
+      },
+      {
+        "slug": "nor-ffk-bog-2026-09-04-more-markets",
+        "title": "Fredrikstad FK vs. FK Bodø/Glimt - More Markets",
+        "endTs": 1788541200,
+        "endedDaysAgo": 0.1,
+        "acceptingOrders": true
+      }
+    ],
+    "A6-24h-exceeds-total": [
+      {
+        "slug": "spl-abh-ett-2026-09-04-more-markets",
+        "market": "Al Ettifaq Saudi Club O/U 0.5",
+        "cond": "0xa15202721bb7ed5c137be7d297330d12fd622654de8c9d933c358f695dc69e3a",
+        "volume": 999.996465,
+        "volume24h": 1004.996465
+      },
+      {
+        "slug": "den-vib-lyn-2026-09-04",
+        "market": "Draw (Viborg FF vs. Lyngby BK)",
+        "cond": "0x7adbeff37c1347a80f9258457051ff9a97be568fe8d028aef0c5d0b7414f09fc",
+        "volume": 6626.139724,
+        "volume24h": 6626.213056
+      },
+      {
+        "slug": "atp-butvila-potenza-2026-09-04",
+        "market": "Manacor: Edas Butvilas vs Luca Potenza",
+        "cond": "0x5eca7a74b5cd507c4fb217bc816ee1aef5cdc461bda3370d18fdefcda09a33c4",
+        "volume": 173538.38760799984,
+        "volume24h": 173886.728229
+      },
+      {
+        "slug": "lal-bet-rea-2026-09-04-player-props",
+        "market": "Goalscorer: Vinicius Junior",
+        "cond": "0xbcb0d2386e9a2934d01e506fe0de321e0d7f35e7fb8aeacf1b5a5acde5abc340",
+        "volume": 796.1655090000002,
+        "volume24h": 799.736936
+      },
+      {
+        "slug": "saf1-ric-ama-2026-09-04",
+        "market": "Draw (Richards Bay FC vs. AmaZulu FC)",
+        "cond": "0x11b314523248701e421de0e9e268b63ef700870c8f59ca37e57889d66f2a3254",
+        "volume": 832.4336149999999,
+        "volume24h": 837.4336150000001
+      },
+      {
+        "slug": "ned2-hel-ven-2026-09-04",
+        "market": "VVV Venlo",
+        "cond": "0x621ba63db795a02cb5d8ee888725f82f25147deec0819548d3ca82f61a32e3f4",
+        "volume": 5337.642631,
+        "volume24h": 6831.12089
+      }
+    ],
+    "A12-event-24h-exceeds-total": [
+      {
+        "slug": "cs2-bcg-fokus-2026-09-04",
+        "title": "Counter-Strike: BC.Game Esports vs FOKUS (BO3) - PGL Masters Bucharest: European Open Qualifier #1 Playoffs",
+        "volume": 76729.10309,
+        "volume24h": 76912.87822599999
+      },
+      {
+        "slug": "cs2-1win-brute-2026-09-04",
+        "title": "Counter-Strike: 1WIN vs Brute (BO3) - PGL Masters Bucharest: European Open Qualifier #1 Playoffs",
+        "volume": 48626.505466,
+        "volume24h": 49026.699342
+      },
+      {
+        "slug": "cs2-nemi1-ast-2026-09-04",
+        "title": "Counter-Strike: Nemiga vs ASTRAL (BO3) - PGL Masters Bucharest: European Open Qualifier #1 Playoffs",
+        "volume": 9840.401117,
+        "volume24h": 10282.042139
+      },
+      {
+        "slug": "cs2-nicetr-33-2026-09-04",
+        "title": "Counter-Strike: Nice Try vs BET-M 33 (BO3) - PGL Masters Bucharest: European Open Qualifier #1 Playoffs",
+        "volume": 743.607225,
+        "volume24h": 868.607225
+      },
+      {
+        "slug": "dota2-lynx-pr1-2026-09-05",
+        "title": "Dota 2: Team Lynx vs Power Rangers (BO3) - EPL Masters Group A",
+        "volume": 476.44005,
+        "volume24h": 481.44005
+      },
+      {
+        "slug": "spl-qad-ett-2026-09-11",
+        "title": "Al Qadisiyah Saudi Club vs. Al Ettifaq Saudi Club",
+        "volume": 1.219511,
+        "volume24h": 213.391211
+      }
+    ],
+    "A4-inactive-but-accepting": [
+      {
+        "slug": "mlb-most-home-runs-team-20260702215911955",
+        "market": "Team D ",
+        "cond": "0x64aecc4c65608d2a2b00470c738f8f26f961114f94cc83d3e1656ce50b16c599",
+        "active": false,
+        "acceptingOrders": true
+      },
+      {
+        "slug": "mlb-highest-abs-challenge-success-rate-team-20260702220030937",
+        "market": "Other",
+        "cond": "0x2f6d8e43654823ee0fe5bb17fdfd973cc8944040f535c6fbe61ff53f53399344",
+        "active": false,
+        "acceptingOrders": true
+      },
+      {
+        "slug": "republican-presidential-nominee-2028",
+        "market": "Robert F. Kennedy Jr.",
+        "cond": "0x0b17bd62ac91109b63c25ae53fe6422db7db2fa6a9d7fff90d7f89de35bebd20",
+        "active": false,
+        "acceptingOrders": true
+      },
+      {
+        "slug": "saint-petersburg-parliament-election-party-winner",
+        "market": "Other",
+        "cond": "0x7e5c4836b6b3fd5a1b347073a7ecdacd70a05471c16f897280cc0b460d4b6447",
+        "active": false,
+        "acceptingOrders": true
+      },
+      {
+        "slug": "wolfsburg-mayoral-election-winner-20260723161010802",
+        "market": "Other",
+        "cond": "0x5d3784c18d494c3a25b325bbe13f9b3c3efe5d365fec7f192c4950339fe59d42",
+        "active": false,
+        "acceptingOrders": true
+      },
+      {
+        "slug": "next-president-of-estonia-20260727225811942",
+        "market": "Person A",
+        "cond": "0x11ba1f8a2b4bcb2888a781bd670c81102a08f72d130e11a5b49d29a3600c834f",
+        "active": false,
+        "acceptingOrders": true
+      }
+    ],
+    "A11-ends-before-start": [
+      {
+        "slug": "republican-presidential-nominee-2028",
+        "title": "Republican Presidential Nominee 2028",
+        "gameStartTs": 1857211200,
+        "endTs": 1857168000
+      },
+      {
+        "slug": "brazil-presidential-election",
+        "title": "Brazil Presidential Election",
+        "gameStartTs": 1791115200,
+        "endTs": 1791072000
+      },
+      {
+        "slug": "democratic-presidential-nominee-2028",
+        "title": "Democratic Presidential Nominee 2028",
+        "gameStartTs": 1857211200,
+        "endTs": 1857168000
+      },
+      {
+        "slug": "presidential-election-winner-2028",
+        "title": "Presidential Election Winner 2028",
+        "gameStartTs": 1857211200,
+        "endTs": 1857168000
+      },
+      {
+        "slug": "which-party-will-gain-most-seats-in-russian-parliamentary-election",
+        "title": "Which party will gain most seats in Russian Parliamentary Election?",
+        "gameStartTs": 1789905600,
+        "endTs": 1789862400
+      },
+      {
+        "slug": "next-prime-minister-of-sweden",
+        "title": "Next Prime Minister of Sweden",
+        "gameStartTs": 1789300800,
+        "endTs": 1789257600
+      }
+    ]
+  }
+}

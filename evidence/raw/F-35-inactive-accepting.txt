@@ -1,0 +1,16 @@
+$ node api-integrity.js   # outcome active=false yet acceptingOrders=true
+
+Outcomes marked inactive but still accepting orders: 47
+
+  mlb-most-home-runs-team-20260702215911955      Team D
+    active=False  acceptingOrders=True
+  mlb-highest-abs-challenge-success-rate-team-20260702220030937 Other
+    active=False  acceptingOrders=True
+  republican-presidential-nominee-2028           Robert F. Kennedy Jr.
+    active=False  acceptingOrders=True
+  saint-petersburg-parliament-election-party-winner Other
+    active=False  acceptingOrders=True
+  wolfsburg-mayoral-election-winner-20260723161010802 Other
+    active=False  acceptingOrders=True
+  next-president-of-estonia-20260727225811942    Person A
+    active=False  acceptingOrders=True

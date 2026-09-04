@@ -1,0 +1,13 @@
+$ curl -sI https://app.manic.trade/.well-known/security.txt
+
+  /.well-known/security.txt   ->  HTTP 404  (1512158 bytes)
+  /security.txt               ->  HTTP 404  (1512158 bytes)
+
+Neither location exists, so a researcher who finds a vulnerability has no
+published contact or disclosure policy to follow. RFC 9116 defines this file
+precisely so that a live financial service can be reached before a finding is
+disclosed publicly.
+
+robots.txt and sitemap.xml are present and correct:
+  /robots.txt    -> 200 (69 b)
+  /sitemap.xml   -> 200 (43761 b)

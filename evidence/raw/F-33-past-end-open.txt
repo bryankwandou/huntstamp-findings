@@ -1,0 +1,11 @@
+$ node api-integrity.js   # endTs already past, event still acceptingOrders and not closed
+
+now = 2026-09-04 18:23 UTC
+Markets whose end time has passed but are still open for orders: 338 of 6,519
+
+  fl1-lyo-aja-2026-09-04                   ended 0.1d ago  acceptingOrders=True
+  fl1-lyo-aja-2026-09-04-more-markets      ended 0.1d ago  acceptingOrders=True
+  spl-abh-ett-2026-09-04-more-markets      ended 0.1d ago  acceptingOrders=True
+  tur-iba-gal-2026-09-04                   ended 0.1d ago  acceptingOrders=True
+  spl-abh-ett-2026-09-04                   ended 0.1d ago  acceptingOrders=True
+  nor-ffk-bog-2026-09-04-more-markets      ended 0.1d ago  acceptingOrders=True

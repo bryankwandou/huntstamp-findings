@@ -1,0 +1,14 @@
+$ node api-integrity.js   # reported 24h volume larger than all-time volume
+
+Outcomes where volume24h > volume : 30
+Events where volume24h > volume    : 25
+
+outcome level:
+  spl-abh-ett-2026-09-04-more-markets      volume=1000.00  volume24h=1005.00
+  den-vib-lyn-2026-09-04                   volume=6626.14  volume24h=6626.21
+  atp-butvila-potenza-2026-09-04           volume=173538.39  volume24h=173886.73
+  lal-bet-rea-2026-09-04-player-props      volume=796.17  volume24h=799.74
+event level:
+  cs2-bcg-fokus-2026-09-04                 volume=76729.10  volume24h=76912.88
+  cs2-1win-brute-2026-09-04                volume=48626.51  volume24h=49026.70
+  cs2-nemi1-ast-2026-09-04                 volume=9840.40  volume24h=10282.04
