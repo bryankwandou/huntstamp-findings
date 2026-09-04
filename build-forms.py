@@ -54,6 +54,30 @@ CONSENT_1 = ("I have not included passwords, private keys, or seed phrases. "
              "Manic may reproduce the issue internally and contact me for more information.")
 CONSENT_2 = "i create with ai, no manual testing."
 
+# Two findings have no artefact. Neither gets an invented image: one is not
+# being submitted at all, and the other is carried where no upload is asked for.
+NO_CAPTURE = {
+    "F-10": (
+        "Nothing to upload, because this submission is not being sent. It is kept on the page "
+        "so the withdrawal is on the record rather than quietly deleted."
+    ),
+    "F-17": (
+        "No artefact exists for this one, and I will not manufacture one. The clipboard write "
+        "fired once, the triggering element was never identified, and it did not happen again — "
+        "so there is no captured text to render and no screen state to photograph. A picture of "
+        "my own write-up would be evidence of the claim, not of the defect."
+        "<br><br><b>File it in the sponsor form instead.</b> The “Anything Else?” field takes free "
+        "text and asks for no upload, so the observation reaches Manic without either fabricating "
+        "an image or leaving a required field empty. It is already written into "
+        "<a href=\"/sponsor-form.txt\">sponsor-form.txt</a> under the heading for unreproduced "
+        "observations."
+    ),
+    "default": (
+        "No capture exists for this one. Reproduce the steps above and capture your own, or file "
+        "it without an upload and say why."
+    ),
+}
+
 
 def batch_for(num):
     n = int(num)
@@ -164,12 +188,12 @@ for it in items:
         upload = (f'<div class="fld upload"><div class="q">Please upload a screenshot or '
                   f'screen recording<span class="req">required</span></div>{figs}</div>')
     else:
+        # The upload field is required, so a finding with no artefact needs a
+        # route that is neither a fabricated image nor an abandoned submission.
+        why = NO_CAPTURE.get(it["fid"], NO_CAPTURE["default"])
         upload = ('<div class="fld upload none"><div class="q">Please upload a screenshot or '
                   'screen recording<span class="req">required</span></div>'
-                  '<p class="nofile">No capture exists for this one. It did not reproduce when '
-                  'I went back for the screenshot, and inventing an image of evidence I never '
-                  'photographed would be fabricating it. Reproduce the steps above and capture '
-                  'your own, or file it without an upload and say why.</p></div>')
+                  f'<p class="nofile">{why}</p></div>')
 
     notes = "".join(f'<p class="note">{esc(n)}</p>' for n in it["notes"])
 

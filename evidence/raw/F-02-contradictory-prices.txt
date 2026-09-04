@@ -1,0 +1,21 @@
+Captured 3 September 2026, 04:00-09:48 UTC, on dpl_74W5o38E8FQjJUZ2DYo5PFDHEsLs
+Page: /pm/event/atp-faria-alcaraz-2026-09-02
+
+Read from document.body.innerText in one pass, one screen, one market:
+
+  outcome block                chart legend, directly beneath it
+  --------------------------   --------------------------------
+  OUTCOME: CARLOS ALCARAZ
+  Resolved
+  Carlos Alcaraz     100%      Carlos Alcaraz      92%
+  Jaime Faria          0%      Jaime Faria          9%
+                     ----                         ----
+                     100%                         101%
+
+The settlement values say the market resolved to Alcaraz.
+The chart legend, on the same screen, prices it as still open, and its
+two outcomes sum to 101 rather than 100.
+
+RE-TEST, 3 September, on the newer build dpl_C3bXHquKbKr1sjn9WpRtDt8MWfce:
+  both readouts agreed at 100% / 0%. This did not reproduce.
+  Filed with frequency answered "It only happened once".

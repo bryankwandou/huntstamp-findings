@@ -23,7 +23,8 @@ What is your Polymarket deposit address in Manic?
 
 Anything Else?
 --------------
-Thirty findings filed separately through the Typeform, from three sweeps.
+Twenty-nine findings filed separately through the Typeform, from three sweeps, plus one
+observation carried in this field because I have no artefact for it.
 
 Findings 1-17 were observed against deployment dpl_74W5o38E8FQjJUZ2DYo5PFDHEsLs on
 3 September 2026, Chromium 148 on Windows 11, at 1440x900 and 375x812. Manic shipped
@@ -109,6 +110,21 @@ verbatim and the build id is recorded, but it did not reproduce on re-test, so t
 expect that. A second is filed the same way: one market whose description reads "Completed
 Match 50% - Ends Sep 11", seen once in a 60-page sample and not found again in a targeted
 re-scan of 45.
+
+ONE OBSERVATION I COULD NOT EVIDENCE, CARRIED HERE INSTEAD
+
+While clicking an empty region of the market grid at a 375x812 viewport, the page fired a
+copy handler and overwrote the OS clipboard. There was no visible copy affordance under the
+cursor and no confirmation. It happened once, I could not identify the triggering element,
+and it did not happen again.
+
+I am putting it here rather than in the Typeform because that form requires a screenshot and
+I have no artefact for this one - no captured text, no reproducible screen state. A picture
+of my own write-up would be evidence of my claim, not of the defect, so I am not manufacturing
+one. Reported for awareness only, and it should be weighted accordingly.
+
+It is worth a look because a silent clipboard write on a trading surface is unpleasant: a user
+part-way through pasting a wallet address would lose it without knowing.
 
 I also checked several things that turned out to be sound, and I have published those too:
 search rejects markup and SQL-shaped input cleanly with nothing executed; browsing produced

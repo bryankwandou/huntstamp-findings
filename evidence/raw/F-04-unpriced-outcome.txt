@@ -1,0 +1,21 @@
+Captured 3 September 2026 on dpl_74W5o38E8FQjJUZ2DYo5PFDHEsLs
+Page: /pm, default Trending grid
+Card: New York Yankees vs. Los Angeles Angels
+
+Read from document.body.innerText:
+
+  O/U 2.5          50%    Y   N
+  Extra Innings    --     Y   N
+                   ^^
+                   no price, but both order buttons remain active
+
+On a later reload the same card rendered:
+
+  O/U 2.5          78%    Y   N
+  O/U 4.5          84%    Y   N
+
+so the missing price is transient rather than permanent, which is what
+makes it hard for a user to notice.
+
+A related count from the same session, filed separately: 13 rows in the
+props rail rendered "-- Vol" beside neighbours showing $4K Vol and $116 Vol.

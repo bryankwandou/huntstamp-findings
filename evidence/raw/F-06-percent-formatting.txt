@@ -1,0 +1,16 @@
+Captured 3 September 2026 on dpl_74W5o38E8FQjJUZ2DYo5PFDHEsLs
+Page: /pm
+
+Distinct percentage values extracted from document.body.innerText in a
+single render:
+
+  ["90%","10%","52%","48%","53%","25%","12%","85%","15%","42%","22%",
+   "100.0%","17%","16%","50%", ...]
+                ^^^^^^^^
+   35 values displayed; 34 are integers; exactly one carries a decimal.
+
+RE-TEST on dpl_C3bXHquKbKr1sjn9WpRtDt8MWfce:
+  33 percentages rendered, and the only decimal value was 99.5%.
+  That reads as a deliberate rule - show a decimal for fractional values -
+  which would make 100.0% the defect rather than the precision generally.
+  The claim is narrowed accordingly and the frequency answered "Sometimes".

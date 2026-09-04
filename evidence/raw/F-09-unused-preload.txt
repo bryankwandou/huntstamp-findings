@@ -1,0 +1,18 @@
+Captured 3 September 2026 on dpl_74W5o38E8FQjJUZ2DYo5PFDHEsLs
+Page: /pm
+
+Chrome reports the waste itself. Warnings collected from the console
+during a single load of the trading route:
+
+  [warning] The resource https://app.manic.trade/landing-v2/hero-video-fallback.png was preloaded using link preload but not used within a few seconds f...
+
+  preload warnings in that load : 16
+  both assets live under /landing-v2/ and are never rendered by /pm
+
+From the same load, measured with performance.getEntriesByType("resource"):
+
+  _next/static/chunks/*.js requests : 115
+  total resources                   : 242
+
+Both preloaded assets are fetched at high priority and compete with the
+JavaScript the trading screen actually needs.

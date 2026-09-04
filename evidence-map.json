@@ -6,21 +6,36 @@
       "caption": "The script requested /pm and landed on /pm/event/atp-faria-alcaraz-2026-09-02. The stored tab in localStorage reopened the previous market and rewrote the address bar."
     }
   ],
-  "F-02": [],
+  "F-02": [
+    {
+      "file": "F-02-contradictory-prices.png",
+      "caption": "The two price sets as they were read from document.body.innerText on 3 September, side by side with the sum of each. This is a rendering of the captured text, not of the screen; the raw capture is published beside it. Stated on the image: it did not reproduce on the newer build, which is why the frequency is answered It only happened once."
+    }
+  ],
   "F-03": [
     {
       "file": "F-03-settlement-vs-resolved.png",
       "caption": "Settlement Time reads Sep 9, 3:00 PM UTC on a market that shows a final score of 2-6, is marked Resolved, and has its order book closed. The match was played on 2 September."
     }
   ],
-  "F-04": [],
+  "F-04": [
+    {
+      "file": "F-04-unpriced-outcome.png",
+      "caption": "The card text as captured, showing Extra Innings with no price and both order buttons still active, and the same card on a later reload where the price was present. A rendering of the captured text; the raw capture is published beside it."
+    }
+  ],
   "F-05": [
     {
       "file": "F-05-trending-grid.png",
       "caption": "The default Trending grid, which is where resolved markets are promoted with live buy buttons."
     }
   ],
-  "F-06": [],
+  "F-06": [
+    {
+      "file": "F-06-percent-formatting.png",
+      "caption": "The percentage values extracted from the page in a single render, with the one decimal value marked. The re-test result is stated on the image: 99.5% was the only decimal on the newer build, which narrows the claim to the 100.0% case."
+    }
+  ],
   "F-07": [
     {
       "file": "F-07-props-rail-truncated.png",
@@ -33,7 +48,12 @@
       "caption": "The same rail, showing 13 rows rendering \"-- Vol\" beside neighbours that show $4K Vol and $116 Vol."
     }
   ],
-  "F-09": [],
+  "F-09": [
+    {
+      "file": "F-09-unused-preload.png",
+      "caption": "The preload warnings Chrome emitted during one load of the trading route, with the chunk and resource counts measured in the same load. Chrome reports this waste itself; the full console capture is published beside the image."
+    }
+  ],
   "F-10": [],
   "F-11": [
     {
