@@ -240,7 +240,7 @@ for a pricing bug across every multi-outcome market and did not find one: the vo
 correctly monotone on all fourteen tags, and every outcome group — negRisk included — summed
 within tolerance of 1. `robots.txt`,
 `sitemap.xml`, `canonical`, `og:image` and `twitter:card` are all present and correct. And I
-nearly filed a broken Liquidity sort before re-testing showed it was the grid caught mid-load.
+nearly filed a broken Liquidity sort before re-testing showed it was the grid caught mid-load. I read 304 real order books directly: none were crossed (no book had a bid at or above its own best ask), no price sat outside 0 to 1, and no binary market had its YES and NO best asks summing below a dollar - so there is no standing risk-free arbitrage and the matching engine and book pricing are sound. The app’s /api/pm proxy rejects every path outside its allowlist, including traversal and absolute URLs to other hosts, so it is not an open proxy.
 
 ### Everything is published
 

@@ -1,0 +1,15 @@
+{
+  "scannedAt": "2026-09-05T06:20:09.088Z",
+  "marketsSeen": 152,
+  "booksRead": 304,
+  "counts": {
+    "yesNoAskSumBelow1": 0,
+    "crossedBooks": 0,
+    "priceOutOfRange": 0
+  },
+  "samples": {
+    "yesNoAskSumBelow1": [],
+    "crossedBooks": [],
+    "priceOutOfRange": []
+  }
+}
