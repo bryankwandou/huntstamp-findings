@@ -89,6 +89,14 @@ is rejected at submit despite the open quote, the defect is narrower - the venue
 tradeable price it will not honour - but it is still wrong. Either way the fix is the same:
 stop quoting decided markets.
 
+One honest refinement since filing. When the order-book endpoint (/charts/pm/book) became
+visible, I checked it: on live markets it returns a real, deep book, but on the one finished
+market I could still inspect at the book level the book was empty while the events API still
+advertised bestAsk 1.0. So the "executable ask" here is what the events API advertises; whether
+a decided market's underlying book actually holds a matching order is exactly what the funded
+confirming step settles. This does not weaken the core fact - the API reports acceptingOrders
+true and a bestAsk on finished matches - it sharpens what the confirming order is testing.
+
 Supporting data: decided-book.json and decided-book-ft.json in the evidence folder, and the
 raw JSON for the 7-0 market at evidence/F-42-ft-market.json.
 

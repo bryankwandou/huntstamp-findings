@@ -1,0 +1,24 @@
+$ node : for each outcome with a directory bestAsk, read /charts/pm/book?token=<tokenIdYes>
+$ #      and compare the directory ask to the real order book's best ask
+
+120 outcomes cross-checked against their live order book.
+16 had a directory-advertised ask that disagreed with the real book by more than 1 cent:
+
+  dota2-nem-carst-2026-09-05   Game 2 Winner            directory 0.780   book 0.900   +12c
+  dota2-nem-carst-2026-09-05   Game 1 Winner            directory 0.810   book 0.860   +5c
+  lacy-and-marlon...           Sep 14 (11:59 PM)        directory 0.790   book 0.830   +4c
+  lol-ig1-tes-2026-09-05       Total Kills O/U 27.5 G3  directory 0.920   book 0.950   +3c
+  atp-samrej-tseng-2026-09-05  Samrej vs Tseng          directory 0.570   book 0.540   -3c
+  lol-ig1-tes-2026-09-05       O/U 3.5 Games            directory 0.760   book 0.780   +2c
+  ufc-dan6-salpar-2026-09-05   O/U 1.5 Rounds           directory 0.660   book 0.640   -2c
+  ... 9 more between 1 and 2 cents
+
+The book endpoint returns a real, deep order book - the sampled markets carried
+tens of resting orders on each side with real sizes - so the disagreement is not
+an empty-book artefact. The number shown on the directory card is simply not the
+price the order book would fill at. On the worst case a user reading 0.78 on the
+card meets a real best ask of 0.90, a 12-cent gap on a one-dollar contract.
+
+Checked and sound: of 60 live markets sampled, every one had a real order book
+(none empty), so the book endpoint itself is healthy - the gap is between the
+listing's cached price and the live book.

@@ -251,5 +251,17 @@
       "file": "F-43-live.jpg",
       "caption": "A real Chromium window showing the live events API response, with total, count and hasMore contradicting each other inside that single response."
     }
+  ],
+  "F-44": [
+    {
+      "file": "F-44-live.jpg",
+      "caption": "A real Chromium window requesting a slug taken from the site’s own sitemap.xml. The band shows the market is gone from the events API, yet the URL still returns HTTP 200 and 1.5 MB of the application shell - the same response a live market gives."
+    }
+  ],
+  "F-45": [
+    {
+      "file": "F-45-live.jpg",
+      "caption": "A real Chromium window on the live trade screen, its order book visible on the right, with the band listing outcomes where the directory-advertised ask disagrees with that real book - up to 12 cents - each cross-checked against /charts/pm/book at capture time."
+    }
   ]
 }

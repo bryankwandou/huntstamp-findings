@@ -1,0 +1,27 @@
+$ curl -s https://app.manic.trade/sitemap.xml | grep -o "/pm/event/[^<]*"   # 473 event URLs
+$ # cross-check each slug against the live events API, then request the dead ones
+
+Four slugs the site's own sitemap advertises are no longer in the events API:
+
+  how-many-fed-rate-hikes-in-2026-20260623190717369
+  iran-full-airspace-closure-byptptpt-20260625195253028
+  lol-lck-2026-season-winner
+  pro-football-2026-mvp-winner
+
+Requesting each one live:
+
+  GET /pm/event/how-many-fed-rate-hikes-in-2026-20260623190717369      ->  HTTP 200  1,536,386 bytes
+  GET /pm/event/iran-full-airspace-closure-byptptpt-20260625195253028 ->  HTTP 200  1,536,442 bytes
+  GET /pm/event/lol-lck-2026-season-winner                            ->  HTTP 200  1,536,011 bytes
+  GET /pm/event/pro-football-2026-mvp-winner                          ->  HTTP 200  1,536,075 bytes
+
+A live market for contrast:
+  GET /pm/event/atc-alt-sb-2026-09-04                                 ->  HTTP 200  1,535,886 bytes
+
+The dead markets and the live one are the same class of response: 200, ~1.5 MB, the
+application shell. Nothing distinguishes a sitemap entry that still works from one
+that points at a market that no longer exists.
+
+This differs from the invented-slug finding: there the URL was made up. Here the
+site's own sitemap.xml - the file it hands to search engines - is the source of the
+dead links.

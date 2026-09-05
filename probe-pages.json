@@ -1,0 +1,566 @@
+{
+  "/leaderboard": {
+    "jsonEndpointsCalled": 4,
+    "endpoints": [
+      {
+        "url": "https://app.manic.trade/api/config",
+        "status": 200,
+        "type": "application/json"
+      },
+      {
+        "url": "https://bo-server-api.manic.trade/user/leaderboard?type=all&metric=pnl&page=1&page_size=10",
+        "status": 200,
+        "type": "application/json"
+      },
+      {
+        "url": "https://bo-server-api.manic.trade/users/tournaments?wallet=&metric=pnl&kind=monthly",
+        "status": 200,
+        "type": "application/json"
+      },
+      {
+        "url": "https://bo-server-api.manic.trade/users/tournament/free-friday/state",
+        "status": 200,
+        "type": "application/json"
+      }
+    ],
+    "sampled": [
+      {
+        "url": "https://app.manic.trade/api/config",
+        "status": 200,
+        "bytes": 996,
+        "topKeys": [
+          "maintenance",
+          "updates",
+          "multiplierModes",
+          "loginMethods"
+        ],
+        "arrays": []
+      },
+      {
+        "url": "https://bo-server-api.manic.trade/user/leaderboard?type=all&metric=pnl&page=1&page_size=10",
+        "status": 200,
+        "bytes": 149,
+        "topKeys": [
+          "title",
+          "start_time",
+          "end_time",
+          "prize_pool",
+          "link",
+          "data",
+          "current_user",
+          "page",
+          "page_size",
+          "total",
+          "total_pages"
+        ],
+        "arrays": [
+          "data[0]"
+        ],
+        "total": 0
+      },
+      {
+        "url": "https://bo-server-api.manic.trade/users/tournaments?wallet=&metric=pnl&kind=monthly",
+        "status": 200,
+        "bytes": 580,
+        "topKeys": [
+          "data"
+        ],
+        "arrays": [
+          "data[3]"
+        ]
+      },
+      {
+        "url": "https://bo-server-api.manic.trade/users/tournament/free-friday/state",
+        "status": 200,
+        "bytes": 1567,
+        "topKeys": [
+          "enabled",
+          "round",
+          "next_round",
+          "join_target_id",
+          "me",
+          "claim",
+          "prev_claim",
+          "claimable_rounds"
+        ],
+        "arrays": [
+          "claimable_rounds[0]"
+        ]
+      }
+    ]
+  },
+  "/referral": {
+    "jsonEndpointsCalled": 5,
+    "endpoints": [
+      {
+        "url": "https://bo-server-api.manic.trade/users/tournament/free-friday/state",
+        "status": 200,
+        "type": "application/json"
+      },
+      {
+        "url": "https://bo-server-api.manic.trade/user/leaderboard?type=all&metric=pnl&page=1&page_size=10",
+        "status": 200,
+        "type": "application/json"
+      },
+      {
+        "url": "https://bo-server-api.manic.trade/users/referral/rules",
+        "status": 200,
+        "type": "application/json"
+      },
+      {
+        "url": "https://app.manic.trade/api/config",
+        "status": 200,
+        "type": "application/json"
+      },
+      {
+        "url": "https://account-api-alpha.manic.trade/api/assets",
+        "status": 200,
+        "type": "application/json"
+      }
+    ],
+    "sampled": [
+      {
+        "url": "https://bo-server-api.manic.trade/users/tournament/free-friday/state",
+        "status": 200,
+        "bytes": 1567,
+        "topKeys": [
+          "enabled",
+          "round",
+          "next_round",
+          "join_target_id",
+          "me",
+          "claim",
+          "prev_claim",
+          "claimable_rounds"
+        ],
+        "arrays": [
+          "claimable_rounds[0]"
+        ]
+      },
+      {
+        "url": "https://bo-server-api.manic.trade/user/leaderboard?type=all&metric=pnl&page=1&page_size=10",
+        "status": 200,
+        "bytes": 149,
+        "topKeys": [
+          "title",
+          "start_time",
+          "end_time",
+          "prize_pool",
+          "link",
+          "data",
+          "current_user",
+          "page",
+          "page_size",
+          "total",
+          "total_pages"
+        ],
+        "arrays": [
+          "data[0]"
+        ],
+        "total": 0
+      },
+      {
+        "url": "https://bo-server-api.manic.trade/users/referral/rules",
+        "status": 200,
+        "bytes": 382,
+        "topKeys": [
+          "manic",
+          "pm"
+        ],
+        "arrays": []
+      },
+      {
+        "url": "https://app.manic.trade/api/config",
+        "status": 200,
+        "bytes": 996,
+        "topKeys": [
+          "maintenance",
+          "updates",
+          "multiplierModes",
+          "loginMethods"
+        ],
+        "arrays": []
+      },
+      {
+        "url": "https://account-api-alpha.manic.trade/api/assets",
+        "status": 200,
+        "bytes": 1723,
+        "topKeys": [
+          "success",
+          "data"
+        ],
+        "arrays": [
+          "data[3]"
+        ]
+      }
+    ]
+  },
+  "/pm/updown/btc-5m": {
+    "jsonEndpointsCalled": 13,
+    "endpoints": [
+      {
+        "url": "https://app.manic.trade/api/config",
+        "status": 200,
+        "type": "application/json"
+      },
+      {
+        "url": "https://bo-server-api.manic.trade/user/leaderboard?type=all&metric=pnl&page=1&page_size=10",
+        "status": 200,
+        "type": "application/json"
+      },
+      {
+        "url": "https://bo-server-api.manic.trade/charts/pm/events?tag=pandemics&sort=trending&limit=500&offset=0&lite=true",
+        "status": 200,
+        "type": "application/json"
+      },
+      {
+        "url": "https://bo-server-api.manic.trade/charts/pm/past-rounds?symbol=btc&window=5m&limit=50&offset=0",
+        "status": 200,
+        "type": "application/json"
+      },
+      {
+        "url": "https://account-api-alpha.manic.trade/api/assets",
+        "status": 200,
+        "type": "application/json"
+      },
+      {
+        "url": "https://bo-server-api.manic.trade/charts/pm/health",
+        "status": 200,
+        "type": "application/json"
+      },
+      {
+        "url": "https://bo-server-api.manic.trade/users/tournament/free-friday/state",
+        "status": 200,
+        "type": "application/json"
+      },
+      {
+        "url": "https://bo-server-api.manic.trade/charts/pm/rounds",
+        "status": 200,
+        "type": "application/json"
+      },
+      {
+        "url": "https://bo-server-api.manic.trade/charts/pm/scheduled-rounds?symbol=btc&window=5m",
+        "status": 200,
+        "type": "application/json"
+      },
+      {
+        "url": "https://bo-server-api.manic.trade/charts/pm/historic-price?symbol=btc%2Fusd-twap30&from=1788573441&to=1788587841",
+        "status": 200,
+        "type": "application/json"
+      },
+      {
+        "url": "https://bo-server-api.manic.trade/charts/pm/book?token=88985825809919418901253165420511377597433548917082255189481360835055466742370",
+        "status": 200,
+        "type": "application/json"
+      },
+      {
+        "url": "https://app.manic.trade/api/pm?path=price-history&token_id=88985825809919418901253165420511377597433548917082255189481360835055466742370&interval=6h&fidelity=1",
+        "status": 200,
+        "type": "application/json"
+      },
+      {
+        "url": "https://bo-server-api.manic.trade/users/asset/status",
+        "status": 200,
+        "type": "application/json"
+      }
+    ],
+    "sampled": [
+      {
+        "url": "https://app.manic.trade/api/config",
+        "status": 200,
+        "bytes": 996,
+        "topKeys": [
+          "maintenance",
+          "updates",
+          "multiplierModes",
+          "loginMethods"
+        ],
+        "arrays": []
+      },
+      {
+        "url": "https://bo-server-api.manic.trade/user/leaderboard?type=all&metric=pnl&page=1&page_size=10",
+        "status": 200,
+        "bytes": 149,
+        "topKeys": [
+          "title",
+          "start_time",
+          "end_time",
+          "prize_pool",
+          "link",
+          "data",
+          "current_user",
+          "page",
+          "page_size",
+          "total",
+          "total_pages"
+        ],
+        "arrays": [
+          "data[0]"
+        ],
+        "total": 0
+      },
+      {
+        "url": "https://bo-server-api.manic.trade/charts/pm/events?tag=pandemics&sort=trending&limit=500&offset=0&lite=true",
+        "status": 200,
+        "bytes": 26571,
+        "topKeys": [
+          "count",
+          "events",
+          "fetchCapped",
+          "hasMore",
+          "limit",
+          "minVolume24h",
+          "total",
+          "truncated"
+        ],
+        "arrays": [
+          "events[14]"
+        ],
+        "total": 14,
+        "count": 14,
+        "hasMore": false
+      },
+      {
+        "url": "https://bo-server-api.manic.trade/charts/pm/past-rounds?symbol=btc&window=5m&limit=50&offset=0",
+        "status": 200,
+        "bytes": 26139,
+        "topKeys": [
+          "limit",
+          "offset",
+          "rounds"
+        ],
+        "arrays": [
+          "rounds[50]"
+        ]
+      },
+      {
+        "url": "https://account-api-alpha.manic.trade/api/assets",
+        "status": 200,
+        "bytes": 1723,
+        "topKeys": [
+          "success",
+          "data"
+        ],
+        "arrays": [
+          "data[3]"
+        ]
+      },
+      {
+        "url": "https://bo-server-api.manic.trade/charts/pm/health",
+        "status": 200,
+        "bytes": 16,
+        "topKeys": [
+          "healthy"
+        ],
+        "arrays": []
+      },
+      {
+        "url": "https://bo-server-api.manic.trade/users/tournament/free-friday/state",
+        "status": 200,
+        "bytes": 1567,
+        "topKeys": [
+          "enabled",
+          "round",
+          "next_round",
+          "join_target_id",
+          "me",
+          "claim",
+          "prev_claim",
+          "claimable_rounds"
+        ],
+        "arrays": [
+          "claimable_rounds[0]"
+        ]
+      },
+      {
+        "url": "https://bo-server-api.manic.trade/charts/pm/rounds",
+        "status": 200,
+        "bytes": 57164,
+        "topKeys": [
+          "0",
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8",
+          "9",
+          "10",
+          "11"
+        ],
+        "arrays": 105
+      }
+    ]
+  },
+  "/": {
+    "jsonEndpointsCalled": 9,
+    "endpoints": [
+      {
+        "url": "https://bo-server-api.manic.trade/user/leaderboard?type=all&metric=pnl&page=1&page_size=10",
+        "status": 200,
+        "type": "application/json"
+      },
+      {
+        "url": "https://bo-server-api.manic.trade/charts/price-change?asset=btc",
+        "status": 200,
+        "type": "application/json"
+      },
+      {
+        "url": "https://bo-server-api.manic.trade/users/tournament/free-friday/state",
+        "status": 200,
+        "type": "application/json"
+      },
+      {
+        "url": "https://app.manic.trade/api/config",
+        "status": 200,
+        "type": "application/json"
+      },
+      {
+        "url": "https://account-api-alpha.manic.trade/api/assets",
+        "status": 200,
+        "type": "application/json"
+      },
+      {
+        "url": "https://bo-server-api.manic.trade/charts/historic-price?asset=btc&duration=1000&timeframe=1&end_time=1788587852",
+        "status": 200,
+        "type": "application/json"
+      },
+      {
+        "url": "https://bo-server-api.manic.trade/users/asset/account?asset=btc",
+        "status": 200,
+        "type": "application/json"
+      },
+      {
+        "url": "https://bo-server-api.manic.trade/users/asset/status",
+        "status": 200,
+        "type": "application/json"
+      },
+      {
+        "url": "https://bo-server-api.manic.trade/users/assets?account_type=real",
+        "status": 200,
+        "type": "application/json"
+      }
+    ],
+    "sampled": [
+      {
+        "url": "https://bo-server-api.manic.trade/user/leaderboard?type=all&metric=pnl&page=1&page_size=10",
+        "status": 200,
+        "bytes": 149,
+        "topKeys": [
+          "title",
+          "start_time",
+          "end_time",
+          "prize_pool",
+          "link",
+          "data",
+          "current_user",
+          "page",
+          "page_size",
+          "total",
+          "total_pages"
+        ],
+        "arrays": [
+          "data[0]"
+        ],
+        "total": 0
+      },
+      {
+        "url": "https://bo-server-api.manic.trade/charts/price-change?asset=btc",
+        "status": 200,
+        "bytes": 2029,
+        "topKeys": [
+          "asset",
+          "current_price",
+          "anchor_1h",
+          "change_1h_pct",
+          "anchor_6h",
+          "change_6h_pct",
+          "anchor_24h",
+          "change_24h_pct",
+          "period_moves"
+        ],
+        "arrays": []
+      },
+      {
+        "url": "https://bo-server-api.manic.trade/users/tournament/free-friday/state",
+        "status": 200,
+        "bytes": 1567,
+        "topKeys": [
+          "enabled",
+          "round",
+          "next_round",
+          "join_target_id",
+          "me",
+          "claim",
+          "prev_claim",
+          "claimable_rounds"
+        ],
+        "arrays": [
+          "claimable_rounds[0]"
+        ]
+      },
+      {
+        "url": "https://app.manic.trade/api/config",
+        "status": 200,
+        "bytes": 996,
+        "topKeys": [
+          "maintenance",
+          "updates",
+          "multiplierModes",
+          "loginMethods"
+        ],
+        "arrays": []
+      },
+      {
+        "url": "https://account-api-alpha.manic.trade/api/assets",
+        "status": 200,
+        "bytes": 1723,
+        "topKeys": [
+          "success",
+          "data"
+        ],
+        "arrays": [
+          "data[3]"
+        ]
+      },
+      {
+        "url": "https://bo-server-api.manic.trade/charts/historic-price?asset=btc&duration=1000&timeframe=1&end_time=1788587852",
+        "status": 200,
+        "bytes": 314785,
+        "topKeys": [
+          "candles"
+        ],
+        "arrays": [
+          "candles[1001]"
+        ]
+      },
+      {
+        "url": "https://bo-server-api.manic.trade/users/asset/account?asset=btc",
+        "status": 200,
+        "bytes": 1287,
+        "topKeys": [
+          "market_account_info",
+          "risk"
+        ],
+        "arrays": []
+      },
+      {
+        "url": "https://bo-server-api.manic.trade/users/asset/status",
+        "status": 200,
+        "bytes": 3975,
+        "topKeys": [
+          "0",
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6"
+        ],
+        "arrays": 7
+      }
+    ]
+  }
+}

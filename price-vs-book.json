@@ -1,0 +1,134 @@
+{
+ "checked": 120,
+ "mismatches": 16,
+ "rows": [
+  {
+   "slug": "dota2-nem-carst-2026-09-05",
+   "outcome": "Game 2 Winner",
+   "directoryAsk": 0.78,
+   "bookBestAsk": 0.9,
+   "gapCents": 12.0,
+   "bookAsks": 7
+  },
+  {
+   "slug": "dota2-nem-carst-2026-09-05",
+   "outcome": "Game 1 Winner",
+   "directoryAsk": 0.81,
+   "bookBestAsk": 0.86,
+   "gapCents": 5.0,
+   "bookAsks": 11
+  },
+  {
+   "slug": "lacy-and-marlon-beat-gaming-challenge-by-2026",
+   "outcome": "September 14 (11:59 PM)",
+   "directoryAsk": 0.79,
+   "bookBestAsk": 0.83,
+   "gapCents": 4.0,
+   "bookAsks": 16
+  },
+  {
+   "slug": "lol-ig1-tes-2026-09-05",
+   "outcome": "Total Kills Over/Under 27.5 in Game 3?",
+   "directoryAsk": 0.92,
+   "bookBestAsk": 0.95,
+   "gapCents": 3.0,
+   "bookAsks": 1
+  },
+  {
+   "slug": "atp-samrej-tseng-2026-09-05",
+   "outcome": "Zhangjiagang: Kasidit Samrej vs Chun-Hsi",
+   "directoryAsk": 0.57,
+   "bookBestAsk": 0.54,
+   "gapCents": -3.0,
+   "bookAsks": 18
+  },
+  {
+   "slug": "lol-ig1-tes-2026-09-05",
+   "outcome": "O/U 3.5 Games",
+   "directoryAsk": 0.76,
+   "bookBestAsk": 0.78,
+   "gapCents": 2.0,
+   "bookAsks": 11
+  },
+  {
+   "slug": "lacy-and-marlon-beat-gaming-challenge-by-2026",
+   "outcome": "September 10 (11:59 PM)",
+   "directoryAsk": 0.73,
+   "bookBestAsk": 0.71,
+   "gapCents": -2.0,
+   "bookAsks": 17
+  },
+  {
+   "slug": "ufc-dan6-salpar-2026-09-05",
+   "outcome": "O/U 1.5 Rounds",
+   "directoryAsk": 0.66,
+   "bookBestAsk": 0.64,
+   "gapCents": -2.0,
+   "bookAsks": 17
+  },
+  {
+   "slug": "epl-bri-lee-2026-09-05",
+   "outcome": "Brighton & Hove Albion FC",
+   "directoryAsk": 0.49,
+   "bookBestAsk": 0.48,
+   "gapCents": -1.0,
+   "bookAsks": 35
+  },
+  {
+   "slug": "epl-not-tot-2026-09-05-more-markets",
+   "outcome": "2nd Half O/U 0.5",
+   "directoryAsk": 0.85,
+   "bookBestAsk": 0.84,
+   "gapCents": -1.0,
+   "bookAsks": 7
+  },
+  {
+   "slug": "lol-vit-g2-2026-09-05",
+   "outcome": "Total Kills Over/Under 24.5 in Game 4?",
+   "directoryAsk": 0.96,
+   "bookBestAsk": 0.97,
+   "gapCents": 1.0,
+   "bookAsks": 3
+  },
+  {
+   "slug": "cs2-ts7-fal2-2026-09-05",
+   "outcome": "Match Winner",
+   "directoryAsk": 0.61,
+   "bookBestAsk": 0.62,
+   "gapCents": 1.0,
+   "bookAsks": 17
+  },
+  {
+   "slug": "cs2-ts7-fal2-2026-09-05",
+   "outcome": "Map 1 Winner",
+   "directoryAsk": 0.6,
+   "bookBestAsk": 0.59,
+   "gapCents": -1.0,
+   "bookAsks": 19
+  },
+  {
+   "slug": "ufc-dan6-salpar-2026-09-05",
+   "outcome": "O/U 0.5 Rounds",
+   "directoryAsk": 0.9,
+   "bookBestAsk": 0.89,
+   "gapCents": -1.0,
+   "bookAsks": 8
+  },
+  {
+   "slug": "ufc-mor-fel10-2026-09-05",
+   "outcome": "O/U 1.5 Rounds",
+   "directoryAsk": 0.8,
+   "bookBestAsk": 0.81,
+   "gapCents": 1.0,
+   "bookAsks": 14
+  },
+  {
+   "slug": "fl1-rcl-lor-2026-09-05-more-markets",
+   "outcome": "Racing Club de Lens O/U 0.5",
+   "directoryAsk": 0.89,
+   "bookBestAsk": 0.9,
+   "gapCents": 1.0,
+   "bookAsks": 10
+  }
+ ]
+}

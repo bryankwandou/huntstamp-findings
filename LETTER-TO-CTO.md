@@ -11,12 +11,12 @@ reporter who tells you what they got wrong is easier to trust on what they got r
 
 ## Short version — the email body
 
-**Subject:** Stage 0 assessment — 43 findings, one at the edge of your order book, 2 withdrawn
+**Subject:** Stage 0 assessment — 45 findings, one at the edge of your order book, 2 withdrawn
 
 Hello,
 
-I spent the assessment on the Polymarket integration at `app.manic.trade/pm` and filed 42
-findings through the Typeform, from five sweeps. Everything is published, with reproduction
+I spent the assessment on the Polymarket integration at `app.manic.trade/pm` and filed 44
+findings through the Typeform, from seven sweeps. Everything is published, with reproduction
 steps and captured evidence:
 
 - Report — https://huntstamp-findings.vercel.app
@@ -98,7 +98,7 @@ This is the complete account of the assessment. I have put the uncomfortable par
 
 ### What I got wrong
 
-I filed 43 findings across six sweeps and withdrew two before submission.
+I filed 45 findings across seven sweeps and withdrew two before submission.
 
 **F-10, withdrawn.** I measured `/pm` reaching `loadEventEnd` at 94,029 ms and then
 135,689 ms. I diagnosed connection-pool saturation across 113 JavaScript chunks and wrote it
@@ -155,6 +155,13 @@ rejected despite the open quote, you are advertising a price you will not honour
 narrower but still wrong. The fix is the same either way: stop quoting decided markets, gating
 `acceptingOrders` at both event and outcome level on the same signal that sets the final score.
 
+One refinement, since it matters for how you weight this. When the order-book endpoint became
+visible I checked it directly: live markets return a real, deep book, but on the one finished
+market I could still inspect the book was empty while the events API still advertised
+`bestAsk` 1.0. So what I have proven is that the API *advertises* order acceptance and a price
+on decided markets; whether the underlying book holds a matching order is exactly what the
+funded confirming order tests. That is a sharpening of the claim, not a retreat from it.
+
 ### The same theme, at scale
 
 The order-book case is the sharp end of a pattern the API sweep found everywhere:
@@ -170,6 +177,10 @@ The order-book case is the sharp end of a pattern the API sweep found everywhere
 - **The paging metadata contradicts itself** on at least one tag: `total` says 384 while 376 are
   served, `hasMore` is false while a higher offset still returns rows, and eight events are
   reachable by no offset at all.
+- **The directory card price disagrees with the live order book** on ~13% of a sample (16 of
+  120), by up to 12 cents on a one-dollar contract, cross-checked against the book endpoint.
+- **The site's own sitemap lists dead markets** served as HTTP 200, feeding search engines
+  links to markets that no longer exist.
 
 Settlement timing and order acceptance on decided markets is the through-line. On a venue
 handling real USDC it is also where the money is.
