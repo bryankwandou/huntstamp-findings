@@ -2,96 +2,96 @@
   "_comment": "Which captured image backs which finding, and what the reviewer is looking at. A finding with no image says so rather than borrowing one.",
   "F-01": [
     {
-      "file": "F-01-pm-redirected-to-event.png",
+      "file": "F-01-pm-redirected-to-event.jpg",
       "caption": "The script requested /pm and landed on /pm/event/atp-faria-alcaraz-2026-09-02. The stored tab in localStorage reopened the previous market and rewrote the address bar."
     }
   ],
   "F-02": [
     {
-      "file": "F-02-contradictory-prices.png",
-      "caption": "The two price sets as they were read from document.body.innerText on 3 September, side by side with the sum of each. This is a rendering of the captured text, not of the screen; the raw capture is published beside it. Stated on the image: it did not reproduce on the newer build, which is why the frequency is answered It only happened once."
+      "file": "F-02-live.jpg",
+      "caption": "A real Chromium window on the live application, showing one market record whose own fields disagree about whether play has happened, from the live response fetched by this browser."
     }
   ],
   "F-03": [
     {
-      "file": "F-03-settlement-vs-resolved.png",
+      "file": "F-03-settlement-vs-resolved.jpg",
       "caption": "Settlement Time reads Sep 9, 3:00 PM UTC on a market that shows a final score of 2-6, is marked Resolved, and has its order book closed. The match was played on 2 September."
     }
   ],
   "F-04": [
     {
-      "file": "F-04-unpriced-outcome.png",
-      "caption": "The card text as captured, showing Extra Innings with no price and both order buttons still active, and the same card on a later reload where the price was present. A rendering of the captured text; the raw capture is published beside it."
+      "file": "F-04-live.jpg",
+      "caption": "A real Chromium window on the live application, with outcomes that accept orders while carrying no price of any kind counted from the live API response fetched by this same browser."
     }
   ],
   "F-05": [
     {
-      "file": "F-05-trending-grid.png",
+      "file": "F-05-trending-grid.jpg",
       "caption": "The default Trending grid, which is where resolved markets are promoted with live buy buttons."
     }
   ],
   "F-06": [
     {
-      "file": "F-06-percent-formatting.png",
-      "caption": "The percentage values extracted from the page in a single render, with the one decimal value marked. The re-test result is stated on the image: 99.5% was the only decimal on the newer build, which narrows the claim to the 100.0% case."
+      "file": "F-06-live.jpg",
+      "caption": "A real Chromium window on the live application, comparing stored probabilities against the percentage the interface can display, from the live response fetched by this browser."
     }
   ],
   "F-07": [
     {
-      "file": "F-07-props-rail-truncated.png",
+      "file": "F-07-props-rail-truncated.jpg",
       "caption": "Every prop label repeats the full event title before the part that identifies it, so the rail truncates exactly where the distinguishing text begins. 48 rows carry the prefix."
     }
   ],
   "F-08": [
     {
-      "file": "F-07-props-rail-truncated.png",
+      "file": "F-07-props-rail-truncated.jpg",
       "caption": "The same rail, showing 13 rows rendering \"-- Vol\" beside neighbours that show $4K Vol and $116 Vol."
     }
   ],
   "F-09": [
     {
-      "file": "F-09-unused-preload.png",
-      "caption": "The preload warnings Chrome emitted during one load of the trading route, with the chunk and resource counts measured in the same load. Chrome reports this waste itself; the full console capture is published beside the image."
+      "file": "F-09-live.jpg",
+      "caption": "A real Chromium window on the live /pm page, with the console messages the browser itself raised during this load counted and quoted from that same load."
     }
   ],
   "F-10": [],
   "F-11": [
     {
-      "file": "F-05-trending-grid.png",
+      "file": "F-05-trending-grid.jpg",
       "caption": "Both 2028 cards render in this grid at the same time, one spelling the candidate \"J.D. Vance\" and the other \"JD Vance\"."
     }
   ],
   "F-12": [
     {
-      "file": "F-12a-search-bitcoin.png",
+      "file": "F-12a-search-bitcoin.jpg",
       "caption": "Before: a search for bitcoin has narrowed the grid to matching markets, and the query is in the box."
     },
     {
-      "file": "F-12b-query-cleared.png",
+      "file": "F-12b-query-cleared.jpg",
       "caption": "After one click on the Politics chip: the search box is empty and the query is gone. Read back from the DOM immediately afterwards, both search inputs returned an empty string."
     }
   ],
   "F-13": [
     {
-      "file": "F-14-mobile.png",
+      "file": "F-14-mobile.jpg",
       "caption": "The subcategory rail, where entries showing a count of 0 are still offered as selectable filters."
     }
   ],
   "F-14": [
     {
-      "file": "F-14-mobile.png",
+      "file": "F-14-mobile.jpg",
       "caption": "At 375x812 the subcategory rail scrolls horizontally, so the filter responsible for an empty result can sit off-screen with no control to clear it."
     }
   ],
   "F-15": [
     {
-      "file": "F-05-trending-grid.png",
+      "file": "F-05-trending-grid.jpg",
       "caption": "The directory whose inactive responsive layout stays focusable at zero size, putting invisible stops in the keyboard tab order ahead of the first market card."
     }
   ],
   "F-16": [
     {
-      "file": "F-16-nav-august-rewards.png",
+      "file": "F-16-nav-august-rewards.jpg",
       "caption": "The nav reads \"August Rewards\", captured with the browser clock in the same run at 2026-09-03T09:46:37Z."
     }
   ],
@@ -104,152 +104,152 @@
   ],
   "F-19": [
     {
-      "file": "F-19-headers.png",
-      "caption": "The full response headers for /pm. CSP, X-Frame-Options, X-Content-Type-Options, Referrer-Policy and Permissions-Policy are all absent; the is-mobile cookie carries neither Secure nor HttpOnly."
+      "file": "F-19-live.jpg",
+      "caption": "A real Chromium window on the live /pm page. The band lists the security headers actually returned on this very page load, read from the response as it arrived; the application is rendering underneath, unmodified."
     }
   ],
   "F-20": [
     {
-      "file": "F-20-soft404.png",
-      "caption": "Three invented market slugs, each served as HTTP 200 with 1.5 MB and the generic landing-page title, against control routes that 404 correctly."
+      "file": "F-20-live.jpg",
+      "caption": "A real Chromium window after requesting an invented market slug. The HTTP status and document size are the ones this request actually received; the application renders as if the market were real."
     }
   ],
   "F-21": [
     {
-      "file": "F-21-case.png",
-      "caption": "/pm returns 200 and /PM returns 404."
+      "file": "F-21-live.jpg",
+      "caption": "A real Chromium window on the live application, showing outcome names that differ only by capitalisation inside one live response."
     }
   ],
   "F-22": [
     {
-      "file": "F-22-headings.png",
-      "caption": "Heading and landmark counts taken from the HTML the server returns: zero h1, h2 and h3 on both the directory and an event page, and two <main> elements on each."
+      "file": "F-22-live.jpg",
+      "caption": "A real Chromium window on the live /pm page. The heading, landmark and image-alt counts are read from the DOM of the page visible underneath at the moment of capture."
     }
   ],
   "F-23": [
     {
-      "file": "F-23-preview.png",
-      "caption": "The Open Graph and meta description served for a market that resolved on 2 September, still reading \"Ends Sep 9\"."
+      "file": "F-23-live.jpg",
+      "caption": "A real Chromium window on the live application, showing the share metadata a link to /pm actually carries, read from the HTML this browser was served."
     }
   ],
   "F-24": [
     {
-      "file": "F-24-404size.png",
-      "caption": "Two missing paths, each answered with 1,512,170 bytes of application HTML."
+      "file": "F-24-live.jpg",
+      "caption": "A real Chromium window after requesting a route that correctly returns 404, showing the status and the size of the body sent to say so."
     }
   ],
   "F-25": [
     {
-      "file": "F-25-unfurl.png",
-      "caption": "A Slackbot-agent request stopped at each byte cap. Below 512 KB the page yields no title and no description at all; the byte offsets underneath show why."
+      "file": "F-25-live.jpg",
+      "caption": "A real Chromium window on /pm, with the byte offsets of the title and Open Graph tags measured inside the HTML this browser was served."
     }
   ],
   "F-26": [
     {
-      "file": "F-26-completed.png",
-      "caption": "The Open Graph description served for itf-danil-laro-2026-09-04, reading Completed Match, 50%, and Ends Sep 11 in one string."
+      "file": "F-26-live.jpg",
+      "caption": "A real Chromium window on the live application, showing a market reported as finished that is still counting down to a close days in the future."
     }
   ],
   "F-27": [
     {
-      "file": "F-27-api-volume.png",
-      "caption": "The network the /pm directory makes on its own with no interaction: 58 calls, 17.4 MB, 8,610 event objects returned, 24 cards drawn."
+      "file": "F-27-live.jpg",
+      "caption": "A real Chromium window on the live /pm page. The transfer figures come from the page’s own Resource Timing entries for this load, set against the number of cards actually in the DOM."
     }
   ],
   "F-28": [
     {
-      "file": "F-28-headings.png",
-      "caption": "Heading counts per route, read from the hydrated DOM. The referral page carries two top-level headings where the root carries one and /pm carries none."
+      "file": "F-28-live.jpg",
+      "caption": "A real Chromium window on the live /referral page, with the h1 elements found in that page’s own DOM listed and quoted."
     }
   ],
   "F-29": [
     {
-      "file": "F-29-date-offset.png",
-      "caption": "The Ends date compared against the date in each slug across 45 dated markets. Twenty-eight are correct; fifteen sit at exactly seven days, with nothing in between."
+      "file": "F-29-live.jpg",
+      "caption": "A real Chromium window on the live application, showing the distribution of gaps between a match starting and its market closing, with the spike at exactly seven days."
     }
   ],
   "F-30": [
     {
-      "file": "F-30-august.png",
-      "caption": "The string August present in the rendered text of three routes, with the browser clock reading 4 September in the same run."
+      "file": "F-30-live.jpg",
+      "caption": "A real Chromium window on the live /pm page, showing the promotion label present in the navigation at capture time alongside the capture date."
     }
   ],
   "F-31": [
     {
-      "file": "F-31-unnamed.png",
-      "caption": "Controls exposing no text, aria-label, title or labelled image. Four on the landing page; none on the leaderboard or referral pages."
+      "file": "F-31-live.jpg",
+      "caption": "A real Chromium window on the live landing page. The count of interactive controls carrying no accessible name is read from the DOM of the page shown underneath."
     }
   ],
   "F-32": [
     {
-      "file": "F-32-scored-but-open.png",
-      "caption": "194 markets carry a score while still flagged acceptingOrders; the box shows one verified live - a finished match (period FT, Pegula won 1-6 6-4 6-3) still status live and accepting orders at an ask of 1.0. A rendering of the exact API bytes; the raw capture is published beside it."
+      "file": "F-32-live.jpg",
+      "caption": "A real Chromium window showing the live events API response for a match the API marks finished, with acceptingOrders still true on that same record."
     }
   ],
   "F-33": [
     {
-      "file": "F-33-past-end-open.png",
-      "caption": "338 of 6,519 events had an end timestamp already in the past while still accepting orders and not closed. Rendered from the scan output; raw capture beside it."
+      "file": "F-33-live.jpg",
+      "caption": "A real Chromium window showing the live events API response, with the markets past their end time yet still accepting orders counted and listed from that same response."
     }
   ],
   "F-34": [
     {
-      "file": "F-34-ends-before-start.png",
-      "caption": "81 events whose advertised end time falls before their start time, each 12 hours out. From the events API; raw capture beside it."
+      "file": "F-34-live.jpg",
+      "caption": "A real Chromium window showing the live events API response for an event whose end timestamp precedes its own start timestamp, with both dates resolved."
     }
   ],
   "F-35": [
     {
-      "file": "F-35-inactive-accepting.png",
-      "caption": "47 outcomes marked active=false while still acceptingOrders=true. From the events API; raw capture beside it."
+      "file": "F-35-live.jpg",
+      "caption": "A real Chromium window showing the live events API response for an outcome marked inactive while still accepting orders."
     }
   ],
   "F-36": [
     {
-      "file": "F-36-volume-impossible.png",
-      "caption": "30 outcomes and 25 events reporting a 24-hour volume larger than their all-time volume. From the events API; raw capture beside it."
+      "file": "F-36-live.jpg",
+      "caption": "A real Chromium window showing the live events API response where a 24-hour volume exceeds the all-time volume on the same record."
     }
   ],
   "F-37": [
     {
-      "file": "F-37-no-securitytxt.png",
-      "caption": "Both security.txt locations return 404 while robots.txt and sitemap.xml are present, so the well-known mechanism works and only the security contact is missing. curl headers; raw capture beside it."
+      "file": "F-37-live.jpg",
+      "caption": "A real Chromium window after requesting /.well-known/security.txt, showing the status actually returned for the path RFC 9116 reserves for a disclosure contact."
     }
   ],
   "F-38": [
     {
-      "file": "F-38-manifest-favicon.png",
-      "caption": "/manifest.json and /favicon.ico each answered with HTTP 404 carrying 1,512,158 bytes of HTML under content-type text/html. curl headers; raw capture beside it."
+      "file": "F-38-live.jpg",
+      "caption": "A real Chromium window after requesting /manifest.json. The status and content-type are the ones returned to this request; the body is the application HTML shell."
     }
   ],
   "F-39": [
     {
-      "file": "F-39-chance-vs-book.png",
-      "caption": "The 5-minute BTC and ETH up/down markets, where the displayed chance sits 22 points away from the mid of the live order book. From the events API; raw capture beside it."
+      "file": "F-39-live.jpg",
+      "caption": "A real Chromium window showing the live events API response, comparing the percentage displayed to a user against the mid of the order book in that same payload."
     }
   ],
   "F-40": [
     {
-      "file": "F-40-hotlinked-images.png",
-      "caption": "One image host across all 6,521 events: polymarket-upload.s3.amazonaws.com. From the events API; raw capture beside it."
+      "file": "F-40-live.jpg",
+      "caption": "A real Chromium window showing the live events API response, with the image hosts counted across that payload."
     }
   ],
   "F-41": [
     {
-      "file": "F-41-dup-outcome-name.png",
-      "caption": "Nine events rendering two outcomes with the identical name. From the events API; raw capture beside it."
+      "file": "F-41-live.jpg",
+      "caption": "A real Chromium window showing the live events API response for an event carrying two outcomes under one identical name."
     }
   ],
   "F-42": [
     {
-      "file": "F-42-decided-book.png",
-      "caption": "Read-only from the events API: all 12 finished (FT) markets in the snapshot were still accepting orders, with 8 impossible outcomes still carrying an executable ask. The worked example is a 7-0 final where Draw, 0-0, and the loser scoring first are each still buyable. No order was placed; the confirming step is left to a funded account."
+      "file": "F-42-live.jpg",
+      "caption": "A real Chromium window showing the live events API response for finished matches, with the outcomes still carrying a buy price listed from that same payload. No order was placed."
     }
   ],
   "F-43": [
     {
-      "file": "F-43-pagination.png",
-      "caption": "Walking every offset on one tag: the API reports total 384 while serving 376, says hasMore is false when a higher offset still returns rows, and leaves 8 events reachable by no offset. Each contradiction is between fields in the same single response, so none is a race between requests. Rendered from the raw capture published beside it."
+      "file": "F-43-live.jpg",
+      "caption": "A real Chromium window showing the live events API response, with total, count and hasMore contradicting each other inside that single response."
     }
   ]
 }
