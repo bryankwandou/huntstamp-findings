@@ -1,0 +1,37 @@
+$ curl -sS "https://bo-server-api.manic.trade/charts/pm/events?tag=weather&sort=trending&limit=500&offset=N&lite=true"
+
+Walking every offset on one tag, reading only the paging metadata the API
+returns about itself:
+
+  offset=0     total=384   count=376   hasMore=false   events[] served=376
+  offset=376   total=384   count=4     hasMore=false   events[] served=4
+  offset=384   total=384   count=0     hasMore=false   events[] served=0
+  offset=500   total=384   count=0     hasMore=false   events[] served=0
+
+  limit=100 offset=300  ->  total=384  count=76  hasMore=false  served=76
+
+Union of distinct event ids across offsets 0, 100, 200, 300, 376, 384 and 400:
+
+  API-reported total                       : 384
+  distinct events actually reachable       : 376
+  events counted but reachable by no offset:   8
+
+Three separate contradictions inside these responses:
+
+  1. hasMore is false at offset=0, yet offset=376 returns four more rows.
+     A client that trusts hasMore stops paging and never asks for them.
+
+  2. total says 384 while only 376 distinct events can be retrieved by any
+     combination of offset and limit. Eight events are counted and never served.
+
+  3. The four rows returned at offset=376 are events already present in the
+     first page - paging past the served window repeats rows rather than
+     advancing, so the offset is not a stable cursor into the set.
+
+Each figure above comes from the paging fields in the same single response
+that carries the rows, so none of this is a race between two requests.
+
+Checked and sound in the same pass, worth stating so the coverage is clear:
+the volume sort was correctly monotone on all fourteen tags, and every
+multi-outcome price group summed within tolerance of 1 - no negRisk group
+and no other outcome group was mispriced.

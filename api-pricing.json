@@ -1,0 +1,43 @@
+{
+  "scannedAt": "2026-09-04T18:52:06.977Z",
+  "distinctEvents": 3466,
+  "counts": {
+    "multiOutcomeSumFarFromOne_negRisk": 0,
+    "multiOutcomeSumFarFromOne_other": 0,
+    "paginationMetaInconsistent": 3,
+    "volumeSortNotMonotone": 0,
+    "offsetReturnsDuplicates": 1
+  },
+  "samples": {
+    "negRiskSum": [],
+    "groupSum": [],
+    "pageMeta": [
+      {
+        "tag": "economy",
+        "field": "total<count",
+        "total": 165,
+        "count": 166
+      },
+      {
+        "tag": "weather",
+        "field": "hasMore=false but total>served",
+        "total": 350,
+        "served": 348
+      },
+      {
+        "tag": "pop-culture",
+        "field": "total<count",
+        "total": 369,
+        "count": 370
+      }
+    ],
+    "sortBroken": [],
+    "offsetDup": [
+      {
+        "tag": "sports",
+        "repeatedIds": 1,
+        "page2size": 500
+      }
+    ]
+  }
+}

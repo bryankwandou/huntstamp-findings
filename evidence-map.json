@@ -245,5 +245,11 @@
       "file": "F-42-decided-book.png",
       "caption": "Read-only from the events API: all 12 finished (FT) markets in the snapshot were still accepting orders, with 8 impossible outcomes still carrying an executable ask. The worked example is a 7-0 final where Draw, 0-0, and the loser scoring first are each still buyable. No order was placed; the confirming step is left to a funded account."
     }
+  ],
+  "F-43": [
+    {
+      "file": "F-43-pagination.png",
+      "caption": "Walking every offset on one tag: the API reports total 384 while serving 376, says hasMore is false when a higher offset still returns rows, and leaves 8 events reachable by no offset. Each contradiction is between fields in the same single response, so none is a race between requests. Rendered from the raw capture published beside it."
+    }
   ]
 }

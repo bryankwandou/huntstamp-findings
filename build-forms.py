@@ -18,7 +18,7 @@ Fields are emitted in the order the real Typeform asks them:
 """
 import io, re, json, html
 
-FILES = ["TYPEFORM-ANSWERS.md", "NEW-TYPEFORM-ANSWERS.md", "NEW-TYPEFORM-ANSWERS-2.md", "NEW-TYPEFORM-ANSWERS-3.md", "NEW-TYPEFORM-ANSWERS-4.md"]
+FILES = ["TYPEFORM-ANSWERS.md", "NEW-TYPEFORM-ANSWERS.md", "NEW-TYPEFORM-ANSWERS-2.md", "NEW-TYPEFORM-ANSWERS-3.md", "NEW-TYPEFORM-ANSWERS-4.md", "NEW-TYPEFORM-ANSWERS-5.md"]
 
 # Which image backs which finding. Kept in its own file so the mapping can be
 # reviewed on its own, and so a finding without evidence says so rather than
@@ -49,8 +49,10 @@ BATCH = [
              "September 4, 2026, 08:20-09:00, UTC"),
     (32, 41, "Desktop PC / Windows 11 build 26200 / Node.js https client against the public events API / no wallet connected (logged-out guest session)",
              "September 5, 2026, 01:00-02:30, UTC"),
-    (42, 99, "Desktop PC / Windows 11 build 26200 / Node.js https client against the public events API / no wallet connected (logged-out guest session)",
+    (42, 42, "Desktop PC / Windows 11 build 26200 / Node.js https client against the public events API / no wallet connected (logged-out guest session)",
              "September 5, 2026, 02:00-02:45, UTC"),
+    (43, 99, "Desktop PC / Windows 11 build 26200 / Node.js https client against the public events API / no wallet connected (logged-out guest session)",
+             "September 5, 2026, 03:00-03:30, UTC"),
 ]
 
 CONSENT_1 = ("I have not included passwords, private keys, or seed phrases. "
